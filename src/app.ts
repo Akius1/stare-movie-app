@@ -5,8 +5,9 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import VersionOneRoute from "./routes";
 import flash from "express-flash";
-import  fs from "fs";
+import fs from "fs";
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
 
 const app = express();
@@ -22,15 +23,14 @@ app.use(flash());
 //can access route 'http://localhost:3001/apiv1/students'
 app.use("/apiv1", VersionOneRoute);
 
+const clientPath = path.join(__dirname, "../", "client/build");
 
-const clientPath = path.join(__dirname, '../', 'client/build');
-
-if(fs.existsSync(clientPath)){
+if (fs.existsSync(clientPath)) {
   app.use(express.static(clientPath));
-  app.get('/*', (_req, res) => {
-    res.sendFile(path.join(clientPath, 'index.html'));
-  })
-};
+  app.get("/*", (_req, res) => {
+    res.sendFile(path.join(clientPath, "index.html"));
+  });
+}
 // app.use(express.static(path.join(__dirname, "public")));
 // error handler
 
