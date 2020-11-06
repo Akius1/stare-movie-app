@@ -1,1 +1,1 @@
-# OnlineSchool-api
+# Stare Movie App
