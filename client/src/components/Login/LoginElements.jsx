@@ -63,3 +63,37 @@ export const FormLogin = styled.div`
 export const Error = styled.p`
   color: red;
 `;
+
+export const FormNav = styled.nav`
+  .RegisterContainer-nav {
+    height: 10vh;
+    background-color: #222121;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    width: auto;
+    justify-content: space-between;
+  }
+  .RegisterContainer-logo {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    .logo-img {
+      height: 38px;
+    }
+  }
+  .main-logo::after {
+    color: #fff;
+  }
+  .auth-nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  .user-nav {
+    margin: 0 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+  }
+`;
