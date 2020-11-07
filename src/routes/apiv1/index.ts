@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import RegistrationRoutes from "./register";
+import RegistrationRoutes from "./register/register";
 import LoginRoutes from "./login";
 import MovieRoutes from "./movie";
 
