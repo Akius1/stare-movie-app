@@ -13,7 +13,7 @@ export const changePassword = async (req: Request, res: Response) => {
   try {
     const user: Row = await getUserByEmail(email);
 
-    if (user == null) {
+    if (user === null) {
       return res.status(400).json({ maessage: "No user with that email" });
     }
     const token = jwt.sign(
@@ -57,7 +57,6 @@ export const resetPassword = async (req: Request, res: Response) => {
       resetLink,
       `${process.env.RESET_PASSWORD_KEY}`,
     );
-    console.log(verify);
     const hashpassword = await bcrypt.hash(req.body.newPassword, 10);
     console.log(hashpassword);
     const result = await updatePassword(hashpassword, verify.id);
