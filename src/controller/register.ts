@@ -82,11 +82,11 @@ async function confirmEmail(resetLink: string) {
   try {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const verify: any = await jwt.verify(resetLink, "process.env.secret_id");
-    const getIsVerified = await sql`SELECT is_verified FROM accounts WHERE id = ${verify.id}`;
+    const getIsVerified = await sql`SELECT is_verified FROM users WHERE id = ${verify.id}`;
 
     if (getIsVerified[0]["is_verified"] !== true) {
       getIsVerified[0]["is_verified"] = true;
-      await sql`update accounts set is_verified = ${getIsVerified[0]["is_verified"]} WHERE id = ${verify.id}`;
+      await sql`update users set is_verified = ${getIsVerified[0]["is_verified"]} WHERE id = ${verify.id}`;
       return "Account Verified Succesfully, You can now Login";
     } else {
       return "Account already Verified";
