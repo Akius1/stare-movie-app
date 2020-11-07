@@ -3,7 +3,7 @@ import React from "react";
 const Film = () => {
   return (
     <div>
-      <p>Login Please</p>
+      <p>single page</p>
     </div>
   );
 };
