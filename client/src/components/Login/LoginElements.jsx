@@ -57,6 +57,7 @@ export const FormLogin = styled.div`
     border-color: #272728;
     border-radius: 3px;
     color: #fff;
+    align-items: center;
   }
 `;
 export const Error = styled.p`

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Error, FormLogin } from "./LoginElements";
+import Button from "./Button";
 
 export const validateInput = (str = "") => str.includes("@");
 
@@ -16,22 +17,28 @@ const Form = () => {
         <h1>Stare</h1>
       </div>
       <div className="heading">Log in</div>
-      <div className="form-input">
+      <div>
         <input
           id="email"
           name="email"
           type={"email"}
           placeholder="Email"
           onChange={handleOnChange}
+          className="form-input"
         />
       </div>
       {FormData.email && !validateInput(FormData.email) ? (
         <Error>Email not valid</Error>
       ) : null}
-      <div className="form-input">
-        <input name="password" type={"password"} placeholder="Password" />
+      <div>
+        <input
+          name="password"
+          type={"password"}
+          placeholder="Password"
+          className="form-input"
+        />
       </div>
-      <div className="btn">Login</div>
+      <Button buttonName="Log In" />
     </FormLogin>
   );
 };
