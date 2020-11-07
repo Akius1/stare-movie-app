@@ -4,11 +4,16 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import VersionOneRoute from "./routes";
+import passport from "passport";
+import initializepassport from "./passport-config";
+import session from "express-session";
 import flash from "express-flash";
 import fs from "fs";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
+
+initializepassport(passport);
 
 const app = express();
 
@@ -19,8 +24,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(flash());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET as string,
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
 
-//can access route 'http://localhost:3001/apiv1/students'
+app.use(passport.initialize());
+app.use(passport.session());
+
+//can access route 'http://localhost:3001/apiv1/'
 app.use("/apiv1", VersionOneRoute);
 
 const clientPath = path.join(__dirname, "../", "client/build");
@@ -31,8 +46,6 @@ if (fs.existsSync(clientPath)) {
     res.sendFile(path.join(clientPath, "index.html"));
   });
 }
-// app.use(express.static(path.join(__dirname, "public")));
-// error handler
 
 // catch 404 and forward to error handler
 app.use(function (_req: Request, _res: Response, next: NextFunction) {
