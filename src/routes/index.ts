@@ -8,7 +8,7 @@ const router = Router();
 router.use("/", apiV1Route);
 router.use("/addfilm", movieRouter);
 router.use("/films", movieRouter);
-// router.use("/films/:name", movieRouter);
-// router.use("/films/:id", movieRouter);
+router.use("/films/:name", movieRouter);
+router.use("/films/:id", movieRouter);
 
 export default router;

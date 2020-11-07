@@ -4,7 +4,7 @@ import {
   getFilmByName,
   createFilm,
   getAllFilms,
-  // getFilmById,
+  getFilmById,
 } from "../../../controller/addFilm";
 import { Row, RowList } from "postgres";
 
@@ -13,6 +13,28 @@ const router = Router();
 /* Movie Routes. */
 router.get("/", async function (_req: Request, res: Response) {
   const allFilms = await getAllFilms();
+  return res.status(200).json(allFilms);
+});
+
+// dd
+router.get("/:name", async function (req: Request, res: Response) {
+  console.log(req.params.name);
+
+  const allFilms = await getFilmByName(
+    `${req.params.name.split("_").join(" ")}`,
+  );
+  console.log(allFilms);
+
+  return res.status(200).json(allFilms);
+});
+
+// get by id
+router.get("/film_id/:id", async function (req: Request, res: Response) {
+  console.log(req.params.id);
+  const filmId: string = req.params.id;
+
+  const allFilms = await getFilmById(filmId);
+  console.log(allFilms);
   return res.status(200).json(allFilms);
 });
 
