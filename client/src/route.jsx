@@ -12,6 +12,8 @@ export default function Routing() {
       <Route path="/films" component={View.Landingpage} />
       <Route path="/login" component={View.Login} />
       <Route path="/register" component={View.Register} />
+      <Route path="/create" component={View.Createfilm} />
+      <Route path="/films/:film_id" component={View.SinglePage} />
     </BrowserRouter>
   );
 }
