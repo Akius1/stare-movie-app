@@ -1,11 +1,9 @@
 import "./Home.css";
-import React, { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Header from "./Header";
 
-const PageContainer = ({ image, filmData }) => {
-  //console.log(filmData)
-  const display = filmData.map((item, index) => {
-    //console.log(item);
+const PageContainer = ({ allFilms, setAllFilms }) => {
+  const display = allFilms.map((item, index) => {
     return (
       <div className="PageContainer-item" key={item._id}>
         <div className="pix-box">
@@ -34,20 +32,7 @@ const PageContainer = ({ image, filmData }) => {
 
   return (
     <>
-      <nav className="PageContainer-nav">
-        <NavLink className="PageContainer-logo" to="/">
-          <img className="logo-img" src="./Images/favicon-32x32.png" /> STARE
-        </NavLink>
-
-        <div className="auth-nav">
-          <NavLink className="user-nav" to="/register">
-            Sign Up
-          </NavLink>
-          <NavLink className="user-nav" to="/login">
-            Log In
-          </NavLink>
-        </div>
-      </nav>
+      <Header setAllFilms={setAllFilms} />
 
       <div className="main-area">
         <div className="grid-wrapper">{display}</div>
