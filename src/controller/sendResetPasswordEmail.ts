@@ -1,6 +1,4 @@
 import nodemailer from "nodemailer";
-import dotenv from "dotenv";
-dotenv.config();
 
 export default async function invite(
   receiverEmail: string,
@@ -15,15 +13,16 @@ export default async function invite(
       console.log("validation failed");
       return -1;
     }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.SENDER_EMAIL,
+        user: "anabizconcept9@gmail.com",
         pass: process.env.EMAIL_PASSWORD,
       },
     });
     const info = await transporter.sendMail({
-      from: `"Anabiz" <${process.env.SENDER_EMAIL}>`,
+      from: `"Stare" <anabizconcept9@gmail.com>`,
       to: receiverEmail,
       subject: "Hello!",
       html: messageBody,
