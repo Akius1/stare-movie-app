@@ -35,6 +35,10 @@ exports.up = (pgm) => {
       type: "bool",
       default: false,
     },
+    is_admin: {
+      type: "bool",
+      default: false,
+    },
   });
 };
 
