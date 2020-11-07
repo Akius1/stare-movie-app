@@ -4,14 +4,14 @@ import Button from "./Button";
 
 export const validateInput = (str = "") => str.includes("@");
 
-const Form = () => {
+const Form = ({ handleSubmit }) => {
   const [FormData, setFormData] = useState({});
 
   const handleOnChange = ({ target: { name, value } }) =>
     setFormData((prev) => ({ ...prev, [name]: value }));
 
   return (
-    <FormLogin name="login-form">
+    <FormLogin name="login-form" onSubmit={handleSubmit}>
       <div className="logo">
         <img src="./favicon-32x32.png" alt="logo"></img>
         <h1>Stare</h1>
