@@ -12,6 +12,20 @@
   width: 100%;
   justify-content: space-between;
 }
+.PageContainer-logo {
+  font-size: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+.main-logo::after {
+  color: #fff;
+}
+
+.logo-img {
+  /* height: 100%; */
+  width: 40px;
+}
 
 .auth-nav {
   display: flex;
@@ -22,16 +36,6 @@
   margin: 0 10px;
   font-weight: bold;
   text-decoration: none;
-  color: #fff;
-}
-
-.PageContainer-logo {
-  font-size: 50px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #fff;
-}
-.main-logo::after {
   color: #fff;
 }
 
@@ -78,6 +82,10 @@
 
 .title-txt {
   width: 250px;
+  text-decoration: none;
+}
+a.title-txt {
+  color: blanchedalmond;
 }
 
 .PageContainer-image-div {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PageContainer from "./PageContainer";
+import filmData from "./filmData";
 const LandingPage = () => {
   const [allFilms, setAllFilms] = useState([
     "borat-subsequent-moviefilm-2020.jpg",
@@ -32,7 +33,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <PageContainer image={allFilms} />
+      <PageContainer image={allFilms} filmData={filmData} />
     </>
   );
 };

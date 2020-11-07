@@ -2,25 +2,31 @@ import "./Home.css";
 import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 
-const PageContainer = (props) => {
-  const display = props.image.map((item, index) => {
-    console.log(item);
+const PageContainer = ({ image, filmData }) => {
+  //console.log(filmData)
+  const display = filmData.map((item, index) => {
+    //console.log(item);
     return (
-      <div className="PageContainer-item" key={index}>
+      <div className="PageContainer-item" key={item._id}>
         <div className="pix-box">
-          <Link to={`/films/${index}`}>
+          <Link to={`/films/${item._id}`}>
             <img
               className="movie-poster"
-              src={`./Images/${item}`}
+              src={`./Images/${item.Photo}`}
               alt="movie poster"
             />
           </Link>
         </div>
+        <Link className="title-txt" to={`/films/${item._id}`}>
+          <div>
+            <p>{item.name}</p>
+          </div>
+        </Link>
         <div className="title-txt">
-          <p>Title:</p>
+          <p>Rating: {item.rating}</p>
         </div>
         <div className="title-txt">
-          <p>Rating: 5</p>
+          <p>Ticket Price: {item.ticketPrice}</p>
         </div>
       </div>
     );
@@ -30,7 +36,7 @@ const PageContainer = (props) => {
     <>
       <nav className="PageContainer-nav">
         <NavLink className="PageContainer-logo" to="/">
-          <i class="fas fa-film"></i>STARE
+          <img className="logo-img" src="./Images/favicon-32x32.png" /> STARE
         </NavLink>
 
         <div className="auth-nav">
