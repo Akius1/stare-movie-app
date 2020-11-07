@@ -8,7 +8,7 @@ router.post("/", (req: Request, res: Response) => {
   passport.authenticate("local", function (err, user, info): any {
     console.log(user);
     console.log(err);
-    if (err != undefined) {
+    if (err !== undefined) {
       return res.status(500).json({ err });
     }
     try {
