@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import { Error, FormLogin, FormNav } from "./LoginElements";
 import Button from "./Button";
+import { UserData } from "./UserData";
 
 export const validateInput = (str = "") => str.includes("@");
 
 const Form = ({ handleSubmit }) => {
+  const { SetUserInfo, userInfo } = useContext(UserData);
+  //console.log(userInfo)
+
   const [FormData, setFormData] = useState({});
-  // const [password, setPasssword] = useState("99999999")
+  const [res, setRes] = useState("");
   const { push } = useHistory();
   const handleOnChange = ({ target: { name, value } }) =>
     setFormData((prev) => ({ ...prev, [name]: value }));
-
-  // const handleOnChange1 = (e)=>{
-  //   e.preventDefault();
-  //   setPasssword((p)=> e.target.value)
-  // }
 
   const onClick = async (e) => {
     e.preventDefault();
@@ -34,10 +33,17 @@ const Form = ({ handleSubmit }) => {
         password: FormData.password,
       }),
     });
-    console.log(response.json());
-    response.json();
-
-    push("/");
+    let data = await response.json().then((val) => {
+      return val;
+    });
+    setRes(data.name);
+    SetUserInfo(data);
+    push({
+      pathname: "/",
+      state: {
+        key: res,
+      },
+    });
   };
 
   return (

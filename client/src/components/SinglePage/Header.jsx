@@ -2,31 +2,16 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { UserData } from "./../Login/UserData";
 
-function Header() {
+function Header({ setAllFilms }) {
   const { userInfo, SetUserInfo } = useContext(UserData);
-  console.log(userInfo);
-
-  function handleChange(params) {
-    //console.log(params.target.value)
-    //setAllFilms()
-  }
-
   function loutOut(params) {
     SetUserInfo({});
   }
-
   return (
     <nav className="PageContainer-nav">
       <NavLink className="PageContainer-logo" to="/">
-        <img className="logo-img" src="./Images/favicon-32x32.png" /> STARE
+        <img className="logo-img" src="./../Images/favicon-32x32.png" /> STARE
       </NavLink>
-
-      <input
-        className="srch-box"
-        type="search"
-        placeholder="Search..."
-        onChange={handleChange}
-      />
 
       <div className="auth-nav">
         <NavLink
