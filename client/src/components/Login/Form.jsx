@@ -7,12 +7,35 @@ export const validateInput = (str = "") => str.includes("@");
 
 const Form = ({ handleSubmit }) => {
   const [FormData, setFormData] = useState({});
+  // const [password, setPasssword] = useState("99999999")
   const { push } = useHistory();
   const handleOnChange = ({ target: { name, value } }) =>
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-  const onClick = (e) => {
+  // const handleOnChange1 = (e)=>{
+  //   e.preventDefault();
+  //   setPasssword((p)=> e.target.value)
+  // }
+
+  const onClick = async (e) => {
     e.preventDefault();
+    console.log(FormData.email);
+
+    const url = "http://localhost:3000/apiv1/login";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+
+      body: JSON.stringify({
+        email: FormData.email,
+        password: FormData.password,
+      }),
+    });
+    console.log(response.json());
+    response.json();
 
     push("/");
   };
@@ -59,6 +82,9 @@ const Form = ({ handleSubmit }) => {
             type={"password"}
             placeholder="Password"
             className="form-input"
+            onChange={handleOnChange}
+            // onChange={e => setPasssword(e.target.value)}
+            // value={password}
           />
         </div>
         <Button buttonName="Log In" onClick={onClick} />
