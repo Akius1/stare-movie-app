@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import { validateMFilmInfo } from "../../../schema/validateFilmInfo";
+import { adminAuthorization } from "../../../middleware/checkAdmin";
 import {
   getFilmByName,
   createFilm,
@@ -49,7 +50,10 @@ router.get("/film_id/:id", async function (req: Request, res: Response) {
 });
 
 // delete by id
-router.delete("/delete/:id", async function (req: Request, res: Response) {
+router.delete("/delete/:id", adminAuthorization, async function (
+  req: Request,
+  res: Response,
+) {
   try {
     // console.log(req.params.id);
     const filmId: string = req.params.id;
@@ -70,7 +74,10 @@ router.delete("/delete/:id", async function (req: Request, res: Response) {
 });
 
 //create film
-router.post("/", async function (req: Request, res: Response) {
+router.post("/", adminAuthorization, async function (
+  req: Request,
+  res: Response,
+) {
   const validFilmInfo = await validateMFilmInfo(req.body);
   if (validFilmInfo?.error) {
     res.status(404).json({ error: "Invalid data" });
@@ -91,7 +98,10 @@ router.post("/", async function (req: Request, res: Response) {
 
 //update film
 
-router.put("/update/:id", async function (req: Request, res: Response) {
+router.put("/update/:id", adminAuthorization, async function (
+  req: Request,
+  res: Response,
+) {
   const validFilmInfo = await validateMFilmInfo(req.body);
   if (validFilmInfo?.error) {
     res.status(404).json({ error: "Invalid data" });
