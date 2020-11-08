@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import { validateMFilmInfo } from "../../../schema/validateFilmInfo";
+import { adminAuthorization } from "../../../middleware/checkAdmin";
 import {
   getFilmByName,
   createFilm,
@@ -14,34 +15,45 @@ const router = Router();
 
 /* Movie Routes. */
 router.get("/", async function (_req: Request, res: Response) {
-  const allFilms = await getAllFilms();
-  return res.status(200).json(allFilms);
+  try {
+    const allFilms = await getAllFilms();
+    return res.status(200).json(allFilms);
+  } catch (error) {
+    return res.status(404).json({ errorMessage: "Could not get films" });
+  }
 });
 
 // get by name
 router.get("/:name", async function (req: Request, res: Response) {
-  console.log(req.params.name);
+  try {
+    const allFilms = await getFilmByName(`${req.params.name}`);
+    console.log(allFilms);
 
-  const allFilms = await getFilmByName(
-    `${req.params.name.split("_").join(" ")}`,
-  );
-  console.log(allFilms);
-
-  return res.status(200).json(allFilms);
+    return res.status(200).json(allFilms);
+  } catch (error) {
+    return res.status(404).json({ errorMessage: "Could not get film" });
+  }
 });
 
 // get by id
 router.get("/film_id/:id", async function (req: Request, res: Response) {
-  console.log(req.params.id);
-  const filmId: string = req.params.id;
+  try {
+    console.log(req.params.id);
+    const filmId: string = req.params.id;
 
-  const allFilms = await getFilmById(filmId);
-  console.log(allFilms);
-  return res.status(200).json(allFilms);
+    const allFilms = await getFilmById(filmId);
+    console.log(allFilms);
+    return res.status(200).json(allFilms);
+  } catch (error) {
+    return res.status(404).json({ error: "Could not get film" });
+  }
 });
 
 // delete by id
-router.delete("/delete/:id", async function (req: Request, res: Response) {
+router.delete("/delete/:id", adminAuthorization, async function (
+  req: Request,
+  res: Response,
+) {
   try {
     // console.log(req.params.id);
     const filmId: string = req.params.id;
@@ -62,7 +74,10 @@ router.delete("/delete/:id", async function (req: Request, res: Response) {
 });
 
 //create film
-router.post("/", async function (req: Request, res: Response) {
+router.post("/", adminAuthorization, async function (
+  req: Request,
+  res: Response,
+) {
   const validFilmInfo = await validateMFilmInfo(req.body);
   if (validFilmInfo?.error) {
     res.status(404).json({ error: "Invalid data" });
@@ -83,7 +98,10 @@ router.post("/", async function (req: Request, res: Response) {
 
 //update film
 
-router.put("/update/:id", async function (req: Request, res: Response) {
+router.put("/update/:id", adminAuthorization, async function (
+  req: Request,
+  res: Response,
+) {
   const validFilmInfo = await validateMFilmInfo(req.body);
   if (validFilmInfo?.error) {
     res.status(404).json({ error: "Invalid data" });

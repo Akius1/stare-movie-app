@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { UserData } from "./../Login/UserData";
 
 function Header({ setAllFilms }) {
+  const { userInfo, SetUserInfo } = useContext(UserData);
+  function loutOut(params) {
+    SetUserInfo({});
+  }
   return (
     <nav className="PageContainer-nav">
       <NavLink className="PageContainer-logo" to="/">
@@ -9,11 +14,16 @@ function Header({ setAllFilms }) {
       </NavLink>
 
       <div className="auth-nav">
-        <NavLink className="user-nav" to="/register">
-          Sign Up
-        </NavLink>
-        <NavLink className="user-nav" to="/login">
-          Log In
+        <NavLink
+          onClick={loutOut}
+          className="user-nav"
+          to={!userInfo.user ? "/register" : "/films"}
+        >
+          {!userInfo.user ? "Sign Up" : "Log Out"}
+        </NavLink>{" "}
+        :
+        <NavLink className="user-nav" to={!userInfo.user ? "/login" : "/films"}>
+          {!userInfo.user ? "Login" : `Hi ${userInfo.user.name}`}
         </NavLink>
       </div>
     </nav>
