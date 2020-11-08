@@ -1,8 +1,9 @@
 import "./Home.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
-const PageContainer = ({ allFilms, setAllFilms }) => {
+const PageContainer = ({ allFilms }) => {
   const display = allFilms.map((item, index) => {
     return (
       <div className="PageContainer-item" key={item._id}>
@@ -32,7 +33,7 @@ const PageContainer = ({ allFilms, setAllFilms }) => {
 
   return (
     <>
-      <Header setAllFilms={setAllFilms} />
+      <Header />
 
       <div className="main-area">
         <div className="grid-wrapper">{display}</div>
