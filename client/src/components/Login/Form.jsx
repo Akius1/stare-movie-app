@@ -2,12 +2,12 @@ import React, { useState, useContext } from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import { Error, FormLogin, FormNav } from "./LoginElements";
 import Button from "./Button";
-import { UserData } from "./UserData";
+import { UserData, useUser } from "./UserData";
 
 export const validateInput = (str = "") => str.includes("@");
 
 const Form = ({ handleSubmit }) => {
-  const { SetUserInfo, userInfo } = useContext(UserData);
+  const [userInfo, SetuserInfo] = useUser();
 
   const [FormData, setFormData] = useState({});
   const [res, setRes] = useState("");
@@ -16,9 +16,6 @@ const Form = ({ handleSubmit }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
 
   const onClick = async (e) => {
-    e.preventDefault();
-    console.log(FormData.email);
-
     const url = "http://localhost:3000/apiv1/login";
     const response = await fetch(url, {
       method: "POST",
@@ -36,7 +33,11 @@ const Form = ({ handleSubmit }) => {
       return val;
     });
     setRes(data.name);
-    SetUserInfo(data);
+    localStorage.setItem("userData", JSON.stringify(data));
+
+    const { user } = JSON.parse(localStorage.getItem("userData")) || "";
+    SetuserInfo(user);
+
     push({
       pathname: "/",
       state: {
@@ -88,12 +89,8 @@ const Form = ({ handleSubmit }) => {
             type={"password"}
             placeholder="Password"
             className="form-input"
-
             required
-
             onChange={handleOnChange}
-           
-
           />
         </div>
         <Button buttonName="Log In" onClick={onClick} />
