@@ -49,7 +49,6 @@ router.get("/film_id/:id", async function (req: Request, res: Response) {
   }
 });
 
-
 // delete by id
 router.delete("/delete/:id", adminAuthorization, async function (
   req: Request,
@@ -97,7 +96,6 @@ router.post("/", adminAuthorization, async function (
   return res.status(200).json(myFilm);
 });
 
-
 //update film
 
 router.put("/update/:id", adminAuthorization, async function (
@@ -106,7 +104,7 @@ router.put("/update/:id", adminAuthorization, async function (
 ) {
   const validFilmInfo = await validateMFilmInfo(req.body);
   if (validFilmInfo?.error) {
-    res.status(404).json({ error: "Invalid data" });
+    return res.status(404).json({ error: "Invalid data" });
   }
 
   const filmExists: RowList<Row[]> = await getFilmById(req.params.id);

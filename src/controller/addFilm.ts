@@ -59,7 +59,7 @@ export async function updateFilm(data: filmType, id: string) {
     genre = ${data.genre},
     ticket_price = ${data.ticket_price},
     country = ${data.country},
-    image_links = ${data.image_links}
+    image_link = ${data.image_link}
      where id = ${id} RETURNING *`;
   } catch (error) {
     return error.message;
