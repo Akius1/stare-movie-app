@@ -5,6 +5,8 @@ import {
   createFilm,
   getAllFilms,
   getFilmById,
+  deleteFilmById,
+  updateFilm,
 } from "../../../controller/addFilm";
 import { Row, RowList } from "postgres";
 
@@ -16,7 +18,7 @@ router.get("/", async function (_req: Request, res: Response) {
   return res.status(200).json(allFilms);
 });
 
-// dd
+// get by name
 router.get("/:name", async function (req: Request, res: Response) {
   console.log(req.params.name);
 
@@ -38,6 +40,26 @@ router.get("/film_id/:id", async function (req: Request, res: Response) {
   return res.status(200).json(allFilms);
 });
 
+// delete by id
+router.delete("/delete/:id", async function (req: Request, res: Response) {
+  try {
+    // console.log(req.params.id);
+    const filmId: string = req.params.id;
+    const filmReturn: RowList<Row[]> = await getFilmById(filmId);
+    if (!filmReturn.count) {
+      return res
+        .status(404)
+        .json({ message: "The film you are trying to delete does not exist" });
+    }
+    const allFilms = await deleteFilmById(filmId);
+    console.log(allFilms);
+    return res
+      .status(200)
+      .json({ message: `${allFilms[0].name} has been deleted successfully` });
+  } catch (error) {
+    return res.status(404).json(error);
+  }
+});
 
 //create film
 router.post("/", async function (req: Request, res: Response) {
@@ -59,5 +81,23 @@ router.post("/", async function (req: Request, res: Response) {
   return res.status(200).json(myFilm);
 });
 
+//update film
 
- export default router;
+router.put("/update/:id", async function (req: Request, res: Response) {
+  const validFilmInfo = await validateMFilmInfo(req.body);
+  if (validFilmInfo?.error) {
+    res.status(404).json({ error: "Invalid data" });
+  }
+
+  const filmExists: RowList<Row[]> = await getFilmById(req.params.id);
+
+  if (!filmExists.count) {
+    return res.json({ message: "Film does not exist" });
+  }
+
+  const myFilm = await updateFilm(validFilmInfo?.value, req.params.id);
+
+  return res.status(200).json(myFilm);
+});
+
+export default router;
