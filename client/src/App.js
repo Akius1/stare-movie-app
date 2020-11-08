@@ -9,7 +9,6 @@ function App() {
     setUser(user);
   }, []);
 
-  //console.log(getUser);
   return <Route />;
 }
 

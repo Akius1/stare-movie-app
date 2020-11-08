@@ -6,9 +6,11 @@ import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 
 const Film = ({ film }) => {
+  const logo = "./../Images/favicon-32x32.png";
+
   return (
     <>
-      <Header />
+      <Header logoLink={logo} />
 
       <div className="main-area">
         <div className="info-area">

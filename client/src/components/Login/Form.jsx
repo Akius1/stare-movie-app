@@ -8,7 +8,6 @@ export const validateInput = (str = "") => str.includes("@");
 
 const Form = ({ handleSubmit }) => {
   const [userInfo, SetuserInfo] = useUser();
-  //console.log(userInfo)
 
   const [FormData, setFormData] = useState({});
   const [res, setRes] = useState("");
@@ -17,9 +16,6 @@ const Form = ({ handleSubmit }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
 
   const onClick = async (e) => {
-    //e.preventDefault();
-    //console.log(FormData.email);
-
     const url = "http://localhost:3000/apiv1/login";
     const response = await fetch(url, {
       method: "POST",

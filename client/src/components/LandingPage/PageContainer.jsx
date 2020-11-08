@@ -32,10 +32,11 @@ const PageContainer = ({ allFilms }) => {
       </div>
     );
   });
+  const logo = "./Images/favicon-32x32.png";
 
   return (
     <>
-      <Header />
+      <Header logoLink={logo} />
 
       <div className="main-area">
         <div className="grid-wrapper">{display}</div>
