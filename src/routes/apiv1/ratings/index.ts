@@ -1,9 +1,5 @@
 import { Request, Response, Router } from "express";
-import {
-  // rateFilm,
-  getFilmRate,
-  updateRate,
-} from "../../../controller/rating";
+import { rateFilm, getFilmRate, updateRate } from "../../../controller/rating";
 import { validateRating } from "../../../schema/validateRating";
 
 const router = Router();
@@ -18,7 +14,6 @@ router.post("/", async (req: Request, res: Response) => {
   // console.log(rated.count);
 
   if (rated.count) {
-    console.log(rated[0]);
     updateRate(
       rated[0].films_id,
       rated[0].rating,
@@ -27,9 +22,8 @@ router.post("/", async (req: Request, res: Response) => {
     );
     return;
   }
-  // const rate = await rateFilm(validRating?.value);
-  // return res.status(200).json(rate);
-  return res.status(200).json({ rate: "hi" });
+  const rate = await rateFilm(validRating?.value);
+  return res.status(200).json(rate);
 });
 
 export default router;
