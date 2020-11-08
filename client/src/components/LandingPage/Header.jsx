@@ -28,7 +28,7 @@ function Header() {
         <NavLink className="user-nav" to="/register">
           Sign Up
         </NavLink>
-        <NavLink className="user-nav" to="/login">
+        <NavLink className="user-nav" to={!userInfo.user ? "/login" : "/films"}>
           {!userInfo.user ? "Login" : userInfo.user.name}
         </NavLink>
       </div>
