@@ -1,20 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import { Error, FormLogin, FormNav } from "./LoginElements";
 import Button from "./Button";
+import { UserData } from "./UserData";
 
 export const validateInput = (str = "") => str.includes("@");
 
 const Form = ({ handleSubmit }) => {
+  const { SetUserInfo, userInfo } = useContext(UserData);
+
   const [FormData, setFormData] = useState({});
+  const [res, setRes] = useState("");
   const { push } = useHistory();
   const handleOnChange = ({ target: { name, value } }) =>
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-  const onClick = (e) => {
+  const onClick = async (e) => {
     e.preventDefault();
+    console.log(FormData.email);
 
-    push("/");
+    const url = "http://localhost:3000/apiv1/login";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+
+      body: JSON.stringify({
+        email: FormData.email,
+        password: FormData.password,
+      }),
+    });
+    let data = await response.json().then((val) => {
+      return val;
+    });
+    setRes(data.name);
+    SetUserInfo(data);
+    push({
+      pathname: "/",
+      state: {
+        key: res,
+      },
+    });
   };
 
   return (
@@ -60,7 +88,12 @@ const Form = ({ handleSubmit }) => {
             type={"password"}
             placeholder="Password"
             className="form-input"
+
             required
+
+            onChange={handleOnChange}
+           
+
           />
         </div>
         <Button buttonName="Log In" onClick={onClick} />
