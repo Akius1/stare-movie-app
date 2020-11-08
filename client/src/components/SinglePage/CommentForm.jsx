@@ -1,38 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserData } from "./../Login/UserData";
 //import filmData from "./../LandingPage/filmData";
 
 export default function CommentForm({ id }) {
-  //console.log(id)
+  const { userInfo, SetUserInfo } = useContext(UserData);
 
-  //const theData = filmData.find((item) => item._id === id);
-
-  const [inputData, setInputData] = useState({ name: "", comment: "" });
+  const [inputData, setInputData] = useState("");
+  const [errorClass, setErrorClass] = useState("hideError");
 
   function handleChange(event) {
-    const { name, value } = event.target;
-    setInputData((prevInputData) => ({ ...prevInputData, [name]: value }));
+    const { value } = event.target;
+    setInputData(value);
   }
+
+  const url = "http://localhost:3000/apiv1/addcomment";
 
   function handleSubmit(event) {
     event.preventDefault();
     //Handle post request
-  }
+    if (!userInfo.user) {
+      setErrorClass("showError");
+    } else {
+      setErrorClass("hideError");
+      //Submit comment
 
-  // useEffect(()=>{
-  //     console.log(inputData)
-  // },[inputData])
+      // const response = await fetch(url, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   redirect: "follow",
+
+      //   body: JSON.stringify({
+      //     films_id: FormData.email,
+      //     comment: inputData,
+      //     user_id: userInfo.id
+      //   }),
+      // });
+
+      // let data = await response.json().then((val) => {
+      //   return val;
+      // });
+    }
+  }
 
   return (
     <form className="new-comment" onSubmit={handleSubmit}>
       <p>Add Comment</p>
-      <input
+      {/* <input
         placeholder="Enter your name"
         name="name"
         value={inputData.name}
         className="comment-Author"
         type="text"
         onChange={handleChange}
-      />
+      /> */}
       <textarea
         placeholder="Type your comment here"
         name="comment"
@@ -40,6 +62,7 @@ export default function CommentForm({ id }) {
         className="comment-body"
         onChange={handleChange}
       ></textarea>
+      <span className={errorClass}>You need to log in first</span>
 
       <button className="add-comment-btn">Submit Comment</button>
     </form>

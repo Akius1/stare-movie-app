@@ -1,18 +1,33 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { UserData } from "./../Login/UserData";
+import { NavLink, useHistory } from "react-router-dom";
+import { UserData, useUser } from "./../Login/UserData";
 
 function Header() {
-  const { userInfo, SetUserInfo } = useContext(UserData);
-  console.log(userInfo);
-
+  const [userInfo, SetUserInfo] = useUser();
+  console.log(userInfo, "from748");
   function handleChange(params) {
     //console.log(params.target.value)
     //setAllFilms()
   }
 
+  const [name, setName] = React.useState(userInfo);
+  const history = useHistory();
+
+  React.useEffect(() => {
+    setName(userInfo);
+  }, [userInfo]);
+
+  console.log(name, "from name");
+
   function loutOut(params) {
-    SetUserInfo({});
+    localStorage.clear("userData");
+
+    window.location.reload();
+    setTimeout(() => {
+      SetUserInfo({});
+    }, 2000);
+
+    //history.push("/")
   }
 
   return (
@@ -32,13 +47,16 @@ function Header() {
         <NavLink
           onClick={loutOut}
           className="user-nav"
-          to={!userInfo.user ? "/register" : "/films"}
+          to={userInfo === undefined ? "/register" : "/films"}
         >
-          {!userInfo.user ? "Sign Up" : "Log Out"}
+          {userInfo === undefined ? "Sign Up" : "Log Out"}
         </NavLink>{" "}
         :
-        <NavLink className="user-nav" to={!userInfo.user ? "/login" : "/films"}>
-          {!userInfo.user ? "Login" : `Hi ${userInfo.user.name}`}
+        <NavLink
+          className="user-nav"
+          to={userInfo === undefined ? "/login" : "/films"}
+        >
+          {!userInfo ? "Login" : `Hi ${userInfo.name}`}
         </NavLink>
       </div>
     </nav>

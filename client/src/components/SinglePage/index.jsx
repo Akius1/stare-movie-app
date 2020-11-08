@@ -10,6 +10,13 @@ const SinglePage = () => {
 
   const theData = filmData.find((item) => item._id === filmid);
 
+  React.useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   useEffect(() => {
     // write fetch request for single page data
     setFilm(theData);

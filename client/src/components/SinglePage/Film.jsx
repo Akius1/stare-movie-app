@@ -1,7 +1,7 @@
 import "./Style.css";
 // import { Link } from "react-router-dom";
 import React from "react";
-import Header from "./Header";
+import Header from "./../LandingPage/Header";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 
