@@ -2,6 +2,7 @@ import "./Style.css";
 // import { Link } from "react-router-dom";
 import React from "react";
 import Header from "./Header";
+import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 
 const Film = ({ film }) => {
@@ -17,12 +18,16 @@ const Film = ({ film }) => {
               src={`./../Images/${film.Photo}`}
               alt="chintu-ka-birthday-2020.jpg"
             />
-            <h1>{film.name}</h1>
+            {/* <h1>{film.name}</h1> */}
           </div>
 
           <div className="text-info">
             <div>
-              <h3>Ticket Price: {film.ticketPrice}</h3>
+              <h3>Nmae: {film.name}</h3>
+            </div>
+
+            <div>
+              <h3>Ticket Price: ${film.ticketPrice}</h3>
             </div>
 
             <div>
@@ -43,23 +48,12 @@ const Film = ({ film }) => {
             </div>
 
             <div>
-              <p>rating: {film.rating}</p>
+              <p>Rating: {film.rating}</p>
             </div>
           </div>
         </div>
         <div className="commentArea">
-          <div className="new-comment">
-            <input
-              placeholder="Enter your name"
-              className="comment-Author"
-              type="text"
-            />
-            <textarea
-              placeholder="Tpye your comment here"
-              className="comment-body"
-              name="comment-body"
-            ></textarea>
-          </div>
+          <CommentForm id={film._id} />
 
           <div>
             {film.comments ? (

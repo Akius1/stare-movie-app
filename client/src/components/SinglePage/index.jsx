@@ -11,6 +11,7 @@ const SinglePage = () => {
   const theData = filmData.find((item) => item._id === filmid);
 
   useEffect(() => {
+    // write fetch request for single page data
     setFilm(theData);
 
     //console.log(theData)
