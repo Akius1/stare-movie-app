@@ -10,7 +10,8 @@ function Header({ setAllFilms }) {
   return (
     <nav className="PageContainer-nav">
       <NavLink className="PageContainer-logo" to="/">
-        <img className="logo-img" src="./Images/favicon-32x32.png" /> STARE
+        <img className="logo-img" src="./Images/favicon-32x32.png" alt="" />{" "}
+        STARE
       </NavLink>
       <input
         className="srch-box"
