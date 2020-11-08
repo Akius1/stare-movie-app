@@ -36,11 +36,11 @@ async function registerUser(body: Record<string, unknown>) {
 }
 
 async function verifyEmail(data: RowList<Row[]>) {
-  const token = jwt.sign({ id: data[0]["id"] }, "process.env.secret_id", {
-    expiresIn: "10m",
-  });
+  //   const token = jwt.sign({ id: data[0]["id"] }, "process.env.secret_id", {
+  //     expiresIn: "10m",
+  //   });
 
-  const url = `http://localhost:3000/apiv1/register/confirm/${token}`;
+  const url = `http://localhost:3000/login`;
   const output = `
   <p> Hi ${data[0]["name"]}</>
   <p> Click the link to verify your email</p>
