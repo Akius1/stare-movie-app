@@ -13,3 +13,9 @@ export type filmType = {
   genre: string;
   image_links: string;
 };
+export type commentType = {
+  name: string;
+  Film_id: string;
+  comment: string;
+  user_id: number;
+};

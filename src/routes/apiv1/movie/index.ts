@@ -13,7 +13,7 @@ import { Row, RowList } from "postgres";
 
 const router = Router();
 
-/* Movie Routes. */
+/* get all */
 router.get("/", async function (_req: Request, res: Response) {
   try {
     const allFilms = await getAllFilms();
