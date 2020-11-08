@@ -11,7 +11,7 @@ export const FormLogin = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   justify-content: center;
   width: 100vw;
   .logo {
