@@ -17,5 +17,6 @@ router.use("/update/:id", movieRouter);
 router.use("/comments", commentRouter);
 router.use("/addcomment", commentRouter);
 router.use("/comments/:id", commentRouter);
+router.use("/ratefilm", ratingRouter);
 
 export default router;
