@@ -36,6 +36,7 @@ const Form = ({ handleSubmit }) => {
     let data = await response.json().then((val) => {
       return val;
     });
+    console.log("loginnnnn");
     setRes(data.name);
     SetUserInfo(data);
     push({

@@ -4,6 +4,7 @@ import React from "react";
 import Header from "./Header";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
+//import { url } from "inspector";
 
 const Film = ({ film }) => {
   return (
@@ -15,7 +16,7 @@ const Film = ({ film }) => {
           <div className="img-info">
             <img
               className="single-img"
-              src={`./../Images/${film.Photo}`}
+              src={film.image_link}
               alt="chintu-ka-birthday-2020.jpg"
             />
             {/* <h1>{film.name}</h1> */}
@@ -27,11 +28,11 @@ const Film = ({ film }) => {
             </div>
 
             <div>
-              <h3>Ticket Price: ${film.ticketPrice}</h3>
+              <h3>Ticket Price: ${film.ticket_price}</h3>
             </div>
 
             <div>
-              <h3>Country: {film.Country}</h3>
+              <h3>Country: {film.country}</h3>
             </div>
 
             <div>
