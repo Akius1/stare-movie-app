@@ -1,7 +1,9 @@
+import React from "react";
 import "./Home.css";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useUser } from "../Login/UserData";
 
 const PageContainer = ({ allFilms }) => {
   const [data, setData] = useState("");
@@ -74,6 +76,20 @@ function Display({ name, description, id, ticket, image, ticket_id }) {
           <p>Ticket Price: {ticket}</p>
         </div>
       </div>
+    );
+  });
+  const logo = "./Images/favicon-32x32.png";
+
+  return (
+    <>
+      <Header logoLink={logo} />
+
+      <div className="main-area">
+        <div className="grid-wrapper">{display}</div>
+      </div>
+
+      <div className="footer-area"></div>
+
     </>
   );
 }
