@@ -51,17 +51,17 @@ export async function createFilm(data: filmType) {
 }
 
 // update film
-// export async function updateFilm(data: filmType, id: string) {
-//   try {
-//     return await sql`UPDATE films SET
-//     name = ${data.name},
-//     description = ${data.description},
-//     genre = ${data.genre},
-//     ticket_price = ${data.ticket_price},
-//     country = ${data.country},
-//     image_links = ${data.image_links}
-//      where id = ${id} RETURNING *`;
-//   } catch (error) {
-//     return error.message;
-//   }
-// }
+export async function updateFilm(data: filmType, id: string) {
+  try {
+    return await sql`UPDATE films SET
+    name = ${data.name},
+    description = ${data.description},
+    genre = ${data.genre},
+    ticket_price = ${data.ticket_price},
+    country = ${data.country},
+    image_links = ${data.image_links}
+     where id = ${id} RETURNING *`;
+  } catch (error) {
+    return error.message;
+  }
+}

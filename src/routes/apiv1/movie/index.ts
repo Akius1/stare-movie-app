@@ -6,6 +6,7 @@ import {
   getAllFilms,
   getFilmById,
   deleteFilmById,
+  updateFilm,
 } from "../../../controller/addFilm";
 import { Row, RowList } from "postgres";
 
@@ -76,6 +77,25 @@ router.post("/", async function (req: Request, res: Response) {
   }
 
   const myFilm = await createFilm(validFilmInfo?.value);
+
+  return res.status(200).json(myFilm);
+});
+
+//update film
+
+router.put("/update/:id", async function (req: Request, res: Response) {
+  const validFilmInfo = await validateMFilmInfo(req.body);
+  if (validFilmInfo?.error) {
+    res.status(404).json({ error: "Invalid data" });
+  }
+
+  const filmExists: RowList<Row[]> = await getFilmById(req.params.id);
+
+  if (!filmExists.count) {
+    return res.json({ message: "Film does not exist" });
+  }
+
+  const myFilm = await updateFilm(validFilmInfo?.value, req.params.id);
 
   return res.status(200).json(myFilm);
 });
