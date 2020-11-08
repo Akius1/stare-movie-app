@@ -7,23 +7,11 @@ export const validateInput = (str = "") => str.includes("@");
 
 const Form = ({ handleSubmit }) => {
   const [FormData, setFormData] = useState({});
-<<<<<<< HEAD
-  // const [submit, setSubmit] = useState(false);
-=======
   // const [password, setPasssword] = useState("99999999")
->>>>>>> b79f85d902d722441a3586dd0bfae483a92550d7
   const { push } = useHistory();
   const handleOnChange = ({ target: { name, value } }) =>
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-<<<<<<< HEAD
-  console.log("Email:", FormData.email);
-  console.log("Email:", FormData.password);
-  const onClick = (e) => {
-    e.preventDefault();
-    let user = loginUser();
-    console.log(user);
-=======
   // const handleOnChange1 = (e)=>{
   //   e.preventDefault();
   //   setPasssword((p)=> e.target.value)
@@ -49,26 +37,7 @@ const Form = ({ handleSubmit }) => {
     console.log(response.json());
     response.json();
 
->>>>>>> b79f85d902d722441a3586dd0bfae483a92550d7
     push("/");
-  };
-
-  // useEffect(() => {
-  //    getUser();
-  //   }, []);
-
-  const loginUser = async () => {
-    let email = FormData.email;
-    let password = FormData.password;
-    const response = await fetch("/apiv1/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      redirect: "follow",
-      body: JSON.stringify({ email, password }),
-    });
-    return response.json();
   };
 
   return (
@@ -114,11 +83,8 @@ const Form = ({ handleSubmit }) => {
             placeholder="Password"
             className="form-input"
             onChange={handleOnChange}
-<<<<<<< HEAD
-=======
             // onChange={e => setPasssword(e.target.value)}
             // value={password}
->>>>>>> b79f85d902d722441a3586dd0bfae483a92550d7
           />
         </div>
         <Button buttonName="Log In" onClick={onClick} />
