@@ -60,7 +60,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                     setShowModal((prev) => !prev);
                   }}
                 >
-                  <div className="heading">Create Films</div>
+                  <h1 className="heading">Create Films</h1>
                   <div>
                     <label htmlFor="name">Name:</label>
                     <input
@@ -77,7 +77,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                     <label htmlFor="description">Description:</label>
                     <textarea
                       id="description"
-                      placeholder="Write the movie description ...."
+                      placeholder="movie description ...."
                       required
                       name="Description"
                       onChange={handleOnChange}
@@ -89,7 +89,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                     <input
                       type={"date"}
                       id="date"
-                      name="Release Date"
+                      name="ReleaseDate"
                       onChange={handleOnChange}
                       required
                     />
@@ -104,7 +104,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                       min="1.00"
                       step="1.00"
                       max="2500"
-                      name="Ticket Price"
+                      name="TicketPrice"
                       onChange={handleOnChange}
                       required
                     />
@@ -501,7 +501,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                     <input
                       type="text"
                       id="image-url"
-                      name="image-url"
+                      name="ImageUrl"
                       onChange={handleOnChange}
                       required
                     />
@@ -525,23 +525,3 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
 };
 
 export default Modal;
-
-// Name
-// Description
-// Realease Date
-// Rating
-// Ticket Price
-// Country
-// Genre
-// Photo
-
-// span
-//   position:relative;
-//   margin-right:-20px
-// }
-// input[type='number']{
-//   padding-left:20px;
-//   text-align:left;
-// }
-
-//display: "inline" float: "none"

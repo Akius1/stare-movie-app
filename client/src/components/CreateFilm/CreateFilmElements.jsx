@@ -7,9 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 `;
-
 export const FormNav = styled.nav`
   .RegisterContainer-nav {
     height: 10vh;
@@ -32,10 +30,7 @@ export const FormNav = styled.nav`
   .main-logo::after {
     color: #fff;
   }
-  .auth-nav {
-    display: flex;
-    justify-content: space-between;
-  }
+
   .user-nav {
     margin: 0 10px;
     font-weight: bold;
@@ -43,21 +38,20 @@ export const FormNav = styled.nav`
     color: #fff;
   }
 `;
-
 export const CreateFilmContainer = styled.div`
-  /* background-image: linear-gradient(
+  background-image: linear-gradient(
       to right bottom,
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)
     ),
-    url(../../signUp.jpg); */
+    url(../../signUp.jpg);
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 90vh;
-  /* justify-content: center; */
   width: 100vw;
+
   .btn {
     display: inline-block;
     height: 2.5em;
@@ -66,13 +60,13 @@ export const CreateFilmContainer = styled.div`
     margin-top: 1em;
     outline: none;
     background-color: #00a8e6;
-    border-color: #272728;
+    border-color: #00a8e6;
     border-radius: 3px;
     color: #fff;
     align-items: center;
+    outline: none;
   }
 `;
-
 export const CloseModalButton = styled(MdClose)`
   cursor: pointer;
   position: absolute;
@@ -91,27 +85,72 @@ export const ModalBackground = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   line-height: 1.8;
-
+  padding: 1em;
+  margin: 2em;
   .heading {
     padding: 10px 0 5px 0;
     font-size: 35px;
+    text-align: center;
   }
 `;
-
 export const ModalWrapper = styled.div`
   width: 800px;
   height: 500px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #fff;
-  color: #000;
+  background: #272728;
+  color: #eee;
   position: relative;
   z-index: 10;
   border-radius: 10px;
+  justify-content: center;
+  .btn {
+    width: 20em;
+    height: 3em;
+    align-self: center;
+  }
+  .modal-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-input {
+    outline: none;
+    background: transparent;
+    color: #eee;
+    border-color: #eee;
+    border-style: solid;
+    display: inline-block;
+    padding-right: 0.5em;
+    border-radius: 5px;
+    border-block-width: 2px;
+  }
+`;
+
+export const CardContainer = styled.div`
+  padding: 1rem;
+  box-shadow: 7px 10px 15px rgba(0, 0, 0, 0.56);
+  color: #fff;
+  background: #272728;
+  margin: 10px;
+
+  .pix-box {
+    width: 250px;
+    height: 350px;
+    background-color: #3e3d3c;
+    overflow: hidden;
+  }
+`;
+export const ModalWrappers = styled.div`
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    height: 100%;
+    width: 100vw;
+  }
 `;

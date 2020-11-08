@@ -4,9 +4,11 @@ import {
   FormNav,
   CreateFilmContainer,
   GlobalStyle,
+  ModalWrappers,
 } from "./CreateFilmElements";
 import Button from "./../Login/Button";
 import Modal from "./Modal";
+import Card from "./Card";
 
 const Form = () => {
   const [showModal, setShowModal] = useState(false);
@@ -23,11 +25,6 @@ const Form = () => {
             <img src="./favicon-32x32.png" className="logo-img" alt="logo" />{" "}
             STARE
           </NavLink>
-          <div className="auth-nav">
-            <NavLink className="user-nav" to="/register">
-              Sign Up
-            </NavLink>
-          </div>
         </nav>
       </FormNav>
       <CreateFilmContainer>
@@ -38,15 +35,33 @@ const Form = () => {
           insert={setMovieCollection}
         />
         <GlobalStyle />
-        <ul>
-          {movieCollection.map(({ Name, Description }) => (
-            <>
-              <li>{Name}</li>
-              <li>{Description}</li>
-              {/* // <Card name={Name} /> */}
-            </>
-          ))}
-        </ul>
+        <ModalWrappers>
+          <ul>
+            {movieCollection.map(
+              ({
+                Name,
+                Description,
+                ReleaseDate,
+                TicketPrice,
+                Country,
+                Genre,
+                ImageUrl,
+              }) => (
+                <>
+                  <Card
+                    name={Name}
+                    description={Description}
+                    releaseDate={ReleaseDate}
+                    ticketPrice={TicketPrice}
+                    country={Country}
+                    genre={Genre}
+                    imageUrl={ImageUrl}
+                  />
+                </>
+              ),
+            )}
+          </ul>
+        </ModalWrappers>
       </CreateFilmContainer>
     </>
   );
