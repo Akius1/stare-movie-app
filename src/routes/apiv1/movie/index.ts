@@ -38,7 +38,6 @@ router.get("/film_id/:id", async function (req: Request, res: Response) {
   return res.status(200).json(allFilms);
 });
 
-
 //create film
 router.post("/", async function (req: Request, res: Response) {
   const validFilmInfo = await validateMFilmInfo(req.body);
@@ -59,5 +58,4 @@ router.post("/", async function (req: Request, res: Response) {
   return res.status(200).json(myFilm);
 });
 
-
- export default router;
+export default router;
