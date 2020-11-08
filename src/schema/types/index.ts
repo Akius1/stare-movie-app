@@ -11,7 +11,7 @@ export type filmType = {
   ticket_price: number;
   country: string;
   genre: string;
-  image_links: string;
+  image_link: string;
 };
 export type commentType = {
   name: string;
