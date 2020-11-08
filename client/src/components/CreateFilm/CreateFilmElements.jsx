@@ -30,7 +30,10 @@ export const FormNav = styled.nav`
   .main-logo::after {
     color: #fff;
   }
-
+  .auth-nav {
+    display: flex;
+    justify-content: space-between;
+  }
   .user-nav {
     margin: 0 10px;
     font-weight: bold;
@@ -50,8 +53,8 @@ export const CreateFilmContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 90vh;
+  /* justify-content: center; */
   width: 100vw;
-
   .btn {
     display: inline-block;
     height: 2.5em;
@@ -72,7 +75,7 @@ export const CloseModalButton = styled(MdClose)`
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 32px;
+  width: 22px;
   height: 32px;
   z-index: 10;
 `;
@@ -81,6 +84,7 @@ export const ModalBackground = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,14 +98,15 @@ export const ModalContent = styled.div`
   padding: 1em;
   margin: 2em;
   .heading {
-    padding: 10px 0 5px 0;
-    font-size: 35px;
+    padding: 10px 0 10px 0;
+    font-size: 30px;
     text-align: center;
+    line-height: 1;
   }
 `;
 export const ModalWrapper = styled.div`
-  width: 800px;
-  height: 500px;
+  width: 500px;
+  min-height: 500px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #272728;
   color: #eee;
@@ -123,20 +128,16 @@ export const ModalWrapper = styled.div`
     outline: none;
     background: transparent;
     color: #eee;
-    border-color: #eee;
-    border-style: solid;
+    border: 1px solid #949494;
     display: inline-block;
     padding-right: 0.5em;
     border-radius: 5px;
-    border-block-width: 2px;
   }
 `;
-
 export const CardContainer = styled.div`
   padding: 1rem;
   box-shadow: 7px 10px 15px rgba(0, 0, 0, 0.56);
   color: #fff;
-  /* y */
   margin: 10px;
 
   .pix-box {
