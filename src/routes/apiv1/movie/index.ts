@@ -49,6 +49,7 @@ router.get("/film_id/:id", async function (req: Request, res: Response) {
   }
 });
 
+
 // delete by id
 router.delete("/delete/:id", adminAuthorization, async function (
   req: Request,
@@ -95,6 +96,7 @@ router.post("/", adminAuthorization, async function (
 
   return res.status(200).json(myFilm);
 });
+
 
 //update film
 
