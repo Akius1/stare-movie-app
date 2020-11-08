@@ -14,30 +14,38 @@ const router = Router();
 
 /* Movie Routes. */
 router.get("/", async function (_req: Request, res: Response) {
-  const allFilms = await getAllFilms();
-  return res.status(200).json(allFilms);
+  try {
+    const allFilms = await getAllFilms();
+    return res.status(200).json(allFilms);
+  } catch (error) {
+    return res.status(404).json({ errorMessage: "Could not get films" });
+  }
 });
 
 // get by name
 router.get("/:name", async function (req: Request, res: Response) {
-  console.log(req.params.name);
+  try {
+    const allFilms = await getFilmByName(`${req.params.name}`);
+    console.log(allFilms);
 
-  const allFilms = await getFilmByName(
-    `${req.params.name.split("_").join(" ")}`,
-  );
-  console.log(allFilms);
-
-  return res.status(200).json(allFilms);
+    return res.status(200).json(allFilms);
+  } catch (error) {
+    return res.status(404).json({ errorMessage: "Could not get film" });
+  }
 });
 
 // get by id
 router.get("/film_id/:id", async function (req: Request, res: Response) {
-  console.log(req.params.id);
-  const filmId: string = req.params.id;
+  try {
+    console.log(req.params.id);
+    const filmId: string = req.params.id;
 
-  const allFilms = await getFilmById(filmId);
-  console.log(allFilms);
-  return res.status(200).json(allFilms);
+    const allFilms = await getFilmById(filmId);
+    console.log(allFilms);
+    return res.status(200).json(allFilms);
+  } catch (error) {
+    return res.status(404).json({ error: "Could not get film" });
+  }
 });
 
 // delete by id
