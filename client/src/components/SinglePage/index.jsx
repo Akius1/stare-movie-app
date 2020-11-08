@@ -8,6 +8,22 @@ const SinglePage = () => {
 
   const { filmid } = useParams();
 
+  useEffect(async () => {
+    const url2 = `http://localhost:3000/apiv1/films/film_id/${filmid}`;
+    const response = await fetch(url2, {
+      method: "GET",
+      redirect: "follow",
+    });
+    let filmData = await response
+      .json()
+      .then((val) => {
+        return val;
+      })
+      .then((film) => {
+        console.log(film[0]);
+        setFilm(film[0]);
+      });
+
   const theData = filmData.find((item) => item._id === filmid);
 
   React.useLayoutEffect(() => {
@@ -21,10 +37,8 @@ const SinglePage = () => {
     // write fetch request for single page data
     setFilm(theData);
 
-    //console.log(theData)
-  }, []);
 
-  //console.log(film)
+  }, []);
 
   return (
     <>

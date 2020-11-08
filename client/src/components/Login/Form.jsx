@@ -8,7 +8,6 @@ export const validateInput = (str = "") => str.includes("@");
 
 const Form = ({ handleSubmit }) => {
   const [userInfo, SetuserInfo] = useUser();
-
   const [FormData, setFormData] = useState({});
   const [res, setRes] = useState("");
   const { push } = useHistory();
@@ -32,6 +31,7 @@ const Form = ({ handleSubmit }) => {
     let data = await response.json().then((val) => {
       return val;
     });
+    console.log("loginnnnn");
     setRes(data.name);
     localStorage.setItem("userData", JSON.stringify(data));
 

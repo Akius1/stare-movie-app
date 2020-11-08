@@ -1,3 +1,8 @@
+
+import React, { useState } from "react";
+
+export default function CommentForm({ id }) {
+  const [inputData, setInputData] = useState({ name: "", comment: "" });
 import React, { useState, useContext } from "react";
 import { UserData } from "./../Login/UserData";
 //import filmData from "./../LandingPage/filmData";
@@ -17,6 +22,9 @@ export default function CommentForm({ id }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+  }
+
+
     //Handle post request
     if (!userInfo.user) {
       setErrorClass("showError");

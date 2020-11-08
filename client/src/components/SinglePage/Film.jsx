@@ -1,5 +1,4 @@
 import "./Style.css";
-// import { Link } from "react-router-dom";
 import React from "react";
 import Header from "./../LandingPage/Header";
 import CommentForm from "./CommentForm";
@@ -17,10 +16,9 @@ const Film = ({ film }) => {
           <div className="img-info">
             <img
               className="single-img"
-              src={`./../Images/${film.Photo}`}
+              src={film.image_link}
               alt="chintu-ka-birthday-2020.jpg"
             />
-            {/* <h1>{film.name}</h1> */}
           </div>
 
           <div className="text-info">
@@ -29,11 +27,11 @@ const Film = ({ film }) => {
             </div>
 
             <div>
-              <h3>Ticket Price: ${film.ticketPrice}</h3>
+              <h3>Ticket Price: ${film.ticket_price}</h3>
             </div>
 
             <div>
-              <h3>Country: {film.Country}</h3>
+              <h3>Country: {film.country}</h3>
             </div>
 
             <div>
