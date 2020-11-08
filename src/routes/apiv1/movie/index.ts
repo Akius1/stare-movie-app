@@ -12,7 +12,7 @@ import { Row, RowList } from "postgres";
 
 const router = Router();
 
-/* Movie Routes. */
+/* get all */
 router.get("/", async function (_req: Request, res: Response) {
   const allFilms = await getAllFilms();
   return res.status(200).json(allFilms);
