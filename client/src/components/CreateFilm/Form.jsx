@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   FormNav,
   CreateFilmContainer,
@@ -10,7 +10,8 @@ import Modal from "./Modal";
 
 const Form = () => {
   const [showModal, setShowModal] = useState(false);
-
+  const [movieCollection, setMovieCollection] = useState([]);
+  console.log("heelo", movieCollection);
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
@@ -31,8 +32,21 @@ const Form = () => {
       </FormNav>
       <CreateFilmContainer>
         <Button onClick={openModal} buttonName="Add a Film" />
-        <Modal showModal={showModal} setShowModal={setShowModal} />
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          insert={setMovieCollection}
+        />
         <GlobalStyle />
+        <ul>
+          {movieCollection.map(({ Name, Description }) => (
+            <>
+              <li>{Name}</li>
+              <li>{Description}</li>
+              {/* // <Card name={Name} /> */}
+            </>
+          ))}
+        </ul>
       </CreateFilmContainer>
     </>
   );

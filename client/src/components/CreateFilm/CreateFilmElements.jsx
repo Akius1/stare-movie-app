@@ -45,12 +45,12 @@ export const FormNav = styled.nav`
 `;
 
 export const CreateFilmContainer = styled.div`
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
       to right bottom,
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)
     ),
-    url(../../signUp.jpg);
+    url(../../signUp.jpg); */
   background-size: cover;
   display: flex;
   flex-direction: column;

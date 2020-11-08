@@ -47,6 +47,7 @@ const Form = ({ handleSubmit }) => {
             placeholder="Email"
             onChange={handleOnChange}
             className="form-input"
+            required
           />
         </div>
         {FormData.email && !validateInput(FormData.email) ? (
@@ -59,6 +60,7 @@ const Form = ({ handleSubmit }) => {
             type={"password"}
             placeholder="Password"
             className="form-input"
+            required
           />
         </div>
         <Button buttonName="Log In" onClick={onClick} />
