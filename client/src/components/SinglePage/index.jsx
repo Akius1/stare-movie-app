@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Film from "./Film";
+import filmData from "./../LandingPage/filmData";
 import { useParams } from "react-router-dom";
 
 const SinglePage = () => {
+  const [film, setFilm] = useState({});
+
   const { filmid } = useParams();
-  console.log(filmid);
+
+  const theData = filmData.find((item) => item._id === filmid);
+
+  useEffect(() => {
+    setFilm(theData);
+
+    //console.log(theData)
+  }, []);
+
+  //console.log(film)
+
   return (
     <>
-      hello
-      <Film />
+      <Film film={film} />
     </>
   );
 };
