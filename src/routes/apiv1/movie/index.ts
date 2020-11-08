@@ -5,7 +5,7 @@ import {
   createFilm,
   getAllFilms,
   getFilmById,
-  deleteFilmById,
+  // deleteFilmById,
   // updateFilm,
 } from "../../../controller/addFilm";
 import { Row, RowList } from "postgres";
@@ -40,25 +40,24 @@ router.get("/film_id/:id", async function (req: Request, res: Response) {
   return res.status(200).json(allFilms);
 });
 // delete by id
-router.delete("/delete/:id", async function (req: Request, res: Response) {
-  try {
-    // console.log(req.params.id);
-    const filmId: string = req.params.id;
-    const filmReturn: RowList<Row[]> = await getFilmById(filmId);
-    if (!filmReturn.count) {
-      return res
-        .status(404)
-        .json({ message: "The film you are trying to delete does not exist" });
-    }
-    const allFilms = await deleteFilmById(filmId);
-    console.log(allFilms);
-    return res
-      .status(200)
-      .json({ message: `${allFilms[0].name} has been deleted successfully` });
-  } catch (error) {
-    return res.status(404).json(error);
-  }
-});
+// router.delete("/delete/:id", async function (req: Request, res: Response) {
+//   try {
+//     const filmId: string = req.params.id;
+//     const filmReturn: RowList<Row[]> = await getFilmById(filmId);
+//     if (!filmReturn.count) {
+//       return res
+//         .status(404)
+//         .json({ message: "The film you are trying to delete does not exist" });
+//     }
+//     const allFilms = await deleteFilmById(filmId);
+//     console.log(allFilms);
+//     return res
+//       .status(200)
+//       .json({ message: `${allFilms[0].name} has been deleted successfully` });
+//   } catch (error) {
+//     return res.status(404).json(error);
+//   }
+// });
 
 // create film
 router.post("/", async function (req: Request, res: Response) {
