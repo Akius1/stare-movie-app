@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import {
   FormNav,
   CreateFilmContainer,
   GlobalStyle,
 } from "./CreateFilmElements";
-import Button from "./Button";
+import Button from "./../Login/Button";
 import Modal from "./Modal";
 
 const Form = () => {

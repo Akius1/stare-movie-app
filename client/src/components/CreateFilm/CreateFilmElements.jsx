@@ -45,15 +45,23 @@ export const FormNav = styled.nav`
 `;
 
 export const CreateFilmContainer = styled.div`
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(../../signUp.jpg);
+  background-size: cover;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 90hvh;
-
+  height: 90vh;
+  /* justify-content: center; */
+  width: 100vw;
   .btn {
     display: inline-block;
     height: 2.5em;
-    width: 20em;
+    width: 10em;
     border: 1px solid #aaaaaa;
     margin-top: 1em;
     outline: none;
@@ -74,8 +82,36 @@ export const CloseModalButton = styled(MdClose)`
   height: 32px;
   z-index: 10;
 `;
-export const ModalBackground = styled.div``;
+export const ModalBackground = styled.div`
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-export const ModalContent = styled.div``;
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.8;
 
-export const ModalWrapper = styled.div``;
+  .heading {
+    padding: 10px 0 5px 0;
+    font-size: 35px;
+  }
+`;
+
+export const ModalWrapper = styled.div`
+  width: 800px;
+  height: 500px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  color: #000;
+  position: relative;
+  z-index: 10;
+  border-radius: 10px;
+`;
