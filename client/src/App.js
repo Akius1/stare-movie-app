@@ -1,4 +1,3 @@
-import "./App.css";
 import Route from "./route";
 import React, { useEffect } from "react";
 import { useUser } from "./components/Login/UserData";

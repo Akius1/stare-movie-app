@@ -8,7 +8,7 @@ export const validateMFilmInfo = (data: Record<string, unknown>) => {
       ticket_price: Joi.number().required(),
       country: Joi.string().required(),
       genre: Joi.string().required(),
-      image_links: Joi.string().required(),
+      image_link: Joi.string().required(),
     });
     const result = schema.validate(data);
     return result;
