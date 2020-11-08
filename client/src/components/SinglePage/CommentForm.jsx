@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-//import filmData from "./../LandingPage/filmData";
 
 export default function CommentForm({ id }) {
-  //console.log(id)
-
-  //const theData = filmData.find((item) => item._id === id);
-
   const [inputData, setInputData] = useState({ name: "", comment: "" });
 
   function handleChange(event) {
@@ -15,12 +10,7 @@ export default function CommentForm({ id }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    //Handle post request
   }
-
-  // useEffect(()=>{
-  //     console.log(inputData)
-  // },[inputData])
 
   return (
     <form className="new-comment" onSubmit={handleSubmit}>

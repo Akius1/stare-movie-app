@@ -1,5 +1,4 @@
 import "./Home.css";
-// import { Link } from "react-router-dom";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -22,26 +21,7 @@ const PageContainer = ({ allFilms }) => {
       .then((user1) => {
         setData(user1);
       });
-
-    // const url1 = "http://localhost:3000/apiv1/";
-    // const response = await fetch(url1, {
-    //   method: "GET",
-    //   redirect: "follow",
-    // });
-    // let filmRating = await response.json().then((rating) => {
-    //   return rating;
-    // }).then((rating)=>{
-    //   setRating(rating)
-    // });
   }, []);
-
-  // return (
-  //   <div>
-  //     {data && data.map( (da, i) => (
-  //       <div>{da.name}</div>
-  //     ))}
-  //   </div>
-  // )
 
   return (
     <>

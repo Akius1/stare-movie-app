@@ -8,7 +8,6 @@ export const validateInput = (str = "") => str.includes("@");
 
 const Form = ({ handleSubmit }) => {
   const { SetUserInfo, userInfo } = useContext(UserData);
-  //console.log(userInfo)
 
   const [FormData, setFormData] = useState({});
   const [res, setRes] = useState("");
@@ -90,8 +89,6 @@ const Form = ({ handleSubmit }) => {
             placeholder="Password"
             className="form-input"
             onChange={handleOnChange}
-            // onChange={e => setPasssword(e.target.value)}
-            // value={password}
           />
         </div>
         <Button buttonName="Log In" onClick={onClick} />

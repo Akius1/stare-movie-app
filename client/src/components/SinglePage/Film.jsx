@@ -1,10 +1,8 @@
 import "./Style.css";
-// import { Link } from "react-router-dom";
 import React from "react";
 import Header from "./Header";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
-//import { url } from "inspector";
 
 const Film = ({ film }) => {
   return (
@@ -19,7 +17,6 @@ const Film = ({ film }) => {
               src={film.image_link}
               alt="chintu-ka-birthday-2020.jpg"
             />
-            {/* <h1>{film.name}</h1> */}
           </div>
 
           <div className="text-info">

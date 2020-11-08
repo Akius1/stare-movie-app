@@ -26,8 +26,6 @@ const SinglePage = () => {
       });
   }, []);
 
-  //console.log(film)
-
   return (
     <>
       <Film film={film} />
