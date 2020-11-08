@@ -15,5 +15,6 @@ router.use("/delete/:id", movieRouter);
 router.use("/update/:id", movieRouter);
 router.use("/comments", commentRouter);
 router.use("/addcomment", commentRouter);
+router.use("/comments/:id", commentRouter);
 
 export default router;
