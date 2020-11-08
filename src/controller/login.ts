@@ -12,11 +12,16 @@ export const login = (req: Request, res: Response) => {
         const access_token = jwt.sign(
           user,
           `${process.env.ACCESS_TOKEN_SECRET}`,
-          { expiresIn: "10m" },
+          { expiresIn: "5m" },
         );
         res.cookie("userData", access_token);
         return res.status(200).json({
-          accessToken: access_token,
+          user: {
+            created: user.created_at,
+            id: user.id,
+            email: user.email,
+            name: user.name,
+          },
         });
       } else {
         return res.status(401).json(info);
