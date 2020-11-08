@@ -3,12 +3,16 @@ import { NavLink } from "react-router-dom";
 import { UserData } from "./../Login/UserData";
 
 function Header() {
-  const { userInfo } = useContext(UserData);
+  const { userInfo, SetUserInfo } = useContext(UserData);
   console.log(userInfo);
 
   function handleChange(params) {
     //console.log(params.target.value)
     //setAllFilms()
+  }
+
+  function loutOut(params) {
+    SetUserInfo({});
   }
 
   return (
@@ -25,11 +29,16 @@ function Header() {
       />
 
       <div className="auth-nav">
-        <NavLink className="user-nav" to="/register">
-          Sign Up
-        </NavLink>
+        <NavLink
+          onClick={loutOut}
+          className="user-nav"
+          to={!userInfo.user ? "/register" : "/films"}
+        >
+          {!userInfo.user ? "Sign Up" : "Log Out"}
+        </NavLink>{" "}
+        :
         <NavLink className="user-nav" to={!userInfo.user ? "/login" : "/films"}>
-          {!userInfo.user ? "Login" : userInfo.user.name}
+          {!userInfo.user ? "Login" : `Hi ${userInfo.user.name}`}
         </NavLink>
       </div>
     </nav>
