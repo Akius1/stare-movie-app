@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-
+import { MdClose } from "react-icons/md";
 export const GlobalStyle = createGlobalStyle`
 * {
     box-sizing: border-box;
@@ -77,3 +77,5 @@ export const CloseModalButton = styled(MdClose)`
 export const ModalBackground = styled.div``;
 
 export const ModalContent = styled.div``;
+
+export const ModalWrapper = styled.div``;
