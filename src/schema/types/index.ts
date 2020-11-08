@@ -15,7 +15,12 @@ export type filmType = {
 };
 export type commentType = {
   name: string;
-  Film_id: string;
+  films_id: string;
   comment: string;
   user_id: number;
+};
+export type rateType = {
+  films_id: string;
+  rating: number;
+  total_rated_users: number;
 };
