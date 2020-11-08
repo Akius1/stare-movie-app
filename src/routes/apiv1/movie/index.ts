@@ -104,7 +104,7 @@ router.put("/update/:id", adminAuthorization, async function (
 ) {
   const validFilmInfo = await validateMFilmInfo(req.body);
   if (validFilmInfo?.error) {
-    res.status(404).json({ error: "Invalid data" });
+    return res.status(404).json({ error: "Invalid data" });
   }
 
   const filmExists: RowList<Row[]> = await getFilmById(req.params.id);

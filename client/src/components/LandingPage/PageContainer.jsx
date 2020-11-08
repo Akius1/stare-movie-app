@@ -1,7 +1,9 @@
+import React from "react";
 import "./Home.css";
 // import { Link } from "react-router-dom";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+import { useUser } from "../Login/UserData";
 
 const PageContainer = ({ allFilms }) => {
   const display = allFilms.map((item, index) => {
@@ -30,10 +32,11 @@ const PageContainer = ({ allFilms }) => {
       </div>
     );
   });
+  const logo = "./Images/favicon-32x32.png";
 
   return (
     <>
-      <Header />
+      <Header logoLink={logo} />
 
       <div className="main-area">
         <div className="grid-wrapper">{display}</div>

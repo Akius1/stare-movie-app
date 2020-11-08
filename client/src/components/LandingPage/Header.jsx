@@ -1,24 +1,31 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { UserData } from "./../Login/UserData";
+import { NavLink, useHistory } from "react-router-dom";
+import { UserData, useUser } from "./../Login/UserData";
 
-function Header() {
-  const { userInfo, SetUserInfo } = useContext(UserData);
-  console.log(userInfo);
+function Header({ logoLink }) {
+  const [userInfo, SetUserInfo] = useUser();
+  function handleChange(params) {}
 
-  function handleChange(params) {
-    //console.log(params.target.value)
-    //setAllFilms()
-  }
+  const [name, setName] = React.useState(userInfo);
+  const history = useHistory();
+
+  React.useEffect(() => {
+    setName(userInfo);
+  }, [userInfo]);
 
   function loutOut(params) {
-    SetUserInfo({});
+    localStorage.clear("userData");
+
+    window.location.reload();
+    setTimeout(() => {
+      SetUserInfo({});
+    }, 2000);
   }
 
   return (
     <nav className="PageContainer-nav">
       <NavLink className="PageContainer-logo" to="/">
-        <img className="logo-img" src="./Images/favicon-32x32.png" /> STARE
+        <img className="logo-img" src={logoLink} alt="" /> STARE
       </NavLink>
 
       <input
@@ -32,13 +39,16 @@ function Header() {
         <NavLink
           onClick={loutOut}
           className="user-nav"
-          to={!userInfo.user ? "/register" : "/films"}
+          to={userInfo === undefined ? "/register" : "/films"}
         >
-          {!userInfo.user ? "Sign Up" : "Log Out"}
+          {userInfo === undefined ? "Sign Up" : "Log Out"}
         </NavLink>{" "}
         :
-        <NavLink className="user-nav" to={!userInfo.user ? "/login" : "/films"}>
-          {!userInfo.user ? "Login" : `Hi ${userInfo.user.name}`}
+        <NavLink
+          className="user-nav"
+          to={userInfo === undefined ? "/login" : "/films"}
+        >
+          {!userInfo ? "Login" : `Hi ${userInfo.name}`}
         </NavLink>
       </div>
     </nav>
