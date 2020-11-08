@@ -7,14 +7,36 @@ export const validateInput = (str = "") => str.includes("@");
 
 const Form = ({ handleSubmit }) => {
   const [FormData, setFormData] = useState({});
+  // const [submit, setSubmit] = useState(false);
   const { push } = useHistory();
   const handleOnChange = ({ target: { name, value } }) =>
     setFormData((prev) => ({ ...prev, [name]: value }));
 
+  console.log("Email:", FormData.email);
+  console.log("Email:", FormData.password);
   const onClick = (e) => {
     e.preventDefault();
-
+    let user = loginUser();
+    console.log(user);
     push("/");
+  };
+
+  // useEffect(() => {
+  //    getUser();
+  //   }, []);
+
+  const loginUser = async () => {
+    let email = FormData.email;
+    let password = FormData.password;
+    const response = await fetch("/apiv1/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+      body: JSON.stringify({ email, password }),
+    });
+    return response.json();
   };
 
   return (
@@ -59,6 +81,7 @@ const Form = ({ handleSubmit }) => {
             type={"password"}
             placeholder="Password"
             className="form-input"
+            onChange={handleOnChange}
           />
         </div>
         <Button buttonName="Log In" onClick={onClick} />
