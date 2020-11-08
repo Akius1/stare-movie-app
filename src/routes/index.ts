@@ -7,5 +7,10 @@ const router = Router();
 /* GET home page. */
 router.use("/", apiV1Route);
 router.use("/addfilm", movieRouter);
+router.use("/films", movieRouter);
+router.use("/films/:name", movieRouter);
+router.use("/films/:id", movieRouter);
+router.use("/delete/:id", movieRouter);
+router.use("/update/:id", movieRouter);
 
 export default router;

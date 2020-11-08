@@ -1,12 +1,67 @@
 import { Request, Response, Router } from "express";
 import { validateMFilmInfo } from "../../../schema/validateFilmInfo";
-import { getFilmByName, createFilm } from "../../../controller/addFilm";
+import {
+  getFilmByName,
+  createFilm,
+  getAllFilms,
+  getFilmById,
+  deleteFilmById,
+  updateFilm,
+} from "../../../controller/addFilm";
 import { Row, RowList } from "postgres";
 
 const router = Router();
 
 /* Movie Routes. */
+router.get("/", async function (_req: Request, res: Response) {
+  const allFilms = await getAllFilms();
+  return res.status(200).json(allFilms);
+});
 
+// get by name
+router.get("/:name", async function (req: Request, res: Response) {
+  console.log(req.params.name);
+
+  const allFilms = await getFilmByName(
+    `${req.params.name.split("_").join(" ")}`,
+  );
+  console.log(allFilms);
+
+  return res.status(200).json(allFilms);
+});
+
+// get by id
+router.get("/film_id/:id", async function (req: Request, res: Response) {
+  console.log(req.params.id);
+  const filmId: string = req.params.id;
+
+  const allFilms = await getFilmById(filmId);
+  console.log(allFilms);
+  return res.status(200).json(allFilms);
+});
+
+// delete by id
+router.delete("/delete/:id", async function (req: Request, res: Response) {
+  try {
+    // console.log(req.params.id);
+    const filmId: string = req.params.id;
+    const filmReturn: RowList<Row[]> = await getFilmById(filmId);
+    if (!filmReturn.count) {
+      return res
+        .status(404)
+        .json({ message: "The film you are trying to delete does not exist" });
+    }
+    const allFilms = await deleteFilmById(filmId);
+    console.log(allFilms);
+    return res
+      .status(200)
+      .json({ message: `${allFilms[0].name} has been deleted successfully` });
+  } catch (error) {
+    return res.status(404).json(error);
+  }
+});
+
+//create film
 router.post("/", async function (req: Request, res: Response) {
   const validFilmInfo = await validateMFilmInfo(req.body);
   if (validFilmInfo?.error) {
@@ -22,6 +77,25 @@ router.post("/", async function (req: Request, res: Response) {
   }
 
   const myFilm = await createFilm(validFilmInfo?.value);
+
+  return res.status(200).json(myFilm);
+});
+
+//update film
+
+router.put("/update/:id", async function (req: Request, res: Response) {
+  const validFilmInfo = await validateMFilmInfo(req.body);
+  if (validFilmInfo?.error) {
+    res.status(404).json({ error: "Invalid data" });
+  }
+
+  const filmExists: RowList<Row[]> = await getFilmById(req.params.id);
+
+  if (!filmExists.count) {
+    return res.json({ message: "Film does not exist" });
+  }
+
+  const myFilm = await updateFilm(validFilmInfo?.value, req.params.id);
 
   return res.status(200).json(myFilm);
 });
