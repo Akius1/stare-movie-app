@@ -1,11 +1,6 @@
-
-import React, { useState } from "react";
-
-export default function CommentForm({ id }) {
-  const [inputData, setInputData] = useState({ name: "", comment: "" });
 import React, { useState, useContext } from "react";
 import { UserData } from "./../Login/UserData";
-//import filmData from "./../LandingPage/filmData";
+//import filmData from "./../LandingPage/filmData"
 
 export default function CommentForm({ id }) {
   const { userInfo, SetUserInfo } = useContext(UserData);
@@ -20,11 +15,8 @@ export default function CommentForm({ id }) {
 
   const url = "http://localhost:3000/apiv1/addcomment";
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-  }
-
-
     //Handle post request
     if (!userInfo.user) {
       setErrorClass("showError");
@@ -32,23 +24,23 @@ export default function CommentForm({ id }) {
       setErrorClass("hideError");
       //Submit comment
 
-      // const response = await fetch(url, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   redirect: "follow",
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        redirect: "follow",
 
-      //   body: JSON.stringify({
-      //     films_id: FormData.email,
-      //     comment: inputData,
-      //     user_id: userInfo.id
-      //   }),
-      // });
+        body: JSON.stringify({
+          films_id: FormData.email,
+          comment: inputData,
+          user_id: userInfo.id,
+        }),
+      });
 
-      // let data = await response.json().then((val) => {
-      //   return val;
-      // });
+      let data = await response.json().then((val) => {
+        return val;
+      });
     }
   }
 

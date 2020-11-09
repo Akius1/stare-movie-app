@@ -16,7 +16,7 @@ function Header({ logoLink }) {
   function loutOut(params) {
     localStorage.clear("userData");
 
-    window.location.reload();
+    //window.location.reload();
     setTimeout(() => {
       SetUserInfo({});
     }, 2000);
@@ -39,16 +39,35 @@ function Header({ logoLink }) {
         <NavLink
           onClick={loutOut}
           className="user-nav"
-          to={userInfo === undefined ? "/register" : "/films"}
+          to={
+            userInfo === undefined
+              ? "/register"
+              : userInfo.name === undefined
+              ? "/register"
+              : "/films"
+          }
         >
-          {userInfo === undefined ? "Sign Up" : "Log Out"}
-        </NavLink>{" "}
-        :
+          {userInfo === undefined
+            ? "Sign Up"
+            : userInfo.name === undefined
+            ? "Sign Up"
+            : "Log Out"}
+        </NavLink>
         <NavLink
           className="user-nav"
-          to={userInfo === undefined ? "/login" : "/films"}
+          to={
+            userInfo === undefined
+              ? "/login"
+              : userInfo.name === undefined
+              ? "/login"
+              : "/films"
+          }
         >
-          {!userInfo ? "Login" : `Hi ${userInfo.name}`}
+          {userInfo === undefined
+            ? "Login"
+            : userInfo.name === undefined
+            ? "Login"
+            : `Hi ${userInfo.name}`}
         </NavLink>
       </div>
     </nav>

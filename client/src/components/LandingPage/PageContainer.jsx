@@ -24,10 +24,10 @@ const PageContainer = ({ allFilms }) => {
         setData(user1);
       });
   }, []);
-
+  const logo = "./Images/favicon-32x32.png";
   return (
     <>
-      <Header />
+      <Header logoLink={logo} />
 
       <div className="main-area">
         <div className="grid-wrapper">
@@ -57,41 +57,24 @@ const PageContainer = ({ allFilms }) => {
 function Display({ name, description, id, ticket, image, ticket_id }) {
   console.log(name);
   return (
-    <>
-      <div className="PageContainer-item" key={id}>
-        <div className="pix-box">
-          <Link to={`/films/${id}`}>
-            <img className="movie-poster" src={image} alt="movie poster" />
-          </Link>
-        </div>
-        <Link className="title-txt" to={`/films/${id}`}>
-          <div>
-            <p>{name}</p>
-          </div>
+    <div className="PageContainer-item" key={id}>
+      <div className="pix-box">
+        <Link to={`/films/${id}`}>
+          <img className="movie-poster" src={image} alt="movie poster" />
         </Link>
-        <div className="title-txt">
-          <p>Rating: {description}</p>
-        </div>
-        <div className="title-txt">
-          <p>Ticket Price: {ticket}</p>
-        </div>
       </div>
-    );
-  });
-  const logo = "./Images/favicon-32x32.png";
-
-  return (
-    <>
-      <Header logoLink={logo} />
-
-      <div className="main-area">
-        <div className="grid-wrapper">{display}</div>
+      <Link className="title-txt" to={`/films/${id}`}>
+        <div>
+          <p>{name}</p>
+        </div>
+      </Link>
+      <div className="title-txt">
+        <p>Rating: {description}</p>
       </div>
-
-      <div className="footer-area"></div>
-
-    </>
+      <div className="title-txt">
+        <p>Ticket Price: {ticket}</p>
+      </div>
+    </div>
   );
 }
-
 export default PageContainer;
