@@ -1,7 +1,10 @@
 # STARE MOVIE APP
+
 Stare Movie App is a simple web application that allows users to view, comment and give ratings to movies.
 It is a RESTful API built with Postgresql Database and Node.js for the backend, and React.js for the frontend. It features Json Web Token implementation for the authentication.
+
 ## Instructions
+
 1. BACKEND
    1.1) Implement RESTful API to manage films
    Films have the fields:
@@ -22,30 +25,44 @@ It is a RESTful API built with Postgresql Database and Node.js for the backend, 
    2.5) add registration and authentication
    2.6) add possibility to post comments for each films. Fields "Name" and "Comment" are required.
    2.7) only registered users can post comments
+
 ## App data model
-![UML](https://github.com/.jpeg)
+
+![UML](https://github.com/Access-Fullstack/stare/blob/develop/staremovieapp_EERDiagram.png)
+
 ## Setup
+
 It's recommended you run everything locally in the same environment you work in
 every day.
+
 > first you clone the project from the repository .
-After you've made sure you have the correct versions installed, you
-should be able to just run a few commands to get set up:
+> After you've made sure you have the correct versions installed, you
+> should be able to just run a few commands to get set up:
+
 ```
 git clone git@github.com:Access-Fullstack/stare.git
 cd into folder
 ```
+
 run the following commands:
+
 ```
  yarn
 yarn start
 ```
+
 ```
 yarn test
 ```
+
 ## Running the app
+
 > yarn start gets the app up and running
+
 # Contributors
+
 ## Backend
+
 1. Andrew Urom
    - Created migrations for the database
    - Worked Registration and Email verification
@@ -61,7 +78,9 @@ yarn test
    - comment
    - rating
    - fix bugs
+
 ## Frontend
+
 1. Omololu Omolade
    - Worked on the Login Page and wrote test for the login page
    - Worked on the Create new films page
