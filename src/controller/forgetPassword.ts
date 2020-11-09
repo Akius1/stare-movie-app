@@ -55,7 +55,7 @@ export const resetPassword = async (req: Request, res: Response) => {
 
   try {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const verify: any = await jwt.verify(
+    const verify: any = jwt.verify(
       resetLink,
       `${process.env.RESET_PASSWORD_KEY}`,
     );

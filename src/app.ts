@@ -9,6 +9,7 @@ import initializepassport from "./passport-config";
 import session from "express-session";
 import flash from "express-flash";
 import fs from "fs";
+import cors from "cors";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
@@ -16,6 +17,8 @@ require("dotenv").config();
 initializepassport(passport);
 
 const app = express();
+
+app.use(cors());
 
 app.disable("x-powered-by");
 app.use(logger("dev"));

@@ -19,7 +19,7 @@ export async function getAllComments() {
 }
 export async function getCommentById(id: string) {
   try {
-    return await sql`SELECT * FROM comments where id = ${id}`;
+    return await sql`SELECT * FROM comments where films_id = ${id}`;
   } catch (error) {
     console.error(error);
     return error;
