@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useUser } from "../Login/UserData";
 
+import { StyleDisplay } from "./landingPage.style.js";
+
 const PageContainer = ({ allFilms }) => {
   const [data, setData] = useState("");
   const [ratings, setRating] = useState([]);
 
   useEffect(async () => {
-    const url = "http://localhost:3000/apiv1/films";
+    const url = "http://localhost:3000/apiv1/films/";
     const response = await fetch(url, {
       method: "GET",
       redirect: "follow",
@@ -28,26 +30,27 @@ const PageContainer = ({ allFilms }) => {
   return (
     <>
       <Header logoLink={logo} />
-
-      <div className="main-area">
-        <div className="grid-wrapper">
-          {data &&
-            data.map((ten, i) => {
-              console.log(ten);
-              return (
-                <Display
-                  key={i}
-                  name={ten.name}
-                  description={ten.description}
-                  id={ten.id}
-                  ticket={ten.ticket_price}
-                  image={ten.image_link}
-                  ticket_id={allFilms[i].photo}
-                />
-              );
-            })}
+      <StyleDisplay>
+        <div className="main-area">
+          <div className="grid-wrapper">
+            {data &&
+              data.map((ten, i) => {
+                console.log(ten);
+                return (
+                  <Display
+                    key={i}
+                    name={ten.name}
+                    description={ten.description}
+                    id={ten.id}
+                    ticket={ten.ticket_price}
+                    image={ten.image_link}
+                    ticket_id={allFilms[i].photo}
+                  />
+                );
+              })}
+          </div>
         </div>
-      </div>
+      </StyleDisplay>
 
       <div className="footer-area"></div>
     </>

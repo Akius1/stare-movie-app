@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import mailer from "../controller/sendResetPasswordEmail";
-// import bcrypt from "bcrypt";
+import bcrypt from "bcrypt";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
 import { getUserByEmail, updatePassword } from "./queries";
 import { Row } from "postgres";
@@ -52,20 +53,21 @@ export const resetPassword = async (req: Request, res: Response) => {
     });
   }
 
-  // try {
-  //   const verify: string|object = await jwt.verify(
-  //     resetLink,
-  //     `${process.env.RESET_PASSWORD_KEY}`,
-  //   );
-  //   const hashpassword = await bcrypt.hash(req.body.newPassword, 10);
-  //   console.log(hashpassword);
-  //   const result = await updatePassword(hashpassword, verify.id);
-  //   if (!result) {
-  //     return res.status(500).json({ message: "unable to reset password" });
-  //   }
-  //   return res.json({ message: verify, success: "password reset successful" });
-  // } catch (error) {
-  //   return res.status(400).json({ message: "invalid or expired token" });
-  // }
-  // return;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const verify: any = await jwt.verify(
+      resetLink,
+      `${process.env.RESET_PASSWORD_KEY}`,
+    );
+    const hashpassword = await bcrypt.hash(req.body.newPassword, 10);
+    console.log(hashpassword);
+    const result = await updatePassword(hashpassword, verify.id);
+    if (!result) {
+      return res.status(500).json({ message: "unable to reset password" });
+    }
+    return res.json({ message: verify, success: "password reset successful" });
+  } catch (error) {
+    return res.status(400).json({ message: "invalid or expired token" });
+  }
+  return;
 };
