@@ -16,8 +16,8 @@ export default function Routing() {
           <Redirect to="/films" exact />{" "}
         </Route>
         <Route path="/films" exact component={LandingPage} />
-        <Route path="/login" exact component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/login" exact component={Login} />
         <Route path="/create" component={CreateFilm} />
         <Route path="/films/:filmid">
           <SinglePage />
