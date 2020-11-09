@@ -24,7 +24,7 @@ export const changePassword = async (req: Request, res: Response) => {
     );
 
     const html = `<h3>Please, click on this link to reset your password</h3>
-                      <p>http://localhost:3000/apiv1/resetpassword/reset/${token}</p>`;
+                      <p>https://staremovieapp.herokuapp.com/apiv1/resetpassword/reset/${token}</p>`;
 
     const result = await mailer(email, html);
 

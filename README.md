@@ -28,7 +28,12 @@ It is a RESTful API built with Postgresql Database and Node.js for the backend, 
 
 ## App data model
 
+<<<<<<< HEAD
 ![UML](https://github.com/.jpeg)
+=======
+![UML](https://github.com/Access-Fullstack/stare/blob/develop/staremovieapp_EERDiagram.png)
+
+> > > > > > > b50e229149e0e7b1abafdfabc9052e401f8d16fc
 
 ## Setup
 
