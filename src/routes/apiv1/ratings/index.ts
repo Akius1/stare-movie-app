@@ -11,7 +11,6 @@ router.post("/", async (req: Request, res: Response) => {
   }
 
   const rated = await getFilmRate(validRating?.value.films_id);
-  // console.log(rated.count);
 
   if (rated.count) {
     updateRate(
