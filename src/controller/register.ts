@@ -40,7 +40,7 @@ async function verifyEmail(data: RowList<Row[]>) {
   //     expiresIn: "10m",
   //   });
 
-  const url = `http://localhost:3000/login`;
+  const url = `https://staremovieapp.herokuapp.com/apiv1/login`;
   const output = `
   <p> Hi ${data[0]["name"]}</>
   <p> Click the link to verify your email</p>
