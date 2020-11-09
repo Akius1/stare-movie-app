@@ -40,7 +40,7 @@ async function verifyEmail(data: RowList<Row[]>) {
   //     expiresIn: "10m",
   //   });
 
-  const url = `https://staremovieapp.herokuapp.com/apiv1/login`;
+  const url = `https://tender-darwin-6c0acb.netlify.app/login`;
   const output = `
   <p> Hi ${data[0]["name"]}</>
   <p> Click the link to verify your email</p>
