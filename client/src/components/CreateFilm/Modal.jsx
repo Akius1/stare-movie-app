@@ -1,22 +1,17 @@
 import React, { useRef, useEffect, useCallback, useState } from "react";
 import { useSpring, animated } from "react-spring";
-
 import {
   ModalBackground,
   ModalContent,
   CloseModalButton,
   ModalWrapper,
 } from "./CreateFilmElements";
-
 const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
   const [FormData, setFormData] = useState({});
-
   const modalRef = useRef();
-
   const handleOnChange = ({ target: { name, value } }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
   const animation = useSpring({
     config: {
       duration: 250,
@@ -24,13 +19,11 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
     opacity: showModal ? 1 : 0,
     transform: showModal ? `translateY(0%)` : `translateY(-100%)`,
   });
-
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowModal(false);
     }
   };
-
   const keyPress = useCallback(
     (e) => {
       if (e.key === "Escape" && showModal) {
@@ -39,13 +32,10 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
     },
     [setShowModal, showModal],
   );
-
   useEffect(() => {
     document.addEventListener("keydown", keyPress);
-
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
-
   return (
     <>
       {showModal ? (
@@ -60,44 +50,43 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                     setShowModal((prev) => !prev);
                   }}
                 >
-                  <h1 className="heading">Create Films</h1>
                   <div>
-                    <label htmlFor="name">Name:</label>
+                    <h1 className="heading">Create Films</h1>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="name">Name: </label>
                     <input
                       id="name"
                       name="Name"
                       type={"text"}
                       onChange={handleOnChange}
-                      className="form-input"
+                      className="modal-input"
                       required
                     />
                   </div>
-
-                  <div>
-                    <label htmlFor="description">Description:</label>
+                  <div className="form-group">
+                    <label htmlFor="description">Description: </label>
                     <textarea
                       id="description"
-                      placeholder="movie description ...."
                       required
                       name="Description"
                       onChange={handleOnChange}
+                      className="modal-input"
                     ></textarea>
                   </div>
-
-                  <div>
-                    <label htmlFor="date">Release Date:</label>
+                  <div className="form-group">
+                    <label htmlFor="date">Release Date: </label>
                     <input
                       type={"date"}
                       id="date"
                       name="ReleaseDate"
                       onChange={handleOnChange}
                       required
+                      className="modal-input"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="ticket">Ticket Price:</label>
-
-                    <span>$</span>
+                  <div className="form-group">
+                    <label htmlFor="ticket">Ticket Price: </label>
                     <input
                       id="ticket"
                       type={"number"}
@@ -107,17 +96,15 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                       name="TicketPrice"
                       onChange={handleOnChange}
                       required
+                      className="modal-input"
                     />
                   </div>
-
-                  <div>
+                  <div className="form-group">
                     <label htmlFor="country">Country</label>
-                    <span style={{ color: "red" }}>*</span>
-
                     <select
                       id="country"
                       name="Country"
-                      className="form-control"
+                      className="modal-input"
                       onChange={handleOnChange}
                       required
                     >
@@ -450,68 +437,90 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                     </select>
                   </div>
 
-                  <div onChange={handleOnChange}>
-                    <span> Genre: </span>
-                    <input
-                      type="checkbox"
-                      id="action"
-                      name="action"
-                      value="Action"
-                    />
-                    <label htmlFor="action"> Action </label>
-                    <input
-                      type="checkbox"
-                      id="romance"
-                      name="romance"
-                      value="Romance"
-                    />
-                    <label htmlFor="romance"> Romance</label>
-                    <input
-                      type="checkbox"
-                      id="sci-fi"
-                      name="sci-fi"
-                      value="Sci-fi"
-                    />
-                    <label htmlFor="sci-fi"> Sci-fi</label>
-                    <input
-                      type="checkbox"
-                      id="mystery"
-                      name="mystery"
-                      value="Mystery"
-                    />
-                    <label htmlFor="mystery"> Mystery </label>
-                    <input
-                      type="checkbox"
-                      id="horror"
-                      name="horror"
-                      value="Horror"
-                    />
-                    <label htmlFor="horror"> Horror</label>
-                    <input
-                      type="checkbox"
-                      id="anime"
-                      name="anime"
-                      value="Anime"
-                    />
-                    <label htmlFor="anime"> Anime</label>
-                  </div>
-
-                  <div>
-                    <label htmlFor="image-url">Image Url:</label>
+                  <div className="form-group">
+                    <label htmlFor="image-url">Image Url: </label>
                     <input
                       type="text"
                       id="image-url"
                       name="ImageUrl"
                       onChange={handleOnChange}
                       required
+                      className="modal-input"
                     />
                   </div>
-                  <button type="submit" className="btn">
-                    Add a Film
-                  </button>
+                  <div className="form-group" onChange={handleOnChange}>
+                    <span> Genre: </span>
+                    <div className="input-options">
+                      <div className="input-option-option">
+                        <input
+                          type="checkbox"
+                          id="action"
+                          name="action"
+                          value="Action"
+                          className="modal-input"
+                        />
+                        <label htmlFor="action"> Action </label>
+                      </div>
+                      <div className="input-option-option">
+                        <input
+                          type="checkbox"
+                          id="romance"
+                          name="romance"
+                          value="Romance"
+                          className="modal-input"
+                        />
+                        <label htmlFor="romance"> Romance </label>
+                      </div>
+                      <div className="input-option-option">
+                        <input
+                          type="checkbox"
+                          id="sci-fi"
+                          name="sci-fi"
+                          value="Sci-fi"
+                          className="modal-input"
+                        />
+                        <label htmlFor="sci-fi"> Sci-fi </label>
+                      </div>
+                      <div className="input-option-option">
+                        <input
+                          type="checkbox"
+                          id="mystery"
+                          name="mystery"
+                          value="Mystery"
+                          className="modal-input"
+                        />
+                        <label htmlFor="mystery"> Mystery </label>
+                      </div>
+                      <div className="input-option-option">
+                        <input
+                          type="checkbox"
+                          id="horror"
+                          name="horror"
+                          value="Horror"
+                          className="modal-input"
+                        />
+                        <label htmlFor="horror"> Horror </label>
+                      </div>
+                      <div className="input-option-option">
+                        <input
+                          type="checkbox"
+                          id="anime"
+                          name="anime"
+                          value="Anime"
+                          className="modal-input"
+                        />
+                        <label htmlFor="anime"> Anime </label>
+                      </div>{" "}
+                    </div>
+                  </div>
+
+                  <div className="modal-btn">
+                    <button type="submit" className="btn">
+                      Add a Film
+                    </button>
+                  </div>
                 </form>
               </ModalContent>
-
               <CloseModalButton
                 aria-label="Close modal"
                 onClick={() => setShowModal((prev) => !prev)}
@@ -523,5 +532,4 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
     </>
   );
 };
-
 export default Modal;
