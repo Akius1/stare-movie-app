@@ -58,6 +58,14 @@ export const FormLogin = styled.div`
     border-radius: 3px;
     color: #fff;
     align-items: center;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #067eaa;
+       
+
+    } 
+
   }
 `;
 export const Error = styled.p`
