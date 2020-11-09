@@ -26,6 +26,25 @@
   /* height: 100%; */
   width: 40px;
 }
+.srch-box {
+  color: #fff;
+  background-color: #191818;
+  height: 40px;
+  width: 300px;
+  border: none;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.srch-box::focus {
+  border: none;
+}
 
 .auth-nav {
   display: flex;
@@ -63,6 +82,11 @@
   height: 350px;
   background-color: #3e3d3c;
   overflow: hidden;
+  transition: ease-in-out 1s;
+}
+
+.pix-box:hover {
+  transform: scale(1.1);
 }
 
 .grid-item::hover {

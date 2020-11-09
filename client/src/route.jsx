@@ -1,19 +1,28 @@
 import React from "react";
-import { Route, Redirect, BrowserRouter } from "react-router-dom";
-import View from "./components";
+import { Route, Redirect, BrowserRouter, Switch } from "react-router-dom";
+//import View from "./components";
+import CreateFilm from "./components/CreateFilm";
+import LandingPage from "./components/LandingPage";
+import Login from "./components/Login";
+import Register from "./components/Registraion";
+import SinglePage from "./components/SinglePage";
 
 export default function Routing() {
   return (
     <BrowserRouter>
-      <Route path="/" exact>
-        {" "}
-        <Redirect to="/films" />{" "}
-      </Route>
-      <Route path="/films" component={View.Landingpage} />
-      <Route path="/login" component={View.Login} />
-      <Route path="/register" component={View.Register} />
-      <Route path="/create" component={View.Createfilm} />
-      <Route path="/films/:film_id" component={View.SinglePage} />
+      <Switch>
+        <Route path="/" exact>
+          {" "}
+          <Redirect to="/films" exact />{" "}
+        </Route>
+        <Route path="/films" exact component={LandingPage} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" exact component={Login} />
+        <Route path="/create" component={CreateFilm} />
+        <Route path="/films/:filmid">
+          <SinglePage />
+        </Route>
+      </Switch>
     </BrowserRouter>
   );
 }

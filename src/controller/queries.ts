@@ -9,7 +9,7 @@ export async function getUserByEmail(email: string) {
     );
   } catch (error) {
     console.error(error);
-    return -1;
+    return error;
   }
 }
 
@@ -28,6 +28,31 @@ export async function createUser(data: userType) {
 export async function getUserById(id: string) {
   try {
     return sql`SELECT * FROM user WHERE id = ${id}`.then(([data]) => data);
+  } catch (error) {
+    console.error(error);
+    return -1;
+  }
+}
+
+export async function updatePassword(newpassword: string, id: string) {
+  try {
+    return sql`UPDATE users SET password = ${newpassword} WHERE id = ${id}`.then(
+      (data) => data,
+    );
+  } catch (error) {
+    console.error(error);
+    return { error };
+  }
+}
+
+export async function updateUserEmailVerificationStatus(
+  data: string,
+  link: string,
+) {
+  try {
+    return sql`UPDATE company SET email_verified = ${data} WHERE email_verified_token = ${link}`.then(
+      ([data]) => data,
+    );
   } catch (error) {
     console.error(error);
     return -1;

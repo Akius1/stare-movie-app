@@ -11,7 +11,7 @@ export const FormLogin = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   justify-content: center;
   width: 100vw;
   .logo {
@@ -60,12 +60,9 @@ export const FormLogin = styled.div`
     align-items: center;
 
     &:hover {
-        transition: all 0.2s ease-in-out;
-        background: #067eaa;
-       
-
-    } 
-
+      transition: all 0.2s ease-in-out;
+      background: #067eaa;
+    }
   }
 `;
 export const Error = styled.p`
