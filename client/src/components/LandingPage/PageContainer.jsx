@@ -10,7 +10,7 @@ const PageContainer = ({ allFilms }) => {
   const [ratings, setRating] = useState([]);
 
   useEffect(async () => {
-    const url = "http://localhost:3000/apiv1/films";
+    const url = "https://staremovieapp.herokuapp.com/apiv1/films";
     const response = await fetch(url, {
       method: "GET",
       redirect: "follow",
