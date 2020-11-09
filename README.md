@@ -23,7 +23,7 @@ It is a RESTful API built with Postgresql Database and Node.js for the backend, 
    2.6) add possibility to post comments for each films. Fields "Name" and "Comment" are required.
    2.7) only registered users can post comments
 ## App data model
-![UML](https://github.com/.jpeg)
+![UML](https://github.com/Access-Fullstack/stare/blob/develop/staremovieapp_EERDiagram.png)
 ## Setup
 It's recommended you run everything locally in the same environment you work in
 every day.
