@@ -23,7 +23,7 @@ const SinglePage = () => {
         console.log(film[0]);
         setFilm(film[0]);
       });
-
+  });
   const theData = filmData.find((item) => item._id === filmid);
 
   React.useLayoutEffect(() => {
@@ -36,8 +36,6 @@ const SinglePage = () => {
   useEffect(() => {
     // write fetch request for single page data
     setFilm(theData);
-
-
   }, []);
 
   return (

@@ -55,7 +55,6 @@ const PageContainer = ({ allFilms }) => {
 };
 
 function Display({ name, description, id, ticket, image, ticket_id }) {
-  console.log(name);
   return (
     <>
       <div className="PageContainer-item" key={id}>
@@ -76,20 +75,6 @@ function Display({ name, description, id, ticket, image, ticket_id }) {
           <p>Ticket Price: {ticket}</p>
         </div>
       </div>
-    );
-  });
-  const logo = "./Images/favicon-32x32.png";
-
-  return (
-    <>
-      <Header logoLink={logo} />
-
-      <div className="main-area">
-        <div className="grid-wrapper">{display}</div>
-      </div>
-
-      <div className="footer-area"></div>
-
     </>
   );
 }
