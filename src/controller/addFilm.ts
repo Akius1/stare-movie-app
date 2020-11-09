@@ -4,7 +4,9 @@ import { filmType } from "../schema/types/index";
 // get film by name
 export async function getFilmByName(name: string) {
   try {
-    return await sql`SELECT * FROM films WHERE name ILIKE ${name + "%"}`;
+    return await sql`SELECT * FROM films WHERE LOWER(name) SIMILAR TO ${
+      "%" + name + "%"
+    }`;
   } catch (error) {
     console.error(error);
     return error;
