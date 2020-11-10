@@ -56,6 +56,11 @@ export const StyledRegForm = styled.div`
     border-color: #272728;
     border-radius: 3px;
     color: #fff;
+
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      background-color: #067eaa;
+    }
   }
 `;
 
