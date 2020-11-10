@@ -34,7 +34,7 @@ const SinglePage = () => {
   const [comments, setComments] = useState([]);
 
   useEffect(async () => {
-    const url = `https://staremovieapp.herokuapp.com/apiv1/comments/${filmId}`;
+    const url = `https://staremovieapp.herokuapp.com/apiv1/comments/${filmid}`;
     const response = await fetch(url, {
       method: "GET",
       redirect: "follow",
