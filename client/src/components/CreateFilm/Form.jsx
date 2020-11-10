@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import {
   FormNav,
   CreateFilmContainer,
-  GlobalStyle,
   ModalWrappers,
 } from "./CreateFilmElements";
 import Button from "./../Login/Button";
@@ -42,16 +41,17 @@ const Form = () => {
             <img src="./favicon-32x32.png" className="logo-img" alt="logo" />{" "}
             STARE
           </NavLink>
+          <button className="addNew-btn" onClick={openModal}>
+            Add a Film
+          </button>
+          <Modal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            insert={setMovieCollection}
+          />
         </nav>
       </FormNav>
       <CreateFilmContainer>
-        <Button onClick={openModal} buttonName="Add a Film" />
-        <Modal
-          showModal={showModal}
-          setShowModal={setShowModal}
-          insert={setMovieCollection}
-        />
-        <GlobalStyle />
         <ModalWrappers>
           <ul>
             {movieCollection.map((movie, i) => (

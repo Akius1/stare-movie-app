@@ -48,7 +48,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
   }, [keyPress]);
 
   async function postMovie(datas, genres) {
-    const url = "http://localhost:3000/apiv1/addfilm";
+    const url = "https://staremovieapp.herokuapp.com/apiv1/addfilm";
     const response = await fetch(url, {
       method: "POST",
       headers: {

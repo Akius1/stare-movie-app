@@ -1,13 +1,6 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { MdClose } from "react-icons/md";
-export const GlobalStyle = createGlobalStyle`
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-`;
+
 export const FormNav = styled.nav`
   .RegisterContainer-nav {
     height: 10vh;
@@ -15,7 +8,7 @@ export const FormNav = styled.nav`
     display: flex;
     align-items: center;
     padding: 0 80px;
-    width: auto;
+    width: 100vw;
     justify-content: space-between;
   }
   .RegisterContainer-logo {
@@ -40,15 +33,15 @@ export const FormNav = styled.nav`
     text-decoration: none;
     color: #fff;
   }
+  .addNew-btn {
+    background-color: #3b88c3;
+    color: #fff;
+    border: none;
+    height: 20px;
+    border-radius: 3px;
+  }
 `;
 export const CreateFilmContainer = styled.div`
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.7)
-    ),
-    url(../../signUp.jpg);
-  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,17 +100,19 @@ export const ModalContent = styled.div`
 export const ModalWrapper = styled.div`
   width: 500px;
   min-height: 500px;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2); */
   background: #272728;
   color: #eee;
   position: relative;
-  z-index: 10;
+  /* z-index: 10; */
   border-radius: 10px;
   justify-content: center;
   .btn {
     width: 20em;
     height: 3em;
     align-self: center;
+    background-color: lightgreen;
+    border-radius: 2rem;
   }
   .modal-btn {
     display: flex;
@@ -134,24 +129,61 @@ export const ModalWrapper = styled.div`
     border-radius: 5px;
   }
 `;
-export const CardContainer = styled.div`
-  padding: 1rem;
-  box-shadow: 7px 10px 15px rgba(0, 0, 0, 0.56);
-  color: #fff;
-  margin: 10px;
-
-  .pix-box {
-    width: 400px;
-    height: 200px;
-    /* background-color: #3e3d3c; */
-    overflow: hidden;
-  }
-`;
 export const ModalWrappers = styled.div`
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(../../signUp.jpg);
+  background-size: 100vw;
+  background-color: rgba(200, 255, 255, 0.1);
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    height: 100%;
+    object-fit: cover;
+    grid-row-gap: 2rem;
+    /* height: 100%; */
     width: 100vw;
+  }
+`;
+export const CardContainer = styled.div`
+  /* padding: 1rem; */
+  box-shadow: 7px 10px 15px rgba(0, 0, 0, 0.56);
+  /* border: 1px solid gray; */
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2rem;
+  color: #fff;
+
+  height: 100%;
+  .pix-box {
+    width: 200px;
+    height: 200px;
+    background-color: #3e3d3c;
+    /* overflow: hidden;*/
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .cards {
+    width: 200px;
+    height: 200px;
+    padding: 1rem;
+    .title-txt {
+      line-height: 1rem;
+      margin-top: 0.3rem;
+    }
+  }
+
+  .addNew-btn {
+    background-color: #3b88c3;
+    color: #fff;
+    border: none;
+    height: 20px;
+    border-radius: 3px;
   }
 `;
