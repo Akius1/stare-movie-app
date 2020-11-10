@@ -5,7 +5,6 @@ import {
   FormLogin,
   FormNav,
   FormContainer,
-  Navlink,
 } from "./LoginElements";
 import Button from "./Button";
 import { UserData, useUser } from "./UserData";
@@ -43,6 +42,7 @@ const Form = ({ handleSubmit }) => {
 
     const { user } = JSON.parse(localStorage.getItem("userData")) || "";
     SetuserInfo(user);
+    console.log(data);
 
     push({
       pathname: "/",
@@ -58,7 +58,7 @@ const Form = ({ handleSubmit }) => {
         <nav className="RegisterContainer-nav">
           <NavLink className="RegisterContainer-logo" to="/">
             <img src="./favicon-32x32.png" className="logo-img" alt="logo" />{" "}
-            STARE
+            <h1>STARE</h1>
           </NavLink>
           <div className="auth-nav">
             <NavLink className="user-nav" to="/register">
@@ -99,7 +99,6 @@ const Form = ({ handleSubmit }) => {
               onChange={handleOnChange}
             />
           </div>
-          <div className="checkbox-container">
             <div className="checkbox-field">
               <input
                 type="checkbox"
@@ -115,7 +114,7 @@ const Form = ({ handleSubmit }) => {
             <NavLink to="/reset" style={{ textDecoration: "none" }}>
               <span className="forgot-password">Forgot Password?</span>
             </NavLink>
-          </div>
+        
           <Button buttonName="Log In" onClick={onClick} />
         </FormLogin>
       </FormContainer>
