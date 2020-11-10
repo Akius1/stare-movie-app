@@ -5,7 +5,7 @@ import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import Rating from "./Rating";
 
-const Film = ({ film }) => {
+const Film = ({ film, comments, setComments }) => {
   const logo = "./../Images/favicon-32x32.png";
 
   return (
@@ -19,13 +19,13 @@ const Film = ({ film }) => {
               <img
                 className="single-img"
                 src={film.image_link}
-                alt="chintu-ka-birthday-2020.jpg"
+                alt={film.image_link}
               />
             </div>
 
             <div className="text-info">
               <div>
-                <h3>Nmae: {film.name}</h3>
+                <h3>Name: {film.name}</h3>
               </div>
 
               <div>
@@ -53,6 +53,17 @@ const Film = ({ film }) => {
                 <p>Rating: {film.rating}</p>
               </div>
             </div>
+
+            <div className="video-Info">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/jaY98VY5qwU"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
         ) : (
           <p>Loading...</p>
@@ -63,9 +74,13 @@ const Film = ({ film }) => {
             <p>Rate film:{"  "}</p> <Rating filmId={film.id} />
           </div>
 
-          <CommentForm filmId={film.id} />
+          <CommentForm
+            filmId={film.id}
+            setComments={setComments}
+            comments={comments}
+          />
 
-          <Comment filmId={film.id} />
+          <Comment filmId={film.id} comments={comments} />
         </div>
       </div>
 

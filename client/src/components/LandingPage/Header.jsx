@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { UserData, useUser } from "./../Login/UserData";
 
-function Header({ logoLink, setFilmData }) {
+function Header({ logoLink, setFilmData, paginate }) {
   const [userInfo, SetUserInfo] = useUser();
 
   async function handleChange(e) {
@@ -19,6 +19,7 @@ function Header({ logoLink, setFilmData }) {
       .then((user1) => {
         setFilmData(user1);
       });
+    paginate(1);
   }
 
   const [name, setName] = React.useState(userInfo);
@@ -68,6 +69,19 @@ function Header({ logoLink, setFilmData }) {
             ? "Sign Up"
             : "Log Out"}
         </NavLink>
+
+        {userInfo === undefined ? (
+          ""
+        ) : userInfo.name === undefined ? (
+          ""
+        ) : userInfo.is_admin === false ? (
+          ""
+        ) : (
+          <NavLink to="/create" className="user-nav name-link">
+            Add Movie
+          </NavLink>
+        )}
+
         <NavLink
           className="user-nav"
           to={
@@ -84,15 +98,6 @@ function Header({ logoLink, setFilmData }) {
             ? "Login"
             : `Hi ${userInfo.name}`}
         </NavLink>
-        {userInfo === undefined ? (
-          ""
-        ) : userInfo.name === undefined ? (
-          ""
-        ) : (
-          <NavLink to="/create" className="user-nav">
-            Add Movie
-          </NavLink>
-        )}
       </div>
     </nav>
   );

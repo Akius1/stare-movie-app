@@ -28,12 +28,7 @@ It is a RESTful API built with Postgresql Database and Node.js for the backend, 
 
 ## App data model
 
-<<<<<<< HEAD
-![UML](https://github.com/.jpeg)
-=======
 ![UML](https://github.com/Access-Fullstack/stare/blob/develop/staremovieapp_EERDiagram.png)
-
-> > > > > > > b50e229149e0e7b1abafdfabc9052e401f8d16fc
 
 ## Setup
 
@@ -71,7 +66,7 @@ yarn test
 1. Andrew Urom
    - Created migrations for the database
    - Worked Registration and Email verification
-   - Worked on creating the endpoint
+   - Worked on creating the endpoints
    - Resolved conflit issues
 2. Anthony Iwuji
    - Worked on Login and reset Password
@@ -88,7 +83,7 @@ yarn test
 
 1. Omololu Omolade
    - Worked on the Login Page and wrote test for the login page
-   - Worked on the Create new films page
+   - Worked on the Create new films, Change and Reset page
    - Resolved conflict issues and fix bugs
 2. Odira Eze
    - Worked on the Sign up page

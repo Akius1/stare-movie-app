@@ -9,7 +9,6 @@ router.post("/", async (req: Request, res: Response) => {
   if (validRating?.error) {
     return res.status(404).json({ errorMessage: "Invalid rating" });
   }
-
   const rated = await getFilmRate(validRating?.value.films_id);
   let result;
   if (rated[0]) {

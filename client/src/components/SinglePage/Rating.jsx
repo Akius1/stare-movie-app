@@ -4,26 +4,28 @@ export default function Rating({ filmId }) {
   const [rating, setRating] = useState(1);
   const url = "https://staremovieapp.herokuapp.com/apiv1/ratefilm";
 
-  useEffect(() => {
+  useEffect(async () => {
     console.log(rating);
 
-    // const response = await fetch(url, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     redirect: "follow",
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
 
-    //     body: JSON.stringify({
-    //       films_id: filmId,
-    //       rating: rating,
-    //       total_rated_users: 1,
-    //     }),
-    //   });
+      body: JSON.stringify({
+        films_id: filmId,
+        rating: rating,
+        total_rated_users: 1,
+      }),
+    });
 
-    //   let data = await response.json().then((val) => {
-    //     return val;
-    //   });
+    let data = await response.json().then((val) => {
+      return val;
+    });
+
+    console.log(data);
   }, [rating]);
 
   return (
