@@ -23,7 +23,7 @@
 }
 
 .logo-img {
-  /* height: 100%; */
+  height: 100%;
   width: 40px;
 }
 .srch-box {
@@ -73,7 +73,7 @@ input:focus {
 
 .grid-item {
   color: #fff;
-  /* flex: 1 1 calc(33.33% - 20px); */
+  flex: 1 1 calc(33.33% - 20px);
   margin: 10px;
 }
 
@@ -82,12 +82,12 @@ input:focus {
   height: 350px;
   background-color: #3e3d3c;
   overflow: hidden;
-  /* transition: ease-in-out 1s; */
+  transition: ease-in-out 1s;
 }
 
-/* .pix-box:hover {
+.pix-box:hover {
   transform: scale(1.1);
-} */
+}
 
 .grid-item::hover {
   background-color: #3874a3;
@@ -121,7 +121,6 @@ a.title-txt {
   padding: 1rem;
   box-shadow: 7px 10px 15px rgba(0, 0, 0, 0.56);
   color: #fff;
-  /* flex: 1 1 calc(33.33% - 20px); */
   margin: 10px;
   max-width: 280px;
   transition: ease-in-out 1s;

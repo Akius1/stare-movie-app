@@ -15,27 +15,39 @@ const useForm = (validate) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateInfo(values);
-    if (errors) setErrors(errors);
+    if (errors) {
+      setErrors(errors);
+    } else {
+      const url = "https://staremovieapp.herokuapp.com/apiv1/register";
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        redirect: "follow",
 
-    const url = "http://localhost:3000/apiv1/register";
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      redirect: "follow",
+        body: JSON.stringify({
+          name: values.username,
+          email: values.email,
+          password: values.password,
+        }),
+      });
+      let data = await response.json().then((val) => {
+        return val;
+      });
 
-      body: JSON.stringify({
-        name: values.username,
-        email: values.email,
-        password: values.password,
-      }),
-    });
-    let data = await response.json().then((val) => {
-      return val;
-    });
-    console.log(data);
-    Swal.fire("Please check your email to verify your account");
+      if (data) {
+        Swal.fire("Please check your email to verify your account");
+      }
+      console.log(data);
+
+      setErrors({});
+      setValues({
+        username: "",
+        email: "",
+        password: "",
+      });
+    }
   };
 
   return { handleChange, values, handleSubmit, errors };

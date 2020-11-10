@@ -3,7 +3,9 @@ import "./Home.css";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useUser } from "../Login/UserData";
+//import { useUser } from "../Login/UserData";
+
+//import { StyleDisplay } from "./landingPage.style.js";
 
 const PageContainer = ({ allFilms }) => {
   const [data, setData] = useState([]);
@@ -22,20 +24,19 @@ const PageContainer = ({ allFilms }) => {
       })
       .then((user1) => {
         setData(user1);
-        console.log(user1);
+        //console.log(user1);
       });
   }, []);
 
   const logo = "./Images/favicon-32x32.png";
   return (
     <>
-      <Header logoLink={logo} setFilmData={setData} />
-
+      <Header logoLink={logo} />
       <div className="main-area">
         <div className="grid-wrapper">
-          {data.length > 0 ? (
+          {data &&
             data.map((ten, i) => {
-              //console.log(ten);
+              console.log(ten);
               return (
                 <Display
                   key={i}
@@ -46,10 +47,7 @@ const PageContainer = ({ allFilms }) => {
                   image={ten.image_link}
                 />
               );
-            })
-          ) : (
-            <p>Loading...</p>
-          )}
+            })}
         </div>
       </div>
 

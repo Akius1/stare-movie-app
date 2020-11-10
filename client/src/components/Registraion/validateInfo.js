@@ -23,6 +23,10 @@ export default function validateInfo(values) {
       }
       errors[key] = field;
     }
+    if (key === "username" && value) {
+      field = "User name should be atleast 5 characters";
+      if (value.length < 5) errors[key] = field;
+    }
 
     if (key === "email" && value) {
       const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -32,7 +36,7 @@ export default function validateInfo(values) {
     }
 
     if (key === "password" && value) {
-      field = "Password needs to be 6 characters or more";
+      field = "Password should be atleast 6 characters";
       if (value.length < 6) errors[key] = field;
     }
   });
