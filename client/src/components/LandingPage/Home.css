@@ -58,6 +58,10 @@ input:focus {
   color: #fff;
 }
 
+.name-link {
+  margin-left: 80px;
+}
+
 .main-area {
   padding: 30px 80px;
   width: 100%;
@@ -125,4 +129,20 @@ a.title-txt {
 
 .PageContainer-item:hover {
   transform: scale(1.1);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  background-color: #191818;
+}
+
+.page-link {
+  width: 30px;
+  height: 30px;
+  background-color: #3b88c3;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  margin: 3px;
 }
