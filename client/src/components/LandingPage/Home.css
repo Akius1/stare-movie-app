@@ -82,12 +82,12 @@ input:focus {
   height: 350px;
   background-color: #3e3d3c;
   overflow: hidden;
-  transition: ease-in-out 1s;
+  /* transition: ease-in-out 1s; */
 }
-
+/* 
 .pix-box:hover {
   transform: scale(1.1);
-}
+} */
 
 .grid-item::hover {
   background-color: #3874a3;

@@ -68,6 +68,17 @@ function Header({ logoLink, setFilmData }) {
             ? "Sign Up"
             : "Log Out"}
         </NavLink>
+
+        {userInfo === undefined ? (
+          ""
+        ) : userInfo.name === undefined ? (
+          ""
+        ) : (
+          <NavLink to="/create" className="user-nav">
+            Add Movie
+          </NavLink>
+        )}
+
         <NavLink
           className="user-nav"
           to={
@@ -84,15 +95,6 @@ function Header({ logoLink, setFilmData }) {
             ? "Login"
             : `Hi ${userInfo.name}`}
         </NavLink>
-        {userInfo === undefined ? (
-          ""
-        ) : userInfo.name === undefined ? (
-          ""
-        ) : (
-          <NavLink to="/create" className="user-nav">
-            Add Movie
-          </NavLink>
-        )}
       </div>
     </nav>
   );
