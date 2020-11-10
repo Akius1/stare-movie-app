@@ -42,7 +42,7 @@ export const FormNav = styled.nav`
   }
 `;
 export const CreateFilmContainer = styled.div`
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
       to right bottom,
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)
@@ -52,9 +52,18 @@ export const CreateFilmContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  height: 90vh; */
   /* justify-content: center; */
-  width: 100vw;
+  /* width: 100vw; */
+
+  background: #0c0c0c;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 0 30px;
+height: 880px;
+position: relative;
+z-index: 1;
   .btn {
     display: inline-block;
     height: 2.5em;
@@ -70,6 +79,51 @@ export const CreateFilmContainer = styled.div`
     outline: none;
   }
 `;
+
+export const HeroBg = styled.div`
+position: absolute;
+top: o;
+right:0;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+
+`
+
+export const VideoBg = styled.video`
+width: 100%;
+height: 100%;
+-o-object-fit: cover;
+object-fit: cover;
+background: #232a34;
+`
+
+
+// export const CreateContainer = styled.div`
+// background: #0c0c0c;
+// display: flex;
+// justify-content: center;
+// align-items: center;
+// padding: 0 30px;
+// height: 880px;
+// position: relative;
+// z-index: 1;
+
+// `
+
+export const CreateContent = styled.div`
+z-index: 3;
+max-width:1200px;
+position: absolute;
+padding: 8px; 
+display: flex;
+flex-direction: column;
+align-items: center;
+
+`
+
 export const CloseModalButton = styled(MdClose)`
   cursor: pointer;
   position: absolute;
