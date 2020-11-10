@@ -3,9 +3,9 @@ import "./Home.css";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useUser } from "../Login/UserData";
+//import { useUser } from "../Login/UserData";
 
-import { StyleDisplay } from "./landingPage.style.js";
+//import { StyleDisplay } from "./landingPage.style.js";
 
 const PageContainer = ({ allFilms }) => {
   const [data, setData] = useState([]);
@@ -24,6 +24,7 @@ const PageContainer = ({ allFilms }) => {
       })
       .then((user1) => {
         setData(user1);
+        //console.log(user1);
       });
   }, []);
 
@@ -44,7 +45,6 @@ const PageContainer = ({ allFilms }) => {
                   id={ten.id}
                   ticket={ten.ticket_price}
                   image={ten.image_link}
-                  //ticket_id={allFilms[i].photo}
                 />
               );
             })}
@@ -75,7 +75,7 @@ function Display({ name, description, id, ticket, image }) {
         <p>Rating: {description}</p>
       </div>
       <div className="title-txt">
-        <p>Ticket Price: {ticket}</p>
+        <p>Ticket Price: ${ticket}</p>
       </div>
     </div>
   );

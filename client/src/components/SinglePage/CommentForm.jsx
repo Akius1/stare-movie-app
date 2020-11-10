@@ -50,6 +50,7 @@ export default function CommentForm({ filmId }) {
       let data = await response.json().then((val) => {
         return val;
       });
+
       setInputData("");
       console.log(data);
     }

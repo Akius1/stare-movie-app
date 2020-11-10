@@ -118,6 +118,20 @@ input:focus {
   outline: none;
 }
 
+.rating-div {
+  margin: 0 0 0 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 150px;
+}
+
+.rating-select {
+  background-color: #222121;
+  width: 50px;
+  color: #fff;
+}
+
 .add-comment-btn {
   width: 200px;
   height: 70px;
