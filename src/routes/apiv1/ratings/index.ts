@@ -11,18 +11,19 @@ router.post("/", async (req: Request, res: Response) => {
   }
 
   const rated = await getFilmRate(validRating?.value.films_id);
-
-  if (rated.count) {
+  let result;
+  if (rated[0]) {
     updateRate(
       rated[0].films_id,
       rated[0].rating,
       rated[0].total_rated_users,
       validRating?.value.rating,
     );
-    return;
+    result = rated;
+    return res.status(200).json(result);
   }
-  const rate = await rateFilm(validRating?.value);
-  return res.status(200).json(rate);
+  result = await rateFilm(validRating?.value);
+  return res.status(200).json(result);
 });
 
 export default router;
