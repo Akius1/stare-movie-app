@@ -5,7 +5,9 @@ import { filmType } from "../schema/types/index";
 export async function getFilmByName(name: string) {
   try {
     return await db.query(
-      sql`SELECT * FROM films WHERE LOWER(name) SIMILAR TO ${"%" + name + "%"}`,
+      sql`SELECT films.id, films.name, films.description, films.genre,films.release_date, films.ticket_price, films.country, films.image_link, ratings.rating FROM films JOIN ratings ON films.id = ratings.films_id WHERE LOWER(name) SIMILAR TO ${
+        "%" + name + "%"
+      }`,
     );
   } catch (error) {
     console.error(error);
