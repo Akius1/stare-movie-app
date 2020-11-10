@@ -57,7 +57,7 @@ const Form = ({ handleSubmit }) => {
         <nav className="RegisterContainer-nav">
           <NavLink className="RegisterContainer-logo" to="/">
             <img src="./favicon-32x32.png" className="logo-img" alt="logo" />{" "}
-            STARE
+            <h1>STARE</h1>
           </NavLink>
           <div className="auth-nav">
             <NavLink className="user-nav" to="/register">

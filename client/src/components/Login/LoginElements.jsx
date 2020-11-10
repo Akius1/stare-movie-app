@@ -96,14 +96,20 @@ export const FormNav = styled.nav`
     justify-content: space-between;
   }
   .RegisterContainer-logo {
-    font-size: 2.5em;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
     font-weight: bold;
     text-decoration: none;
-    color: #fff;
+    font-size: 2.5em;
     .logo-img {
-      height: 38px;
+      padding-right: 6px;
     }
-  }
+  }  
   .main-logo::after {
     color: #fff;
   }
