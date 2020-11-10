@@ -28,13 +28,13 @@ router.post("/", async (req: Request, res: Response) => {
   const comment = await createComment(validComment?.value);
   return res.status(200).json(comment);
 });
-// router.put("/", async (req: Request, res: Response) => {
-//   const validComment = validateComment(req.body);
-//   if (validComment?.error) {
-//     return res.status(404).json({ errorMessage: "Invalid comment" });
-//   }
-//   const comment = await createComment(validComment?.value);
-//   return res.status(200).json(comment);
-// });
+router.put("/", async (req: Request, res: Response) => {
+  const validComment = validateComment(req.body);
+  if (validComment?.error) {
+    return res.status(404).json({ errorMessage: "Invalid comment" });
+  }
+  const comment = await createComment(validComment?.value);
+  return res.status(200).json(comment);
+});
 
 export default router;

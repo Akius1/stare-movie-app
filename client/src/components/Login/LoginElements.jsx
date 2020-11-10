@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
-export const FormLogin = styled.div`
+export const FormContainer = styled.div`
   background-image: linear-gradient(
       to right bottom,
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)
     ),
     url(../../signUp.jpg);
-  background-size: cover;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 90vh;
   justify-content: center;
-  width: 100vw;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+`;
+export const FormLogin = styled.div`
   .logo {
     display: flex;
     align-items: center;
@@ -44,6 +44,23 @@ export const FormLogin = styled.div`
   .heading {
     color: #999;
     text-align: center;
+    font-size: 20px;
+  }
+
+  .checkbox-field {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .label {
+    font-size: 12px;
+    color: #fff;
+    padding-left: 5px;
+  }
+  .forgot-password {
+    font-size: 12px;
+    color: #ee6d6b;
+    text-decoration: none;
   }
 
   .btn {
@@ -58,10 +75,15 @@ export const FormLogin = styled.div`
     border-radius: 3px;
     color: #fff;
     align-items: center;
+
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      background: #067eaa;
+    }
   }
 `;
 export const Error = styled.p`
-  color: red;
+  color: #ee6d6b;
 `;
 
 export const FormNav = styled.nav`
@@ -75,12 +97,17 @@ export const FormNav = styled.nav`
     justify-content: space-between;
   }
   .RegisterContainer-logo {
-    font-size: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
     font-weight: bold;
     text-decoration: none;
-    color: #fff;
+    font-size: 2.5em;
     .logo-img {
-      height: 38px;
+      padding-right: 6px;
     }
   }
   .main-logo::after {

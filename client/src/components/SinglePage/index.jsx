@@ -15,7 +15,7 @@ const SinglePage = () => {
   }, []);
 
   useEffect(async () => {
-    const url2 = `http://localhost:3000/apiv1/films/film_id/${filmid}`;
+    const url2 = `https://staremovieapp.herokuapp.com/apiv1/films/film_id/${filmid}`;
     const response = await fetch(url2, {
       method: "GET",
       redirect: "follow",

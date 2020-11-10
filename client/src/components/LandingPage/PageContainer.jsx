@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useUser } from "../Login/UserData";
 
+import { StyleDisplay } from "./landingPage.style.js";
+
 const PageContainer = ({ allFilms }) => {
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [ratings, setRating] = useState([]);
 
   useEffect(async () => {
@@ -24,11 +26,11 @@ const PageContainer = ({ allFilms }) => {
         setData(user1);
       });
   }, []);
+
   const logo = "./Images/favicon-32x32.png";
   return (
     <>
       <Header logoLink={logo} />
-
       <div className="main-area">
         <div className="grid-wrapper">
           {data &&
@@ -42,19 +44,21 @@ const PageContainer = ({ allFilms }) => {
                   id={ten.id}
                   ticket={ten.ticket_price}
                   image={ten.image_link}
-                  ticket_id={allFilms[i].photo}
+                  //ticket_id={allFilms[i].photo}
                 />
               );
             })}
         </div>
       </div>
 
-      <div className="footer-area"></div>
+      <div className="footer-area">
+        <p className="copyright">STARE Copyright &copy; 2020</p>
+      </div>
     </>
   );
 };
 
-function Display({ name, description, id, ticket, image, ticket_id }) {
+function Display({ name, description, id, ticket, image }) {
   return (
     <div className="PageContainer-item" key={id}>
       <div className="pix-box">

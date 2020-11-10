@@ -52,7 +52,7 @@ export const CreateFilmContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  height: 100vh;
   /* justify-content: center; */
   width: 100vw;
   .btn {
@@ -141,9 +141,9 @@ export const CardContainer = styled.div`
   margin: 10px;
 
   .pix-box {
-    width: 250px;
-    height: 350px;
-    background-color: #3e3d3c;
+    width: 400px;
+    height: 200px;
+    /* background-color: #3e3d3c; */
     overflow: hidden;
   }
 `;

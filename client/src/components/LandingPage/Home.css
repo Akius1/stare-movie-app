@@ -1,4 +1,4 @@
-* {
+/* {
   box-sizing: border-box;
   margin: 0;
 }
@@ -24,7 +24,7 @@
 
 .logo-img {
   /* height: 100%; */
-  width: 40px;
+/* width: 40px;
 }
 .srch-box {
   color: #fff;
@@ -74,7 +74,7 @@ input:focus {
 .grid-item {
   color: #fff;
   /* flex: 1 1 calc(33.33% - 20px); */
-  margin: 10px;
+/* margin: 10px;
 }
 
 .pix-box {
@@ -82,12 +82,11 @@ input:focus {
   height: 350px;
   background-color: #3e3d3c;
   overflow: hidden;
-  transition: ease-in-out 1s;
-}
+  /* transition: ease-in-out 1s; */
 
-.pix-box:hover {
+/* .pix-box:hover {
   transform: scale(1.1);
-}
+} */
 
 .grid-item::hover {
   background-color: #3874a3;
@@ -97,6 +96,11 @@ input:focus {
   background-color: #222121;
   width: 100%;
   height: 200px;
+}
+
+.copyright {
+  padding: 60px 0px 0px 60px;
+  color: #fff;
 }
 
 .movie-poster {
@@ -112,16 +116,15 @@ a.title-txt {
   color: blanchedalmond;
 }
 
-.PageContainer-image-div {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
 .PageContainer-item {
   padding: 1rem;
   box-shadow: 7px 10px 15px rgba(0, 0, 0, 0.56);
   color: #fff;
-  /* flex: 1 1 calc(33.33% - 20px); */
   margin: 10px;
+  max-width: 280px;
+  transition: ease-in-out 1s;
+}
+
+.PageContainer-item:hover {
+  transform: scale(1.1);
 }
