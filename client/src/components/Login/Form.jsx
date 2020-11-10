@@ -1,6 +1,12 @@
 import React, { useState, useContext } from "react";
 import { useHistory, NavLink } from "react-router-dom";
-import { Error, FormLogin, FormNav } from "./LoginElements";
+import {
+  Error,
+  FormLogin,
+  FormNav,
+  FormContainer,
+  Navlink,
+} from "./LoginElements";
 import Button from "./Button";
 import { UserData, useUser } from "./UserData";
 
@@ -61,46 +67,58 @@ const Form = ({ handleSubmit }) => {
           </div>
         </nav>
       </FormNav>
+      <FormContainer className="form-container">
+        <FormLogin name="login-form" onSubmit={handleSubmit}>
+          <div className="logo">
+            <img src="./favicon-32x32.png" alt="logo"></img>
+            <h1>Stare</h1>
+          </div>
+          <div className="heading">Log in</div>
+          <div>
+            <input
+              id="email"
+              name="email"
+              type={"email"}
+              placeholder="Email"
+              onChange={handleOnChange}
+              className="form-input"
+              required
+            />
+          </div>
+          {FormData.email && !validateInput(FormData.email) ? (
+            <Error>email not valid</Error>
+          ) : null}
+          <div>
+            {" "}
+            <input
+              name="password"
+              type={"password"}
+              placeholder="Password"
+              className="form-input"
+              required
+              onChange={handleOnChange}
+            />
+          </div>
+          <div className="checkbox-container">
+            <div className="checkbox-field">
+              <input
+                type="checkbox"
+                id="remember"
+                name="remember"
+                value="Remember me"
+              />
+              <label className="label" htmlFor="remember">
+                Remember me
+              </label>
+            </div>
 
-      <FormLogin name="login-form" onSubmit={handleSubmit}>
-        <div className="logo">
-          <img src="./favicon-32x32.png" alt="logo"></img>
-          <h1>Stare</h1>
-        </div>
-        <div className="heading">Log in</div>
-        <div>
-          <input
-            id="email"
-            name="email"
-            type={"email"}
-            placeholder="Email"
-            onChange={handleOnChange}
-            className="form-input"
-            required
-          />
-        </div>
-        {FormData.email && !validateInput(FormData.email) ? (
-          <Error>Email not valid</Error>
-        ) : null}
-        <div>
-          {" "}
-          <input
-            name="password"
-            type={"password"}
-            placeholder="Password"
-            className="form-input"
-            required
-
-            onChange={handleOnChange}
-
-          />
-        </div>
-
-        <div>
-          <input />
-        </div>
-        <Button buttonName="Log In" onClick={onClick} />
-      </FormLogin>
+            <NavLink to="/reset-password" style={{ textDecoration: "none" }}>
+              <span className="forgot-password">Forgot Password?</span>
+            </NavLink>
+          </div>
+          <Button buttonName="Log In" onClick={onClick} />
+        </FormLogin>
+      </FormContainer>
     </>
   );
 };

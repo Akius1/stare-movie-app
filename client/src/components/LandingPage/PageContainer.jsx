@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "../Login/UserData";
 
 const PageContainer = ({ allFilms }) => {
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [ratings, setRating] = useState([]);
 
   useEffect(async () => {
