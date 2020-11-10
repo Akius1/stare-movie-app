@@ -1,11 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHistory, NavLink } from "react-router-dom";
-import {
-  Error,
-  FormLogin,
-  FormNav,
-  FormContainer,
-} from "./LoginElements";
+import { Error, FormLogin, FormNav, FormContainer } from "./LoginElements";
 import Button from "./Button";
 import { UserData, useUser } from "./UserData";
 
@@ -74,6 +69,7 @@ const Form = ({ handleSubmit }) => {
             <h1>Stare</h1>
           </div>
           <div className="heading">Log in</div>
+
           <div>
             <input
               id="email"
@@ -99,22 +95,22 @@ const Form = ({ handleSubmit }) => {
               onChange={handleOnChange}
             />
           </div>
-            <div className="checkbox-field">
-              <input
-                type="checkbox"
-                id="remember"
-                name="remember"
-                value="Remember me"
-              />
-              <label className="label" htmlFor="remember">
-                Remember me
-              </label>
-            </div>
+          <div className="checkbox-field">
+            <input
+              type="checkbox"
+              id="remember"
+              name="remember"
+              value="Remember me"
+            />
+            <label className="label" htmlFor="remember">
+              Remember me
+            </label>
+          </div>
 
-            <NavLink to="/reset" style={{ textDecoration: "none" }}>
-              <span className="forgot-password">Forgot Password?</span>
-            </NavLink>
-        
+          <NavLink to="/reset" style={{ textDecoration: "none" }}>
+            <span className="forgot-password">Forgot Password?</span>
+          </NavLink>
+
           <Button buttonName="Log In" onClick={onClick} />
         </FormLogin>
       </FormContainer>

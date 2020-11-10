@@ -1,28 +1,29 @@
 import React, { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useParams, useHistory } from "react-router-dom";
 import Button from "../Login/Button";
-import { FormReset, FormNav, FormContainer, Error } from "./ResetElements";
+//import { useParams } from "@reach/router"
+import { FormConfirm, FormNav, FormContainer } from "./ChangePasswordElements";
 
 const Form = ({ handleSubmit }) => {
-  const validateInput = (str = "") => str.includes("@");
-
   const [FormData, setFormData] = useState({});
+  const { id } = useParams();
 
   const handleOnChange = ({ target: { name, value } }) =>
     setFormData((prev) => ({ ...prev, [name]: value }));
 
   const { push } = useHistory();
+
   const handleResetPassword = async () => {
-    const url = "https://staremovieapp.herokuapp.com/apiv1/resetpassword";
+    console.log(FormData.newPassword);
+    console.log(FormData.confirmNewPassword);
+    const url = `https://staremovieapp.herokuapp.com/apiv1/resetpassword/reset/${id}`;
     const response = await fetch(url, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
       redirect: "follow",
 
       body: JSON.stringify({
-        email: FormData.email,
+        newPassword: FormData.newPassword,
+        confirmNewPassword: FormData.confirmNewPassword,
       }),
     });
     let userData = await response
@@ -32,9 +33,8 @@ const Form = ({ handleSubmit }) => {
       })
       .then((user1) => {
         console.log(user1);
-        //if(user1 == "reset password link sent successfully..."){ push("/change") }
       });
-    console.log("hello");
+    push("/login");
   };
 
   return (
@@ -58,34 +58,43 @@ const Form = ({ handleSubmit }) => {
       </FormNav>
 
       <FormContainer className="form-container">
-        <FormReset name="login-form" onSubmit={handleSubmit}>
+        <FormConfirm name="login-form" onSubmit={handleSubmit}>
           <div className="logo">
             <img src="./favicon-32x32.png" alt="logo"></img>
             <h1>Stare</h1>
           </div>
-          <div className="heading">Reset Password</div>
+          <div className="heading">Change Password</div>
+
           <div>
             <input
-              id="email"
-              name="email"
-              type={"email"}
-              placeholder="Email"
+              id="change-password"
+              name="newPassword"
+              type={"change-password"}
+              placeholder="New Password"
               onChange={handleOnChange}
               className="form-input"
               required
             />
           </div>
-          {FormData.email && !validateInput(FormData.email) ? (
-            <Error>email not valid</Error>
-          ) : null}
+          <div>
+            <input
+              id="change-password"
+              name="confirmNewPassword"
+              type={"change-password"}
+              placeholder="Confirm New Password"
+              onChange={handleOnChange}
+              className="form-input"
+              required
+            />
+          </div>
 
-          <Button
-            buttonName="Recover Password"
-            className="reset"
-            onClick={handleResetPassword}
-            to="/login"
-          />
-        </FormReset>
+          <NavLink to="./login" style={{ textDecoration: "none" }}>
+            <Button
+              buttonName="Change Password"
+              onClick={handleResetPassword}
+            />
+          </NavLink>
+        </FormConfirm>
       </FormContainer>
     </>
   );

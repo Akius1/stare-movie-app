@@ -7,7 +7,7 @@ import Login from "./components/Login";
 import Register from "./components/Registraion";
 import SinglePage from "./components/SinglePage";
 import ResetPassword from "./components/ResetPassword";
-
+import ChangePassword from "./components/ChangePassword";
 export default function Routing() {
   return (
     <BrowserRouter>
@@ -21,6 +21,7 @@ export default function Routing() {
         <Route path="/login" exact component={Login} />
         <Route path="/create" component={CreateFilm} />
         <Route path="/reset" component={ResetPassword} />
+        <Route path="/change/:id" component={ChangePassword} />
         <Route path="/films/:filmid">
           <SinglePage />
         </Route>

@@ -18,7 +18,7 @@ export default async function invite(
       service: "gmail",
       auth: {
         user: "anabizconcept9@gmail.com",
-        pass: process.env.EMAIL_PASSWORD,
+        pass: "anabiz-1987",
       },
     });
     const info = await transporter.sendMail({

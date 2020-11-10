@@ -43,7 +43,6 @@ const PageContainer = ({ allFilms }) => {
                   id={ten.id}
                   ticket={ten.ticket_price}
                   image={ten.image_link}
-                  ticket_id={allFilms[i].photo}
                 />
               );
             })

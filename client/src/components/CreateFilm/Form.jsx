@@ -4,12 +4,11 @@ import {
   FormNav,
   CreateFilmContainer,
   GlobalStyle,
-  ModalWrappers, VideoBg, CreateContent, HeroBg
+  ModalWrappers,
 } from "./CreateFilmElements";
 import Button from "./../Login/Button";
 import Modal from "./Modal";
 import Card from "./Card";
-
 
 const Form = () => {
   const [showModal, setShowModal] = useState(false);
@@ -29,16 +28,6 @@ const Form = () => {
         </nav>
       </FormNav>
       <CreateFilmContainer>
-
-      <HeroBg>
-    <VideoBg autoPlay loop muted src = {'../../../video.mp4'} type="video/mp4" />
-
-    
-  </HeroBg>
-  <CreateContent>
-
-
-
         <Button onClick={openModal} buttonName="Add a Film" />
         <Modal
           showModal={showModal}
@@ -73,7 +62,6 @@ const Form = () => {
             )}
           </ul>
         </ModalWrappers>
-        </CreateContent>
       </CreateFilmContainer>
     </>
   );
