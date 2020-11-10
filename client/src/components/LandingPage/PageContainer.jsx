@@ -8,11 +8,11 @@ import { useUser } from "../Login/UserData";
 import { StyleDisplay } from "./landingPage.style.js";
 
 const PageContainer = ({ allFilms }) => {
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [ratings, setRating] = useState([]);
 
   useEffect(async () => {
-    const url = "http://localhost:3000/apiv1/films/";
+    const url = "https://staremovieapp.herokuapp.com/apiv1/films";
     const response = await fetch(url, {
       method: "GET",
       redirect: "follow",
@@ -26,33 +26,38 @@ const PageContainer = ({ allFilms }) => {
         setData(user1);
       });
   }, []);
+
   const logo = "./Images/favicon-32x32.png";
   return (
     <>
-      <Header logoLink={logo} />
-      <StyleDisplay>
-        <div className="main-area">
-          <div className="grid-wrapper">
-            {data &&
-              data.map((ten, i) => {
-                console.log(ten);
-                return (
-                  <Display
-                    key={i}
-                    name={ten.name}
-                    description={ten.description}
-                    id={ten.id}
-                    ticket={ten.ticket_price}
-                    image={ten.image_link}
-                    ticket_id={allFilms[i].photo}
-                  />
-                );
-              })}
-          </div>
-        </div>
-      </StyleDisplay>
+      <Header logoLink={logo} setFilmData={setData} />
 
-      <div className="footer-area"></div>
+      <div className="main-area">
+        <div className="grid-wrapper">
+          {data.length > 0 ? (
+            data.map((ten, i) => {
+              //console.log(ten);
+              return (
+                <Display
+                  key={i}
+                  name={ten.name}
+                  description={ten.description}
+                  id={ten.id}
+                  ticket={ten.ticket_price}
+                  image={ten.image_link}
+                  ticket_id={allFilms[i].photo}
+                />
+              );
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+
+        <div className="footer-area">
+          <p className="copyright">STARE Copyright &copy; 2020</p>
+        </div>
+      </div>
     </>
   );
 };
