@@ -1,24 +1,22 @@
-import React from "react";
-import {  NavLink } from "react-router-dom";
+import React, {useState} from "react";
+import { NavLink } from "react-router-dom";
 import Button from "../Login/Button";
-import {
-    
-    FormReset,
-    FormNav,
-    FormContainer,
-    
-  } from "./ResetElements";
+import { FormReset, FormNav, FormContainer, Error} from "./ResetElements";
 
+const Form = ({handleSubmit}) => {
+   const validateInput = (str = "") => str.includes("@");
 
-const Form = () => {
+  const [FormData, setFormData] = useState({});
 
+  const handleOnChange = ({ target: { name, value } }) =>
+    setFormData((prev) => ({ ...prev, [name]: value }));
   return (
     <>
       <FormNav>
         <nav className="RegisterContainer-nav">
           <NavLink className="RegisterContainer-logo" to="/">
             <img src="./favicon-32x32.png" className="logo-img" alt="logo" />{" "}
-            STARE
+            <h1> STARE </h1>
           </NavLink>
           <div className="auth-nav">
             <NavLink className="user-nav" to="/register">
@@ -26,14 +24,14 @@ const Form = () => {
             </NavLink>
 
             <NavLink className="user-nav" to="/login">
-              Login
+              Log In
             </NavLink>
           </div>
         </nav>
       </FormNav>
 
       <FormContainer className="form-container">
-        <FormReset name="login-form" /*onSubmit={handleSubmit}*/>
+        <FormReset name="login-form" onSubmit={handleSubmit}>
           <div className="logo">
             <img src="./favicon-32x32.png" alt="logo"></img>
             <h1>Stare</h1>
@@ -45,16 +43,19 @@ const Form = () => {
               name="email"
               type={"email"}
               placeholder="Email"
-            //   onChange={handleOnChange}
+                onChange={handleOnChange}
               className="form-input"
               required
             />
           </div>
-          {/* {FormData.email && !validateInput(FormData.email) ? (
+          {FormData.email && !validateInput(FormData.email) ? (
             <Error>email not valid</Error>
-          ) : null} */}
-         
-          <Button buttonName="Recover Password" className="reset" /*onClick={onClick}*/ />
+          ) : null}
+
+          <Button
+            buttonName="Recover Password"
+            className="reset" /*onClick={onClick}*/
+          />
         </FormReset>
       </FormContainer>
     </>
@@ -62,4 +63,3 @@ const Form = () => {
 };
 
 export default Form;
-
