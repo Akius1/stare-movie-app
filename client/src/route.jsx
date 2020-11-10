@@ -6,7 +6,7 @@ import LandingPage from "./components/LandingPage";
 import Login from "./components/Login";
 import Register from "./components/Registraion";
 import SinglePage from "./components/SinglePage";
-
+import ResetPassword from "./components/ResetPassword";
 
 export default function Routing() {
   return (
@@ -20,6 +20,7 @@ export default function Routing() {
         <Route path="/register" component={Register} />
         <Route path="/login" exact component={Login} />
         <Route path="/create" component={CreateFilm} />
+        <Route path="/reset" component={ResetPassword} />
         <Route path="/films/:filmid">
           <SinglePage />
         </Route>

@@ -112,7 +112,7 @@ const Form = ({ handleSubmit }) => {
               </label>
             </div>
 
-            <NavLink to="/reset-password" style={{ textDecoration: "none" }}>
+            <NavLink to="/reset" style={{ textDecoration: "none" }}>
               <span className="forgot-password">Forgot Password?</span>
             </NavLink>
           </div>
