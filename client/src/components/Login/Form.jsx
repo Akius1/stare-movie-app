@@ -69,6 +69,7 @@ const Form = ({ handleSubmit }) => {
             <h1>Stare</h1>
           </div>
           <div className="heading">Log in</div>
+
           <div>
             <input
               id="email"
@@ -106,7 +107,7 @@ const Form = ({ handleSubmit }) => {
             </label>
           </div>
 
-          <NavLink to="/reset-password" style={{ textDecoration: "none" }}>
+          <NavLink to="/reset" style={{ textDecoration: "none" }}>
             <span className="forgot-password">Forgot Password?</span>
           </NavLink>
 

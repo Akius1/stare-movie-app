@@ -22,7 +22,7 @@ export default async function invite(
       },
     });
     const info = await transporter.sendMail({
-      from: `"Stare" <anabizconcept9@gmail.com>`,
+      from: `"Stare" <accessfullstack@gmail.com>`,
       to: receiverEmail,
       subject: "Hello!",
       html: messageBody,

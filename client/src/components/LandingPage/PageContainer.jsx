@@ -42,6 +42,28 @@ const PageContainer = ({ allFilms }) => {
       <Header logoLink={logo} setFilmData={setData} paginate={paginate} />
       <Films setFilmData={setData} data={currentDatas} loading={loading} />
 
+      <div className="main-area">
+        <div className="grid-wrapper">
+          {data.length > 0 ? (
+            data.map((ten, i) => {
+              //console.log(ten);
+              return (
+                <Display
+                  key={i}
+                  name={ten.name}
+                  description={ten.description}
+                  id={ten.id}
+                  ticket={ten.ticket_price}
+                  image={ten.image_link}
+                />
+              );
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+      </div>
+
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={data.length}

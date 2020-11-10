@@ -1,13 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { MdClose } from "react-icons/md";
-export const GlobalStyle = createGlobalStyle`
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-`;
+
 export const FormNav = styled.nav`
   .RegisterContainer-nav {
     height: 10vh;
@@ -52,9 +45,10 @@ export const CreateFilmContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  /* justify-content: center; */
+  height: 90vh;
+  justify-content: center;
   width: 100vw;
+
   .btn {
     display: inline-block;
     height: 2.5em;
@@ -70,6 +64,7 @@ export const CreateFilmContainer = styled.div`
     outline: none;
   }
 `;
+
 export const CloseModalButton = styled(MdClose)`
   cursor: pointer;
   position: absolute;
