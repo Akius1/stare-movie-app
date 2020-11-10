@@ -31,9 +31,28 @@ const SinglePage = () => {
       });
   }, []);
 
+  const [comments, setComments] = useState([]);
+
+  useEffect(async () => {
+    const url = `https://staremovieapp.herokuapp.com/apiv1/comments/${filmid}`;
+    const response = await fetch(url, {
+      method: "GET",
+      redirect: "follow",
+    });
+    let userData = await response
+      .json()
+      .then((val) => {
+        return val;
+      })
+      .then((data) => {
+        setComments(data);
+        console.log(data);
+      });
+  }, []);
+
   return (
     <>
-      <Film film={film} />
+      <Film film={film} comments={comments} setComments={setComments} />
     </>
   );
 };
