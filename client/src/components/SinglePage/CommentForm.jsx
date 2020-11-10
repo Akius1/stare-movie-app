@@ -1,28 +1,37 @@
 import React, { useState, useContext } from "react";
-import { UserData } from "./../Login/UserData";
+import { UserData, useUser } from "./../Login/UserData";
 //import filmData from "./../LandingPage/filmData"
 
-export default function CommentForm({ id }) {
-  const { userInfo, SetUserInfo } = useContext(UserData);
+export default function CommentForm({ filmId }) {
+  //const { userInfo, SetUserInfo } = useContext(UserData);
+  const [userInfo, SetUserInfo] = useUser();
 
   const [inputData, setInputData] = useState("");
-  const [errorClass, setErrorClass] = useState("hideError");
+  const [userError, setUserError] = useState("hideError");
+  const [commentError, setCommentError] = useState("hideError");
 
   function handleChange(event) {
     const { value } = event.target;
     setInputData(value);
   }
 
-  const url = "http://localhost:3000/apiv1/addcomment";
+  const url = "https://staremovieapp.herokuapp.com/apiv1/comments";
 
   async function handleSubmit(event) {
     event.preventDefault();
     //Handle post request
-    if (!userInfo.user) {
-      setErrorClass("showError");
+    if (!userInfo) {
+      setUserError("showError");
+      return;
     } else {
-      setErrorClass("hideError");
+      setUserError("hideError");
       //Submit comment
+      if (inputData.trim().length < 1) {
+        setCommentError("showError");
+        return;
+      } else {
+        setCommentError("hideError");
+      }
 
       const response = await fetch(url, {
         method: "POST",
@@ -32,7 +41,7 @@ export default function CommentForm({ id }) {
         redirect: "follow",
 
         body: JSON.stringify({
-          films_id: FormData.email,
+          films_id: filmId,
           comment: inputData,
           user_id: userInfo.id,
         }),
@@ -41,28 +50,24 @@ export default function CommentForm({ id }) {
       let data = await response.json().then((val) => {
         return val;
       });
+      setInputData("");
+      console.log(data);
     }
   }
 
   return (
     <form className="new-comment" onSubmit={handleSubmit}>
       <p>Add Comment</p>
-      {/* <input
-        placeholder="Enter your name"
-        name="name"
-        value={inputData.name}
-        className="comment-Author"
-        type="text"
-        onChange={handleChange}
-      /> */}
       <textarea
         placeholder="Type your comment here"
         name="comment"
-        value={inputData.comment}
+        value={inputData}
         className="comment-body"
         onChange={handleChange}
       ></textarea>
-      <span className={errorClass}>You need to log in first</span>
+
+      <span className={userError}>You need to log in first</span>
+      <span className={commentError}>Comment box cannot be empty</span>
 
       <button className="add-comment-btn">Submit Comment</button>
     </form>

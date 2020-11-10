@@ -8,7 +8,7 @@ import { useUser } from "../Login/UserData";
 import { StyleDisplay } from "./landingPage.style.js";
 
 const PageContainer = ({ allFilms }) => {
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [ratings, setRating] = useState([]);
 
   useEffect(async () => {
@@ -26,6 +26,7 @@ const PageContainer = ({ allFilms }) => {
         setData(user1);
       });
   }, []);
+
   const logo = "./Images/favicon-32x32.png";
   return (
     <>
@@ -50,9 +51,11 @@ const PageContainer = ({ allFilms }) => {
               })}
           </div>
         </div>
-      </StyleDisplay>
 
-      <div className="footer-area"></div>
+        <div className="footer-area">
+          <p className="copyright">STARE Copyright &copy; 2020</p>
+        </div>
+      </StyleDisplay>
     </>
   );
 };
