@@ -17,8 +17,8 @@ export default async function invite(
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "anabizconcept9@gmail.com",
-        pass: process.env.EMAIL_PASSWORD,
+        user: "accessfullstack@gmail.com",
+        pass: process.env.password_key,
       },
     });
     const info = await transporter.sendMail({
