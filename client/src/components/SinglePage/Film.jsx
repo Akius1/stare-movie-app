@@ -5,7 +5,7 @@ import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import Rating from "./Rating";
 
-const Film = ({ film, comments }) => {
+const Film = ({ film, comments, setComments }) => {
   const logo = "./../Images/favicon-32x32.png";
 
   return (
@@ -63,7 +63,7 @@ const Film = ({ film, comments }) => {
             <p>Rate film:{"  "}</p> <Rating filmId={film.id} />
           </div>
 
-          <CommentForm filmId={film.id} />
+          <CommentForm filmId={film.id} setComments={setComments} />
 
           <Comment filmId={film.id} comments={comments} />
         </div>

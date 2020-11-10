@@ -4,7 +4,8 @@ import { rateType } from "../schema/types/index";
 export async function rateFilm(data: rateType) {
   try {
     return await db.query(
-      sql`INSERT INTO ratings(films_id, rating, total_rated_users) VALUES(${data.films_id},${data.rating},${data.total_rated_users}  RETURNING *`,
+      sql`INSERT INTO ratings (films_id, rating, total_rated_users) 
+      VALUES(${data.films_id},${data.rating},${data.total_rated_users})  RETURNING *`,
     );
   } catch (error) {
     console.error(error);
