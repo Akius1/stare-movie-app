@@ -15,7 +15,7 @@ const Form = ({ handleSubmit }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
 
   const onClick = async (e) => {
-    const url = "http://localhost:3000/apiv1/login";
+    const url = "https://staremovieapp.herokuapp.com/apiv1/login";
     const response = await fetch(url, {
       method: "POST",
       headers: {
