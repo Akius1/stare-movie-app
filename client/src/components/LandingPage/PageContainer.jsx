@@ -31,12 +31,13 @@ const PageContainer = ({ allFilms }) => {
   const logo = "./Images/favicon-32x32.png";
   return (
     <>
-      <Header logoLink={logo} />
+      <Header logoLink={logo} setFilmData={setData} />
       <div className="main-area">
         <div className="grid-wrapper">
-          {data &&
+          {/* data && */}
+          {data.length > 0 ? (
             data.map((ten, i) => {
-              console.log(ten);
+              //console.log(ten);
               return (
                 <Display
                   key={i}
@@ -47,7 +48,10 @@ const PageContainer = ({ allFilms }) => {
                   image={ten.image_link}
                 />
               );
-            })}
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </div>
 

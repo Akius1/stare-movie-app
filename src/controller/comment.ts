@@ -4,7 +4,7 @@ import { commentType } from "../schema/types/index";
 export async function createComment(data: commentType) {
   try {
     return await db.query(
-      sql`INSERT INTO comments(name, film_id, comment, user_id) VALUES(${data.name},${data.films_id},${data.comment}, ${data.user_id})  RETURNING *`,
+      sql`INSERT INTO comments (films_id, comment, user_id) VALUES(${data.films_id},${data.comment}, ${data.user_id})  RETURNING *`,
     );
   } catch (error) {
     console.error(error);
