@@ -5,7 +5,7 @@ export const validateMFilmInfo = (data: Record<string, unknown>) => {
     const schema = Joi.object({
       name: Joi.string().required(),
       description: Joi.string().required(),
-      ticket_price: Joi.number().required(),
+      ticket_price: Joi.string().required(),
       country: Joi.string().required(),
       genre: Joi.string().required(),
       image_link: Joi.string().required(),

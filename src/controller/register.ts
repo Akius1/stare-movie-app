@@ -1,9 +1,8 @@
 import validate from "../schema/validation";
-import { sql } from "../stores/pg";
+import { db, sql } from "../stores/pg";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import { Row, RowList } from "postgres";
 
 dotenv.config();
 async function registerUser(body: Record<string, unknown>) {
@@ -20,9 +19,12 @@ async function registerUser(body: Record<string, unknown>) {
     const is_verified = false;
     const is_admin = false;
 
-    const newUser = await sql`
-      insert into users (name,email, password, is_verified, is_admin) values (${value.name}, ${value.email}, ${encryptedPassword}, ${is_verified}, ${is_admin}) returning *`
-      .then(async (data: RowList<Row[]>) => {
+    const newUser = await db
+      .query(
+        sql`
+      insert into users (name,email, password, is_verified, is_admin) values (${value.name}, ${value.email}, ${encryptedPassword}, ${is_verified}, ${is_admin}) returning *`,
+      )
+      .then(async (data) => {
         await verifyEmail(data);
         return data;
       })
@@ -35,7 +37,8 @@ async function registerUser(body: Record<string, unknown>) {
   }
 }
 
-async function verifyEmail(data: RowList<Row[]>) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function verifyEmail(data: any) {
   //   const token = jwt.sign({ id: data[0]["id"] }, "process.env.secret_id", {
   //     expiresIn: "10m",
   //   });
@@ -82,7 +85,9 @@ async function confirmEmail(resetLink: string) {
   try {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const verify: any = await jwt.verify(resetLink, "process.env.secret_id");
-    const getIsVerified = await sql`SELECT is_verified FROM users WHERE id = ${verify.id}`;
+    const getIsVerified = await db.query(
+      sql`SELECT is_verified FROM users WHERE id = ${verify.id}`,
+    );
 
     if (getIsVerified[0]["is_verified"] !== true) {
       getIsVerified[0]["is_verified"] = true;

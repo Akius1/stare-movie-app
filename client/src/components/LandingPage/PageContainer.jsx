@@ -12,7 +12,7 @@ const PageContainer = ({ allFilms }) => {
   const [ratings, setRating] = useState([]);
 
   useEffect(async () => {
-    const url = "http://localhost:3000/apiv1/films/";
+    const url = "https://staremovieapp.herokuapp.com/apiv1/films";
     const response = await fetch(url, {
       method: "GET",
       redirect: "follow",
@@ -44,7 +44,7 @@ const PageContainer = ({ allFilms }) => {
                     id={ten.id}
                     ticket={ten.ticket_price}
                     image={ten.image_link}
-                    ticket_id={allFilms[i].photo}
+                    //ticket_id={allFilms[i].photo}
                   />
                 );
               })}
@@ -57,7 +57,7 @@ const PageContainer = ({ allFilms }) => {
   );
 };
 
-function Display({ name, description, id, ticket, image, ticket_id }) {
+function Display({ name, description, id, ticket, image }) {
   return (
     <div className="PageContainer-item" key={id}>
       <div className="pix-box">

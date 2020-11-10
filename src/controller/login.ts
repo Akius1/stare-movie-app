@@ -3,6 +3,7 @@ import passport from "passport";
 import jwt from "jsonwebtoken";
 
 export const login = (req: Request, res: Response) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   passport.authenticate("local", function (err, user, info): any {
     if (err !== null) {
       return res.status(500).json({ err });
