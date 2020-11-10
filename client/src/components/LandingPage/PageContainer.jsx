@@ -24,16 +24,17 @@ const PageContainer = ({ allFilms }) => {
         setData(user1);
       });
   }, []);
+
   const logo = "./Images/favicon-32x32.png";
   return (
     <>
-      <Header logoLink={logo} />
+      <Header logoLink={logo} setFilmData={setData} />
 
       <div className="main-area">
         <div className="grid-wrapper">
-          {data &&
+          {data.length > 0 ? (
             data.map((ten, i) => {
-              console.log(ten);
+              //console.log(ten);
               return (
                 <Display
                   key={i}
@@ -45,11 +46,16 @@ const PageContainer = ({ allFilms }) => {
                   ticket_id={allFilms[i].photo}
                 />
               );
-            })}
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </div>
 
-      <div className="footer-area"></div>
+      <div className="footer-area">
+        <p className="copyright">STARE Copyright &copy; 2020</p>
+      </div>
     </>
   );
 };

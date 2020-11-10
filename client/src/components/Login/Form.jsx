@@ -42,6 +42,7 @@ const Form = ({ handleSubmit }) => {
 
     const { user } = JSON.parse(localStorage.getItem("userData")) || "";
     SetuserInfo(user);
+    console.log(data);
 
     push({
       pathname: "/",

@@ -2,24 +2,8 @@ import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { UserData, useUser } from "./../Login/UserData";
 
-function Header({ logoLink, setFilmData }) {
+function Header({ logoLink }) {
   const [userInfo, SetUserInfo] = useUser();
-
-  async function handleChange(e) {
-    const url = `https://staremovieapp.herokuapp.com/apiv1/films/${e.target.value}`;
-    const response = await fetch(url, {
-      method: "GET",
-      redirect: "follow",
-    });
-    let userData = await response
-      .json()
-      .then((val) => {
-        return val;
-      })
-      .then((user1) => {
-        setFilmData(user1);
-      });
-  }
 
   const [name, setName] = React.useState(userInfo);
   const history = useHistory();
@@ -42,13 +26,6 @@ function Header({ logoLink, setFilmData }) {
       <NavLink className="PageContainer-logo" to="/">
         <img className="logo-img" src={logoLink} alt="" /> STARE
       </NavLink>
-
-      <input
-        className="srch-box"
-        type="search"
-        placeholder="Search..."
-        onChange={handleChange}
-      />
 
       <div className="auth-nav">
         <NavLink
@@ -84,15 +61,6 @@ function Header({ logoLink, setFilmData }) {
             ? "Login"
             : `Hi ${userInfo.name}`}
         </NavLink>
-        {userInfo === undefined ? (
-          ""
-        ) : userInfo.name === undefined ? (
-          ""
-        ) : (
-          <NavLink to="/create" className="user-nav">
-            Add Movie
-          </NavLink>
-        )}
       </div>
     </nav>
   );
