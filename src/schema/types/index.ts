@@ -14,7 +14,6 @@ export type filmType = {
   image_link: string;
 };
 export type commentType = {
-  name: string;
   films_id: string;
   comment: string;
   user_id: number;

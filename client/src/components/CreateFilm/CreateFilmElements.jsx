@@ -1,13 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { MdClose } from "react-icons/md";
-export const GlobalStyle = createGlobalStyle`
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-`;
+
 export const FormNav = styled.nav`
   .RegisterContainer-nav {
     height: 10vh;
@@ -143,9 +136,9 @@ export const CardContainer = styled.div`
   margin: 10px;
 
   .pix-box {
-    width: 250px;
-    height: 350px;
-    background-color: #3e3d3c;
+    width: 400px;
+    height: 200px;
+    /* background-color: #3e3d3c; */
     overflow: hidden;
   }
 `;

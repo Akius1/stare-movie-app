@@ -1,9 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserData, useUser } from "./../Login/UserData";
-//import filmData from "./../LandingPage/filmData"
 
-export default function CommentForm({ filmId }) {
-  //const { userInfo, SetUserInfo } = useContext(UserData);
+export default function CommentForm({ filmId, setComments, comments }) {
   const [userInfo, SetUserInfo] = useUser();
 
   const [inputData, setInputData] = useState("");
@@ -50,8 +48,10 @@ export default function CommentForm({ filmId }) {
       let data = await response.json().then((val) => {
         return val;
       });
+
       setInputData("");
-      console.log(data);
+      console.log(data[0]);
+      setComments([...comments, data[0]]);
     }
   }
 

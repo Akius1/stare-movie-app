@@ -17,12 +17,12 @@ export default async function invite(
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "anabizconcept9@gmail.com",
-        pass: "anabiz-1987",
+        user: "accessfullstack@gmail.com",
+        pass: process.env.password_key,
       },
     });
     const info = await transporter.sendMail({
-      from: `"Stare" <anabizconcept9@gmail.com>`,
+      from: `"Stare" <accessfullstack@gmail.com>`,
       to: receiverEmail,
       subject: "Hello!",
       html: messageBody,

@@ -45,6 +45,19 @@ function Header({ logoLink }) {
             ? "Sign Up"
             : "Log Out"}
         </NavLink>
+
+        {userInfo === undefined ? (
+          ""
+        ) : userInfo.name === undefined ? (
+          ""
+        ) : userInfo.is_admin === false ? (
+          ""
+        ) : (
+          <NavLink to="/create" className="user-nav name-link">
+            Add Movie
+          </NavLink>
+        )}
+
         <NavLink
           className="user-nav"
           to={

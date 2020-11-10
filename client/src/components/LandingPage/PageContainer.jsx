@@ -1,16 +1,19 @@
 import React from "react";
 import "./Home.css";
 import Header from "./Header";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useUser } from "../Login/UserData";
+import Films from "./Films";
+import Pagination from "./Pagination";
 
 const PageContainer = ({ allFilms }) => {
   const [data, setData] = useState([]);
-  const [ratings, setRating] = useState([]);
+  const [loading, setLoading] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(12);
 
   useEffect(async () => {
     const url = "https://staremovieapp.herokuapp.com/apiv1/films";
+    setLoading(true);
     const response = await fetch(url, {
       method: "GET",
       redirect: "follow",
@@ -22,13 +25,22 @@ const PageContainer = ({ allFilms }) => {
       })
       .then((user1) => {
         setData(user1);
+        setLoading(false);
+        //console.log(user1);
       });
   }, []);
 
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentDatas = data.slice(indexOfFirstPost, indexOfLastPost);
+
   const logo = "./Images/favicon-32x32.png";
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
-      <Header logoLink={logo} setFilmData={setData} />
+      <Header logoLink={logo} setFilmData={setData} paginate={paginate} />
+      <Films setFilmData={setData} data={currentDatas} loading={loading} />
 
       <div className="main-area">
         <div className="grid-wrapper">
@@ -52,6 +64,12 @@ const PageContainer = ({ allFilms }) => {
         </div>
       </div>
 
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={data.length}
+        paginate={paginate}
+      />
+
       <div className="footer-area">
         <p className="copyright">STARE Copyright &copy; 2020</p>
       </div>
@@ -59,26 +77,4 @@ const PageContainer = ({ allFilms }) => {
   );
 };
 
-function Display({ name, description, id, ticket, image, ticket_id }) {
-  return (
-    <div className="PageContainer-item" key={id}>
-      <div className="pix-box">
-        <Link to={`/films/${id}`}>
-          <img className="movie-poster" src={image} alt="movie poster" />
-        </Link>
-      </div>
-      <Link className="title-txt" to={`/films/${id}`}>
-        <div>
-          <p>{name}</p>
-        </div>
-      </Link>
-      <div className="title-txt">
-        <p>Rating: {description}</p>
-      </div>
-      <div className="title-txt">
-        <p>Ticket Price: {ticket}</p>
-      </div>
-    </div>
-  );
-}
 export default PageContainer;

@@ -9,7 +9,6 @@ import {
   deleteFilmById,
   updateFilm,
 } from "../../../controller/addFilm";
-import { Row, RowList } from "postgres";
 
 const router = Router();
 
@@ -49,7 +48,7 @@ router.get("/film_id/:id", async function (req: Request, res: Response) {
   }
 });
 
-// delete by id
+//delete by id
 router.delete("/delete/:id", adminAuthorization, async function (
   req: Request,
   res: Response,
@@ -57,7 +56,7 @@ router.delete("/delete/:id", adminAuthorization, async function (
   try {
     // console.log(req.params.id);
     const filmId: string = req.params.id;
-    const filmReturn: RowList<Row[]> = await getFilmById(filmId);
+    const filmReturn = await getFilmById(filmId);
     if (!filmReturn.count) {
       return res
         .status(404)
@@ -74,27 +73,28 @@ router.delete("/delete/:id", adminAuthorization, async function (
 });
 
 //create film
-router.post("/", adminAuthorization, async function (
-  req: Request,
-  res: Response,
-) {
-  const validFilmInfo = await validateMFilmInfo(req.body);
-  if (validFilmInfo?.error) {
-    res.status(404).json({ error: "Invalid data" });
-  }
+router.post(
+  "/",
+  /*adminAuthorization,*/ async function (req: Request, res: Response) {
+    console.log(req.body);
+    const validFilmInfo = await validateMFilmInfo(req.body);
+    if (validFilmInfo?.error) {
+      console.log(validFilmInfo?.error.message);
+      return res.status(400).json({ error: "Invalid data" });
+    }
 
-  const filmExists: RowList<Row[]> = await getFilmByName(
-    validFilmInfo?.value.name,
-  );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const filmExists: any = await getFilmByName(validFilmInfo?.value.name);
 
-  if (filmExists.count) {
-    return res.json({ message: "Film already exist" });
-  }
+    if (filmExists.count) {
+      return res.json({ message: "Film already exist" });
+    }
 
-  const myFilm = await createFilm(validFilmInfo?.value);
+    const myFilm = await createFilm(validFilmInfo?.value);
 
-  return res.status(200).json(myFilm);
-});
+    return res.status(200).json(myFilm);
+  },
+);
 
 //update film
 
@@ -104,10 +104,10 @@ router.put("/update/:id", adminAuthorization, async function (
 ) {
   const validFilmInfo = await validateMFilmInfo(req.body);
   if (validFilmInfo?.error) {
-    return res.status(404).json({ error: "Invalid data" });
+    return res.status(400).json({ error: "Invalid data" });
   }
 
-  const filmExists: RowList<Row[]> = await getFilmById(req.params.id);
+  const filmExists = await getFilmById(req.params.id);
 
   if (!filmExists.count) {
     return res.json({ message: "Film does not exist" });

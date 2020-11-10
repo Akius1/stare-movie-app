@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 export const FormContainer = styled.div`
   background-image: linear-gradient(
-
-    to right bottom,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.7)
-  ),
-  url(../../signUp.jpg);
+      to right bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(../../signUp.jpg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +97,6 @@ export const FormNav = styled.nav`
     justify-content: space-between;
   }
   .RegisterContainer-logo {
-   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,7 +109,7 @@ export const FormNav = styled.nav`
     .logo-img {
       padding-right: 6px;
     }
-  }  
+  }
   .main-logo::after {
     color: #fff;
   }

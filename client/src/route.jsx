@@ -1,13 +1,14 @@
 import React from "react";
 import { Route, Redirect, BrowserRouter, Switch } from "react-router-dom";
-//import View from "./components";
 import CreateFilm from "./components/CreateFilm";
 import LandingPage from "./components/LandingPage";
 import Login from "./components/Login";
 import Register from "./components/Registraion";
 import SinglePage from "./components/SinglePage";
+
 import ResetPassword from "./components/ResetPassword";
 import ChangePassword from "./components/ChangePassword";
+
 export default function Routing() {
   return (
     <BrowserRouter>

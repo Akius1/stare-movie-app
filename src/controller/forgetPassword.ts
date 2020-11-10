@@ -2,16 +2,17 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import mailer from "../controller/sendResetPasswordEmail";
 import bcrypt from "bcrypt";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
 import { getUserByEmail, updatePassword } from "./queries";
-import { Row } from "postgres";
 
 // send reset password link to user after confirming their status
 export const changePassword = async (req: Request, res: Response) => {
   const email = req.body.email;
 
   try {
-    const user: Row = await getUserByEmail(email);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const user: any = await getUserByEmail(email);
 
     if (user === null) {
       return res.status(400).json({ maessage: "No user with that email" });
@@ -53,6 +54,7 @@ export const resetPassword = async (req: Request, res: Response) => {
   }
 
   try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const verify: any = jwt.verify(
       resetLink,
       `${process.env.RESET_PASSWORD_KEY}`,

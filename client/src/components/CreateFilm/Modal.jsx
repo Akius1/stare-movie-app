@@ -6,12 +6,20 @@ import {
   CloseModalButton,
   ModalWrapper,
 } from "./CreateFilmElements";
+import Swal from "sweetalert2";
 const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
   const [FormData, setFormData] = useState({});
+  const [FormGenre, setFormGenre] = useState({});
   const modalRef = useRef();
   const handleOnChange = ({ target: { name, value } }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  const handleOnGenre = ({ target: { name, value } }) => {
+    setFormGenre((prev) => ({ ...prev, [name]: value }));
+  };
+  let arr = Object.values(FormGenre);
+  let dataArr = arr.join(",");
+  console.log(FormData);
   const animation = useSpring({
     config: {
       duration: 250,
@@ -32,10 +40,40 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
     },
     [setShowModal, showModal],
   );
+
+  // console.log(FormData)
   useEffect(() => {
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
+
+  async function postMovie(datas, genres) {
+    const url = "http://localhost:3000/apiv1/addfilm";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+
+      body: JSON.stringify({
+        name: datas.Name,
+        description: datas.Description,
+        ticket_price: datas.TicketPrice,
+        country: datas.Country,
+        genre: genres,
+        image_link: datas.ImageUrl,
+      }),
+    }).catch((error) => {
+      console.log(error);
+    });
+    let data = await response.json().then((val) => {
+      return val;
+    });
+    console.log(data);
+    Swal.fire("Movie Added successfully");
+  }
+
   return (
     <>
       {showModal ? (
@@ -44,9 +82,10 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
             <ModalWrapper name="login-form" onSubmit={handleSubmit}>
               <ModalContent showModal={showModal}>
                 <form
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
                     insert((collection) => [...collection, FormData]);
+                    postMovie(FormData, dataArr);
                     setShowModal((prev) => !prev);
                   }}
                 >
@@ -448,7 +487,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                       className="modal-input"
                     />
                   </div>
-                  <div className="form-group" onChange={handleOnChange}>
+                  <div className="form-group">
                     <span> Genre: </span>
                     <div className="input-options">
                       <div className="input-option-option">
@@ -457,6 +496,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                           id="action"
                           name="action"
                           value="Action"
+                          onChange={handleOnGenre}
                           className="modal-input"
                         />
                         <label htmlFor="action"> Action </label>
@@ -467,6 +507,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                           id="romance"
                           name="romance"
                           value="Romance"
+                          onChange={handleOnGenre}
                           className="modal-input"
                         />
                         <label htmlFor="romance"> Romance </label>
@@ -477,6 +518,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                           id="sci-fi"
                           name="sci-fi"
                           value="Sci-fi"
+                          onChange={handleOnGenre}
                           className="modal-input"
                         />
                         <label htmlFor="sci-fi"> Sci-fi </label>
@@ -487,6 +529,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                           id="mystery"
                           name="mystery"
                           value="Mystery"
+                          onChange={handleOnGenre}
                           className="modal-input"
                         />
                         <label htmlFor="mystery"> Mystery </label>
@@ -497,6 +540,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                           id="horror"
                           name="horror"
                           value="Horror"
+                          onChange={handleOnGenre}
                           className="modal-input"
                         />
                         <label htmlFor="horror"> Horror </label>
@@ -507,6 +551,7 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
                           id="anime"
                           name="anime"
                           value="Anime"
+                          onChange={handleOnGenre}
                           className="modal-input"
                         />
                         <label htmlFor="anime"> Anime </label>
@@ -532,4 +577,5 @@ const Modal = ({ showModal, setShowModal, handleSubmit, insert }) => {
     </>
   );
 };
+
 export default Modal;
