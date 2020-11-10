@@ -99,7 +99,6 @@ const Form = ({ handleSubmit }) => {
               onChange={handleOnChange}
             />
           </div>
-          <div className="checkbox-container">
             <div className="checkbox-field">
               <input
                 type="checkbox"
@@ -115,7 +114,7 @@ const Form = ({ handleSubmit }) => {
             <NavLink to="/reset-password" style={{ textDecoration: "none" }}>
               <span className="forgot-password">Forgot Password?</span>
             </NavLink>
-          </div>
+        
           <Button buttonName="Log In" onClick={onClick} />
         </FormLogin>
       </FormContainer>

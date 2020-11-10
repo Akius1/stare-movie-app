@@ -1,29 +1,19 @@
 import styled from "styled-components";
 
-
 export const FormContainer = styled.div`
   background-image: linear-gradient(
-    to right bottom,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.7)
-  ),
-  url(../../signUp.jpg);
-/* background-size: cover;
-display: flex;
-flex-direction: column;
-align-items: center;
-height: 90vh;
-justify-content: center;
-width: 100vw; */
-display: flex;
+      to right bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(../../signUp.jpg);
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 90vh;
-
 `;
 export const FormLogin = styled.div`
-  
   .logo {
     display: flex;
     align-items: center;
@@ -51,12 +41,11 @@ export const FormLogin = styled.div`
     color: #eefeee;
   }
 
-
   .heading {
     color: #999;
     text-align: center;
   }
-  
+
   .checkbox-field {
     display: flex;
     align-items: center;
@@ -68,9 +57,8 @@ export const FormLogin = styled.div`
     padding-left: 5px;
   }
   .forgot-password {
-    
     font-size: 12px;
-    color: #fff;
+    color: red;
     text-decoration: none;
   }
 
