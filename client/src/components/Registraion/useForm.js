@@ -17,7 +17,7 @@ const useForm = (validate) => {
     const errors = validateInfo(values);
     if (errors) setErrors(errors);
 
-    const url = "https://staremovieapp.herokuapp.com/apiv1/registers";
+    const url = "https://staremovieapp.herokuapp.com/apiv1/register/";
     const response = await fetch(url, {
       method: "POST",
       headers: {

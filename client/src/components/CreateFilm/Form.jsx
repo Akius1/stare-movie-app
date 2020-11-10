@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import {
   FormNav,
@@ -17,6 +17,23 @@ const Form = () => {
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
+
+  useEffect(async () => {
+    const url = "https://staremovieapp.herokuapp.com/apiv1/films";
+    const response = await fetch(url, {
+      method: "GET",
+      redirect: "follow",
+    });
+    let userData = await response
+      .json()
+      .then((val) => {
+        return val;
+      })
+      .then((user1) => {
+        setMovieCollection(user1);
+      });
+  }, []);
+
   return (
     <>
       <FormNav>
@@ -28,7 +45,6 @@ const Form = () => {
         </nav>
       </FormNav>
       <CreateFilmContainer>
-
         <Button onClick={openModal} buttonName="Add a Film" />
         <Modal
           showModal={showModal}
@@ -38,29 +54,20 @@ const Form = () => {
         <GlobalStyle />
         <ModalWrappers>
           <ul>
-            {movieCollection.map(
-              ({
-                Name,
-                Description,
-                ReleaseDate,
-                TicketPrice,
-                Country,
-                Genre,
-                ImageUrl,
-              }) => (
-                <>
-                  <Card
-                    name={Name}
-                    description={Description}
-                    releaseDate={ReleaseDate}
-                    ticketPrice={TicketPrice}
-                    country={Country}
-                    genre={Genre}
-                    imageUrl={ImageUrl}
-                  />
-                </>
-              ),
-            )}
+            {movieCollection.map((movie, i) => (
+              <>
+                <Card
+                  i={movie.id}
+                  name={movie.name}
+                  description={movie.description}
+                  releaseDate={movie.release_date}
+                  ticketPrice={movie.ticket_price}
+                  country={movie.country}
+                  genre={movie.genre}
+                  imageUrl={movie.image_link}
+                />
+              </>
+            ))}
           </ul>
         </ModalWrappers>
       </CreateFilmContainer>
@@ -69,4 +76,3 @@ const Form = () => {
 };
 
 export default Form;
-

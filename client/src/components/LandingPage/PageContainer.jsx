@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useUser } from "../Login/UserData";
 
+import { StyleDisplay } from "./landingPage.style.js";
+
 const PageContainer = ({ allFilms }) => {
   const [data, setData] = useState([]);
   const [ratings, setRating] = useState([]);
@@ -28,13 +30,12 @@ const PageContainer = ({ allFilms }) => {
   const logo = "./Images/favicon-32x32.png";
   return (
     <>
-      <Header logoLink={logo} setFilmData={setData} />
-
+      <Header logoLink={logo} />
       <div className="main-area">
         <div className="grid-wrapper">
-          {data.length > 0 ? (
+          {data &&
             data.map((ten, i) => {
-              //console.log(ten);
+              console.log(ten);
               return (
                 <Display
                   key={i}
@@ -43,13 +44,10 @@ const PageContainer = ({ allFilms }) => {
                   id={ten.id}
                   ticket={ten.ticket_price}
                   image={ten.image_link}
-                  ticket_id={allFilms[i].photo}
+                  //ticket_id={allFilms[i].photo}
                 />
               );
-            })
-          ) : (
-            <p>Loading...</p>
-          )}
+            })}
         </div>
       </div>
 
@@ -60,7 +58,7 @@ const PageContainer = ({ allFilms }) => {
   );
 };
 
-function Display({ name, description, id, ticket, image, ticket_id }) {
+function Display({ name, description, id, ticket, image }) {
   return (
     <div className="PageContainer-item" key={id}>
       <div className="pix-box">

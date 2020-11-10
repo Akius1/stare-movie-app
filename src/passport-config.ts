@@ -2,12 +2,15 @@ import { getUserByEmail, getUserById } from "./controller/queries";
 import bcrypt from "bcrypt";
 import { Strategy as LocalStrategy } from "passport-local";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function initialize(passport: any) {
   const authenticateUser = async (
     email: string,
     password: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     done: any,
   ) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const user: any = await getUserByEmail(email);
 
     console.log("the user", user);
@@ -31,7 +34,9 @@ function initialize(passport: any) {
   };
   passport.use(new LocalStrategy({ usernameField: "email" }, authenticateUser));
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   passport.serializeUser((user: any, done: any) => done(null, user.user_id));
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   passport.deserializeUser((id: any, done: (arg0: any) => any) => {
     return done(getUserById(id));
   });

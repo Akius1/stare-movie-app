@@ -10,10 +10,11 @@ const Card = ({
   genre,
   imageUrl,
 }) => {
+  console.log(name, description);
   return (
     <CardContainer>
       <div className="pix-box">
-        <img className="movie-poster" src={`imageUrl`} alt="movie poster" />
+        <img className="movie-poster" src={imageUrl} alt="movie poster" />
       </div>
       <div className="cards">
         <div className="title-txt">
@@ -34,9 +35,6 @@ const Card = ({
         </div>
         <div className="title-txt">
           <p>Genre: {genre}</p>
-        </div>
-        <div className="title-txt">
-          <p>ImageUrl: {imageUrl}</p>
         </div>
       </div>
     </CardContainer>

@@ -97,7 +97,6 @@ export const FormNav = styled.nav`
     justify-content: space-between;
   }
   .RegisterContainer-logo {
-   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,7 +109,7 @@ export const FormNav = styled.nav`
     .logo-img {
       padding-right: 6px;
     }
-  }  
+  }
   .main-logo::after {
     color: #fff;
   }

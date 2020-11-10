@@ -7,7 +7,6 @@ import Login from "./components/Login";
 import Register from "./components/Registraion";
 import SinglePage from "./components/SinglePage";
 
-
 export default function Routing() {
   return (
     <BrowserRouter>
