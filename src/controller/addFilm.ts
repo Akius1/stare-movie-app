@@ -5,7 +5,9 @@ import { filmType } from "../schema/types/index";
 export async function getFilmByName(name: string) {
   try {
     return await db.query(
-      sql`SELECT * FROM films WHERE LOWER(name) SIMILAR TO ${"%" + name + "%"}`,
+      sql`SELECT films.id, films.name, films.description, films.genre,films.release_date, films.ticket_price, films.country, films.image_link, ratings.rating FROM films JOIN ratings ON films.id = ratings.films_id WHERE LOWER(name) SIMILAR TO ${
+        "%" + name + "%"
+      }`,
     );
   } catch (error) {
     console.error(error);
@@ -16,7 +18,9 @@ export async function getFilmByName(name: string) {
 // get film by id
 export async function getFilmById(id: string) {
   try {
-    const result = db.query(sql`SELECT * FROM films WHERE id = ${id}`);
+    const result = db.query(sql`
+    SELECT films.id, films.name, films.description, films.genre,films.release_date, films.ticket_price, films.country, films.image_link, ratings.rating FROM films JOIN ratings ON films.id = ratings.films_id WHERE films.id = ${id}
+    `);
     return result;
   } catch (error) {
     console.error(error);
@@ -27,7 +31,9 @@ export async function getFilmById(id: string) {
 // get all films
 export async function getAllFilms() {
   try {
-    return await db.query(sql`SELECT * FROM films`);
+    return await db.query(
+      sql`SELECT films.id, films.name, films.description, films.genre,films.release_date, films.ticket_price, films.country, films.image_link, ratings.rating FROM films JOIN ratings ON films.id = ratings.films_id`,
+    );
   } catch (error) {
     console.error(error);
     return error;
@@ -47,11 +53,19 @@ export async function deleteFilmById(id: string) {
 
 export async function createFilm(data: filmType) {
   try {
-    return await db
-      .query(
-        sql`INSERT INTO films(name, description, ticket_price, country, genre, image_link) VALUES(${data.name},${data.description},${data.ticket_price},${data.country}, ${data.genre}, ${data.image_link}) RETURNING *`,
-      )
-      .catch((error) => console.log(error.message));
+    const newFilm = await db.query(
+      sql`INSERT INTO films(name, description, ticket_price, country, genre, image_link) VALUES(${data.name},${data.description},${data.ticket_price},${data.country}, ${data.genre}, ${data.image_link}) RETURNING *`,
+    );
+    await db.query(
+      sql`INSERT INTO ratings (films_id, rating, total_rated_users) 
+      VALUES(${newFilm[0].id},${0},${0})  RETURNING *`,
+    );
+    const result = db.query(sql`
+    SELECT films.id, films.name, films.description, films.genre,films.release_date, films.ticket_price, films.country, films.image_link, ratings.rating FROM films JOIN ratings ON films.id = ratings.films_id WHERE films.id = ${newFilm[0].id}
+    `);
+    return result;
+
+    // .catch((error) => console.log(error.message));
   } catch (error) {
     return error.message;
   }

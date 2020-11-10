@@ -87,7 +87,7 @@ yarn test
    - Resolved conflict issues and fix bugs
 2. Odira Eze
    - Worked on the Sign up page
-   - Styled the modal for the creating new films page 
+   - Styled the modal for the creating new films page
    - Resolved conflict issues and fix bugs
 3. Victor Nwike
    - Worked on the Landing page for all films
