@@ -1,7 +1,8 @@
 import React from "react";
 import { CardContainer } from "./CreateFilmElements";
-
+import Swal from "sweetalert2";
 const Card = ({
+  id,
   name,
   description,
   releaseDate,
@@ -10,7 +11,26 @@ const Card = ({
   genre,
   imageUrl,
 }) => {
-  console.log(name, description);
+  const handleDelete = async () => {
+    const url = `http://localhost:3000/apiv1/films/delete/${id}`;
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+      }),
+    }).catch((error) => {
+      console.log(error);
+    });
+    let data = await response.json().then((val) => {
+      return val;
+    });
+    console.log(data);
+    Swal.fire("Movie Deleted");
+  };
+
   return (
     <CardContainer>
       <div className="pix-box">
@@ -36,6 +56,9 @@ const Card = ({
         <div className="title-txt">
           <p>Genre: {genre}</p>
         </div>
+        <button className="addNew-btn" onClick={handleDelete}>
+          Delete
+        </button>
       </div>
     </CardContainer>
   );
