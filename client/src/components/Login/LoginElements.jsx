@@ -58,7 +58,7 @@ export const FormLogin = styled.div`
   }
   .forgot-password {
     font-size: 12px;
-    color: red;
+    color: #ee6d6b;
     text-decoration: none;
   }
 
@@ -82,7 +82,7 @@ export const FormLogin = styled.div`
   }
 `;
 export const Error = styled.p`
-  color: red;
+  color: #ee6d6b;
 `;
 
 export const FormNav = styled.nav`
