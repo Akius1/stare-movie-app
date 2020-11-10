@@ -3,6 +3,7 @@ import React from "react";
 import Header from "./Header";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
+import Rating from "./Rating";
 
 const Film = ({ film }) => {
   const logo = "./../Images/favicon-32x32.png";
@@ -58,6 +59,10 @@ const Film = ({ film }) => {
         )}
 
         <div className="commentArea">
+          <div className="rating-div">
+            <p>Rate film:{"  "}</p> <Rating filmId={film.id} />
+          </div>
+
           <CommentForm filmId={film.id} />
 
           <Comment filmId={film.id} />

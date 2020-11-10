@@ -61,6 +61,15 @@ function Header({ logoLink }) {
             ? "Login"
             : `Hi ${userInfo.name}`}
         </NavLink>
+        {userInfo === undefined ? (
+          ""
+        ) : userInfo.name === undefined ? (
+          ""
+        ) : (
+          <NavLink to="/create" className="user-nav">
+            Add Movie
+          </NavLink>
+        )}
       </div>
     </nav>
   );

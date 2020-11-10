@@ -24,12 +24,14 @@ export default function Comment({ filmId }) {
       <h2>Comments:</h2>
       {comments.length > 0 ? (
         comments.map((item, index) => {
-          return (
-            <div className="comment-badge" key={index}>
-              <p>{item.created_at}</p>
-              <p>{item.comment}</p>
-            </div>
-          );
+          if (item.films_id == filmId) {
+            return (
+              <div className="comment-badge" key={index}>
+                <p>{item.created_at}</p>
+                <p>{item.comment}</p>
+              </div>
+            );
+          }
         })
       ) : (
         <p>Loading...</p>

@@ -22,6 +22,7 @@ const PageContainer = ({ allFilms }) => {
       })
       .then((user1) => {
         setData(user1);
+        console.log(user1);
       });
   }, []);
 
@@ -43,7 +44,6 @@ const PageContainer = ({ allFilms }) => {
                   id={ten.id}
                   ticket={ten.ticket_price}
                   image={ten.image_link}
-                  ticket_id={allFilms[i].photo}
                 />
               );
             })
@@ -60,7 +60,7 @@ const PageContainer = ({ allFilms }) => {
   );
 };
 
-function Display({ name, description, id, ticket, image, ticket_id }) {
+function Display({ name, description, id, ticket, image }) {
   return (
     <div className="PageContainer-item" key={id}>
       <div className="pix-box">
@@ -77,7 +77,7 @@ function Display({ name, description, id, ticket, image, ticket_id }) {
         <p>Rating: {description}</p>
       </div>
       <div className="title-txt">
-        <p>Ticket Price: {ticket}</p>
+        <p>Ticket Price: ${ticket}</p>
       </div>
     </div>
   );
