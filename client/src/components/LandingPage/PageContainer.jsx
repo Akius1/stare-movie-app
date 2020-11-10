@@ -31,31 +31,29 @@ const PageContainer = ({ allFilms }) => {
   return (
     <>
       <Header logoLink={logo} />
-      <StyleDisplay>
-        <div className="main-area">
-          <div className="grid-wrapper">
-            {data &&
-              data.map((ten, i) => {
-                console.log(ten);
-                return (
-                  <Display
-                    key={i}
-                    name={ten.name}
-                    description={ten.description}
-                    id={ten.id}
-                    ticket={ten.ticket_price}
-                    image={ten.image_link}
-                    //ticket_id={allFilms[i].photo}
-                  />
-                );
-              })}
-          </div>
+      <div className="main-area">
+        <div className="grid-wrapper">
+          {data &&
+            data.map((ten, i) => {
+              console.log(ten);
+              return (
+                <Display
+                  key={i}
+                  name={ten.name}
+                  description={ten.description}
+                  id={ten.id}
+                  ticket={ten.ticket_price}
+                  image={ten.image_link}
+                  //ticket_id={allFilms[i].photo}
+                />
+              );
+            })}
         </div>
+      </div>
 
-        <div className="footer-area">
-          <p className="copyright">STARE Copyright &copy; 2020</p>
-        </div>
-      </StyleDisplay>
+      <div className="footer-area">
+        <p className="copyright">STARE Copyright &copy; 2020</p>
+      </div>
     </>
   );
 };
