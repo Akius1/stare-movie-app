@@ -44,6 +44,7 @@ export const FormLogin = styled.div`
   .heading {
     color: #999;
     text-align: center;
+    font-size: 20px;
   }
 
   .checkbox-field {

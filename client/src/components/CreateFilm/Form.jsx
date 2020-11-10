@@ -28,6 +28,7 @@ const Form = () => {
         </nav>
       </FormNav>
       <CreateFilmContainer>
+
         <Button onClick={openModal} buttonName="Add a Film" />
         <Modal
           showModal={showModal}
@@ -68,3 +69,4 @@ const Form = () => {
 };
 
 export default Form;
+
