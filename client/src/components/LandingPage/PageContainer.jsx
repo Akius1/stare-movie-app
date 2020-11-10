@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import { useUser } from "../Login/UserData";
 
 const PageContainer = ({ allFilms }) => {
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [ratings, setRating] = useState([]);
 
   useEffect(async () => {
-    const url = "http://localhost:3000/apiv1/films";
+    const url = "https://staremovieapp.herokuapp.com/apiv1/films";
     const response = await fetch(url, {
       method: "GET",
       redirect: "follow",
