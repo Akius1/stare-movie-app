@@ -43,7 +43,7 @@ async function verifyEmail(data: any) {
   //     expiresIn: "10m",
   //   });
 
-  const url = `https://staremovieapp.netlify.app/login`;
+  const url = `http://192.168.88.38:5000/login`;
   const output = `
   <p> Hi ${data[0]["name"]}</>
   <p> Click the link to verify your email</p>
