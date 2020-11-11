@@ -42,10 +42,11 @@ export const FormNav = styled.nav`
   }
 `;
 export const CreateFilmContainer = styled.div`
+  /* padding-top: 2rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  /* height: 50vh; */
   justify-content: center;
   width: 100vw;
 

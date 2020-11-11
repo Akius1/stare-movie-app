@@ -56,9 +56,9 @@ const Card = ({
         <div className="title-txt">
           <p>Genre: {genre}</p>
         </div>
-        <button className="addNew-btn" onClick={handleDelete}>
+        {/* <button className="addNew-btn" onClick={handleDelete}>
           Delete
-        </button>
+        </button> */}
       </div>
     </CardContainer>
   );

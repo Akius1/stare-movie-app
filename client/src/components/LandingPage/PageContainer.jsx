@@ -9,7 +9,7 @@ const PageContainer = ({ allFilms }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(12);
+  const [postsPerPage, setPostsPerPage] = useState(10);
 
   useEffect(async () => {
     const url = "https://staremovieapp.herokuapp.com/apiv1/films";
