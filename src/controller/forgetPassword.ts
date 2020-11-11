@@ -24,7 +24,7 @@ export const changePassword = async (req: Request, res: Response) => {
     );
 
     const html = `<h3>Please, click on this link to reset your password</h3>
-                      <p>https://tender-darwin-6c0acb.netlify.app/change/${token}</p>`;
+                      <p>https://staremovieapp.netlify.app/change/${token}</p>`;
 
     const result = await mailer(email, html);
 

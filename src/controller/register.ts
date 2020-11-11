@@ -43,7 +43,7 @@ async function verifyEmail(data: any) {
   //     expiresIn: "10m",
   //   });
 
-  const url = `https://tender-darwin-6c0acb.netlify.app/login`;
+  const url = `https://staremovieapp.netlify.app/login`;
   const output = `
   <p> Hi ${data[0]["name"]}</>
   <p> Click the link to verify your email</p>
