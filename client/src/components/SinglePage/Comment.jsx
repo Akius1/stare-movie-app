@@ -9,7 +9,8 @@ export default function Comment({ filmId, comments }) {
           if (item.films_id == filmId) {
             return (
               <div className="comment-badge" key={index}>
-                <p>{item.created_at}</p>
+                <p>By: {item.name}</p>
+                <p> Date: {item.created_at}</p>
                 <p>{item.comment}</p>
               </div>
             );

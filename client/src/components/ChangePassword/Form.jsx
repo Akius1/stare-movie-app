@@ -42,7 +42,7 @@ const Form = ({ handleSubmit }) => {
       <FormNav>
         <nav className="RegisterContainer-nav">
           <NavLink className="RegisterContainer-logo" to="/">
-            <img src="./favicon-32x32.png" className="logo-img" alt="logo" />{" "}
+            <img src="./../favicon-32x32.png" className="logo-img" alt="logo" />{" "}
             <h1> STARE </h1>
           </NavLink>
           <div className="auth-nav">
@@ -60,7 +60,7 @@ const Form = ({ handleSubmit }) => {
       <FormContainer className="form-container">
         <FormConfirm name="login-form" onSubmit={handleSubmit}>
           <div className="logo">
-            <img src="./favicon-32x32.png" alt="logo"></img>
+            <img src="./../favicon-32x32.png" alt="logo"></img>
             <h1>Stare</h1>
           </div>
           <div className="heading">Change Password</div>

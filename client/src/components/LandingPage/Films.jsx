@@ -18,6 +18,7 @@ function Films({ setFilmData, data }) {
                   id={ten.id}
                   ticket={ten.ticket_price}
                   image={ten.image_link}
+                  rating={ten.rating}
                 />
               );
             })
@@ -30,7 +31,7 @@ function Films({ setFilmData, data }) {
   );
 }
 
-function Display({ name, description, id, ticket, image }) {
+function Display({ name, rating, id, ticket, image }) {
   return (
     <div className="PageContainer-item" key={id}>
       <div className="pix-box">
@@ -44,7 +45,7 @@ function Display({ name, description, id, ticket, image }) {
         </div>
       </Link>
       <div className="title-txt">
-        <p>Rating: {description}</p>
+        <p>Rating: {rating}</p>
       </div>
       <div className="title-txt">
         <p>Ticket Price: ${ticket}</p>

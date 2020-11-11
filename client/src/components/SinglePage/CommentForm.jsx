@@ -48,10 +48,13 @@ export default function CommentForm({ filmId, setComments, comments }) {
       let data = await response.json().then((val) => {
         return val;
       });
-
+      const newComment = {
+        name: userInfo.name,
+        ...data[0],
+      };
       setInputData("");
-      console.log(data[0]);
-      setComments([...comments, data[0]]);
+      // console.log(data[0]);
+      setComments([newComment, ...comments]);
     }
   }
 

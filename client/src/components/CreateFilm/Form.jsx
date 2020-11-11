@@ -58,6 +58,7 @@ const Form = () => {
               <>
                 <Card
                   i={movie.id}
+                  movieId={movie.id}
                   name={movie.name}
                   description={movie.description}
                   releaseDate={movie.release_date}

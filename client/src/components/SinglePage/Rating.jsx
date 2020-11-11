@@ -25,7 +25,7 @@ export default function Rating({ filmId }) {
       return val;
     });
 
-    console.log(data);
+    //console.log(data);
   }, [rating]);
 
   return (
