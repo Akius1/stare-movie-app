@@ -10,7 +10,7 @@ export default function Comment({ filmId, comments }) {
             return (
               <div className="comment-badge" key={index}>
                 <p>By: {item.name}</p>
-                <p> Date: {item.created_at}</p>
+                <p>Date: {new Date(item.created_at).toLocaleDateString()}</p>
                 <p>{item.comment}</p>
               </div>
             );
