@@ -2,7 +2,7 @@ import React from "react";
 import { CardContainer } from "./CreateFilmElements";
 import Swal from "sweetalert2";
 const Card = ({
-  id,
+  movieId,
   name,
   description,
   releaseDate,
@@ -12,14 +12,14 @@ const Card = ({
   imageUrl,
 }) => {
   const handleDelete = async () => {
-    const url = `http://localhost:3000/apiv1/films/delete/${id}`;
+    const url = `https://staremovieapp.herokuapp.com/apiv1/films/delete/${movieId}`;
     const response = await fetch(url, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: id,
+        id: movieId,
       }),
     }).catch((error) => {
       console.log(error);

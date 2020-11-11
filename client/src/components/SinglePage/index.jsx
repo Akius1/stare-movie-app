@@ -26,7 +26,7 @@ const SinglePage = () => {
         return val;
       })
       .then((film) => {
-        console.log(film[0]);
+        //console.log(film[0]);
         setFilm(film[0]);
       });
   }, []);
@@ -49,6 +49,8 @@ const SinglePage = () => {
         console.log(data);
       });
   }, []);
+
+  //useEffect(()=>{}, [comments])
 
   return (
     <>

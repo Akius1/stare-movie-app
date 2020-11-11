@@ -25,15 +25,15 @@ const Film = ({ film, comments, setComments }) => {
 
             <div className="text-info">
               <div>
-                <h3>Name: {film.name}</h3>
+                <h3>{film.name}</h3>
               </div>
 
               <div>
-                <h3>Ticket Price: ${film.ticket_price}</h3>
+                <p>Ticket Price: ${film.ticket_price}</p>
               </div>
 
               <div>
-                <h3>Country: {film.country}</h3>
+                <p>Country: {film.country}</p>
               </div>
 
               <div>
@@ -41,12 +41,7 @@ const Film = ({ film, comments, setComments }) => {
               </div>
 
               <div>
-                <p>
-                  Genre:{" "}
-                  {film.Genre
-                    ? film.Genre.map((item) => item + " ")
-                    : `loading...`}
-                </p>
+                <p>Genre: {film.genre}</p>
               </div>
 
               <div>
