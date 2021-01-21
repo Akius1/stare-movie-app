@@ -44,9 +44,9 @@ const Card = ({
         <div className="title-txt">
           <p>Description: {description}</p>
         </div>
-        <div className="title-txt">
+        {/* <div className="title-txt">
           <p>Release Date: {releaseDate}</p>
-        </div>
+        </div> */}
         <div className="title-txt">
           <p>Ticket Price: {ticketPrice}</p>
         </div>

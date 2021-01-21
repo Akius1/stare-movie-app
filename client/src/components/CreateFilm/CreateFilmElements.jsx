@@ -114,7 +114,7 @@ export const ModalWrapper = styled.div`
     width: 20em;
     height: 3em;
     align-self: center;
-    background-color: lightgreen;
+    background-color: #3b88c3;
     border-radius: 2rem;
   }
   .modal-btn {

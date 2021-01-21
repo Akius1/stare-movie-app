@@ -24,7 +24,7 @@ export const changePassword = async (req: Request, res: Response) => {
     );
 
     const html = `<h3>Please, click on this link to reset your password</h3>
-                      <p>https://staremovieapp.netlify.app/change/${token}</p>`;
+                      <p>http://192.168.88.38:5000/change/${token}</p>`;
 
     const result = await mailer(email, html);
 
